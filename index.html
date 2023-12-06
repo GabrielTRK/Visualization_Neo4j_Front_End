@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="shortcut icon" href="#" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mapa</title>
+    <script src="https://d3js.org/d3.v4.js" defer></script>
+    <script src="https://unpkg.com/topojson@3" defer></script>
+    <script src="mapApp.js" defer></script>
+
+    <style>
+        svg{
+            background: white;
+        }
+        .country {
+            fill: #cccccc;
+            stroke: black;
+            stroke-width: 0.1;
+        }
+        .selected{
+            fill: yellow;
+        }
+        .airport-label{
+            font-size: 5px;
+        }
+        .connection {
+            fill: none;
+            
+            stroke-width: 0.05;
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <a href="/graph.html" class="nav__link" data-link>Detalles</a>
+    </nav>
+    <form>
+        <label for="start">Fecha inicial:</label>
+        <input type="date" id="start" name="start_date" value="2020-01-01" min="2020-01-01" max="2021-01-01" />
+        <label for="end">Fecha final:</label>
+        <input type="date" id="end" name="end_date" value="2020-01-01" min="2020-01-01" max="2021-01-01" />
+        <label for="ite">Número de iteraciones</label>
+        <input type="text" id="ite" name="ite"><br><br>
+        <button type="button" onclick="algoritmo()">Ejecutar algoritmo</button>
+        <button type="button" id="anterior" onclick="solucionDiaAnterior()">Dia anterior</button>
+        <button type="button" id="posterior" onclick="solucionDiaPosterior()">Siguiente dia</button>
+
+        <select name="Soluciones" id="Soluciones" onChange="selectChange(this)"></select>
+      </form>
+    <div id="map"></div>
+</body>
+</html>
