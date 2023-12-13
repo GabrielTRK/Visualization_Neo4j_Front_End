@@ -4,6 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script> 
+        $(function(){
+          $("#header").load("Utils/nav.html");
+        });
+    </script>
     <script src="https://d3js.org/d3.v4.js" defer></script>
     <script src="graphApp.js" defer></script>
     <style type="text/css">
@@ -48,9 +54,7 @@
     </style>
 </head>
 <body>
-    <nav class="nav">
-        <a href="/index.html" class="nav__link" data-link>Mapa</a>
-    </nav>
+    <div id="header"></div>
     <select name="Soluciones" id="Soluciones" onChange="selectChange(this)"></select>
     <div class='parent'>
         <div id="lineChart" class='child'></div>
