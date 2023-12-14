@@ -310,7 +310,7 @@ function drawServerResultBar(dataPoints){
 		.attr("y", 15)
 		.attr("class","title")				
 		.attr("text-anchor", "middle")
-		.text("Criterios del problema");
+		.text("Problem criteria");
         
 
 }
@@ -362,7 +362,7 @@ function drawServerResultPiePersonas(data){
     .attr("y", -125)
     .attr("class", "title")
     .attr("text-anchor", "middle")
-    .text("Personas afectadas");
+    .text("Afected people");
 }
 
 function drawServerResultPieVuelos(data){
@@ -412,7 +412,7 @@ function drawServerResultPieVuelos(data){
     .attr("y", -125)
     .attr("class", "title")
     .attr("text-anchor", "middle")
-    .text("Vuelos cancelados");
+    .text("Canceled flights");
 }
 
 function selectChange(sel){
