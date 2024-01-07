@@ -17,30 +17,36 @@
     </script>
     <style type="text/css">
         html{
-            font-family: Helvetica;
+          font-family: Helvetica;
         }
         .PageTitle{
-            padding: 1rem 1rem;
+          padding: 1rem 1rem;
         }
         .TitleChild{
-            display: inline-block;
+          display: inline-block;
         }
         #Load{
-            float: right;
+          float: right;
         }
         #MainCard{
-            width: 60%;
-            margin:0 auto
-        }
-        #Execute{
-            padding: 1rem 1rem;
+          width: 60%;
+          margin:0 auto
         }
         #StartDateDiv{
-            display: inline-block;
+          display: inline-block;
         }
         #EndDateDiv{
-            float: right;
+          float: right;
         }
+        #Save{
+          padding: 1rem 1rem;
+          display: inline-block;
+        }
+        #Execute{
+          padding: 1rem 1rem;
+          float: right;
+        }
+        
     </style>
 </head>
 <body>
@@ -54,7 +60,7 @@
             </div>
         </div>
 
-        <div id="accordion">
+        <div id="accordion1">
             
             <div class="card">
               <div class="card-header" id="headingTwo">
@@ -64,7 +70,7 @@
                   </button>
                 </h5>
               </div>
-              <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordion">
+              <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordion1">
                 <div class="card-body" id="DatesDiv">
                     <div id="StartDateDiv">
                         <label for="start">Start date:</label>
@@ -86,16 +92,13 @@
                   </button>
                 </h5>
               </div>
-              <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+              <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion2">
                 <div class="card-body">
-                    <label for="ite">Weight 1</label>
+                    <label for="ite">Economic Weight</label>
                     <input type="text" id="Weight1" name="Weight1"><br><br>
 
-                    <label for="ite">Weight 2</label>
+                    <label for="ite">Social Weight</label>
                     <input type="text" id="Weight2" name="Weight2"><br><br>
-
-                    <label for="ite">Weight 3</label>
-                    <input type="text" id="Weight3" name="Weight3"><br><br>
                 </div>
               </div>
             </div>
@@ -108,20 +111,21 @@
                     </button>
                   </h5>
                 </div>
-                <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordion">
+                <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordion3">
                     <div class="card-body">
                         <p>Algorithm parameters</p>
                     </div>
                 </div>
             </div>
 
-          </div>
-
-        <div id="Save">
-
         </div>
-        <div id="Execute">
+        <div class="BottonButtons">
+          <div id="Save">
+            <button type="button" class="btn btn-primary" onclick="saveConf()">Save definition</button>
+          </div>
+          <div id="Execute">
             <button type="button" class="btn btn-primary" onclick="algoritmo()">Execute algorithm</button>
+          </div>
         </div>
     </div>
 </body>

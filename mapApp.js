@@ -58,7 +58,7 @@ var mouseover = function(d) {
       }
 var mousemove = function(d) {
         Tooltip
-          .html(html_p_Open + 'Origen: ' + d.iataOrigen + html_p_Close + html_p_Open + 'Destino: ' + d.iataDestino + html_p_Close)
+          .html(html_p_Open + 'Departures: ' + d.iataOrigen + html_p_Close + html_p_Open + 'Destination: ' + d.iataDestino + html_p_Close)
           .style("left", (d3.mouse(this)[0]) + 0 + "px")
           .style("top", (d3.mouse(this)[1]) + 0 + "px")
       }
