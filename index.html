@@ -34,9 +34,11 @@
         }
         #StartDateDiv{
           display: inline-block;
+          margin-left: 20%;
         }
         #EndDateDiv{
           float: right;
+          margin-right: 20%;
         }
         #Save{
           padding: 1rem 1rem;
@@ -46,7 +48,66 @@
           padding: 1rem 1rem;
           float: right;
         }
-        
+        .DDContainer{
+          width: 100%;
+          display: inline-block;
+          padding: 1rem 1rem;
+        }
+        #div1a, #div2a, #div3a, #div4a, #div5a, #div6a, #div7a {
+          float: left;
+          width: 100px;
+          height: 40px;
+          margin-left: 20%;
+          padding: 10px;
+          border: 1px solid black;
+        }
+        #div1b, #div2b, #div3b, #div4b, #div5b, #div6b, #div7b {
+          float: right;
+          width: 100px;
+          height: 40px;
+          margin-right: 20%;
+          padding: 10px;
+          border: 1px solid black;
+        }
+        #NumP{
+          margin-left: 5%;
+          display: inline-block;
+        }
+        #NumPHelp{
+          margin-left: 5%;
+          display: inline-block;
+        }
+        #IneW{
+          margin-left: 10%;
+        }
+        #IneWHelp{
+          margin-left: 6.5%;
+        }
+        #c1{
+          margin-left: 3.7%;
+        }
+        #c1Help{
+          margin-left: 7.4%;
+        }
+        #c2{
+          margin-left: 6.8%;
+        }
+        #c2Help{
+          margin-left: 7.2%;
+        }
+        #NumPTooltipText, #IneWTooltipText, #c1TooltipText, #c2TooltipText {
+          visibility: hidden;
+          width: 120px;
+          background-color: black;
+          color: #fff;
+          text-align: center;
+          border-radius: 6px;
+          padding: 5px 0;
+          display: inline-block;
+          /* Position the tooltip */
+         
+        }
+
     </style>
 </head>
 <body>
@@ -54,7 +115,7 @@
     <div id="header"></div>
     <div class="card" id="MainCard">
         <div class="PageTitle">
-            <h1 class="TitleChild">Problem definition</h1>
+            <h1 class="TitleChild">Problem description</h1>
             <div class="TitleChild" id="Load">
                 <button type="button" class="btn btn-primary">Load saved problem</button>
             </div>
@@ -88,38 +149,130 @@
               <div class="card-header" id="headingThree">
                 <h5 class="mb-0">
                   <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                    Weights
+                    Problem Restriction
                   </button>
                 </h5>
               </div>
-              <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion2">
+              <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion0">
                 <div class="card-body">
-                    <label for="ite">Economic Weight</label>
-                    <input type="text" id="Weight1" name="Weight1"><br><br>
-
-                    <label for="ite">Social Weight</label>
-                    <input type="text" id="Weight2" name="Weight2"><br><br>
+                    <label for="Res">Minimum percentage of Imported Risk during optimization</label>
+                    <input type="text" id="Res" name="Res" size="2"><br><br>
                 </div>
               </div>
             </div>
 
             <div class="card">
-                <div class="card-header" id="headingFour">
+              <div class="card-header" id="headingFour">
+                <h5 class="mb-0">
+                  <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                    Quantification of decision maker's preferences
+                  </button>
+                </h5>
+              </div>
+              <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordion2">
+                <div class="card-body">
+                    <!--<label for="Weight1">Economic Weight</label>
+                    <input type="text" id="Weight1" name="Weight1"><br><br>
+
+                    <label for="Weight2">Social Weight</label>
+                    <input type="text" id="Weight2" name="Weight2"><br><br>-->
+
+                    <div class="DDContainer">
+                      <div id="div1a" ondrop="drop(event)" ondragover="allowDrop(event)">
+                        <img src="Utils/UPMLogo.png" draggable="true" ondragstart="drag(event)" id="drag1" width="88" height="31">
+                      </div>
+                      <div id="div1b" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                    </div>
+                    
+                    <div class="DDContainer">
+                      <div id="div2a" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                      <div id="div2b" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                    </div>
+
+                    <div class="DDContainer">
+                      <div id="div3a" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                      <div id="div3b" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                    </div>
+
+                    <div class="DDContainer">
+                      <div id="div4a" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                      <div id="div4b" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                    </div>
+
+                    <div class="DDContainer">
+                      <div id="div5a" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                      <div id="div5b" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                    </div>
+
+                    <div class="DDContainer">
+                      <div id="div6a" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                    <div id="div6b" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                    </div>
+
+                    <div class="DDContainer">
+                      <div id="div7a" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                      <div id="div7b" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                    </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header" id="headingFive">
                   <h5 class="mb-0">
-                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
                       Advanced options
                     </button>
                   </h5>
                 </div>
-                <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordion3">
+                <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordion3">
                     <div class="card-body">
-                        <p>Algorithm parameters</p>
+                      <!--<select name="Alg" id="Alg" onChange="selectChange(this)">
+                        <option value="BPSO" selected="true">Binary PSO</option>
+                      </select>-->
+                      <h3>Algorithm parameters</h3>
+                      <div>
+                        <label for="NumP">Number of particles</label>
+                        <input type="text" id="NumP" name="NumP" value="1000" size="4">
+                          <svg id="NumPHelp" onmouseover="NumPshowHelp()" onmouseout="NumPhideHelp()" xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-question-circle-fill" viewBox="0 0 16 16">
+                            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M5.496 6.033h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286a.237.237 0 0 0 .241.247m2.325 6.443c.61 0 1.029-.394 1.029-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94 0 .533.425.927 1.01.927z"/>
+                          </svg>
+                          <p id="NumPTooltipText">Tooltip text</p>
+                      </div><br>
+                      
+                      <div>
+                        <label for="IneW">Inertia weight</label>
+                        <input type="text" id="IneW" name="IneW" value="0.9" size="2">
+                        <svg id="IneWHelp" onmouseover="IneWshowHelp()" onmouseout="IneWhideHelp()" xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-question-circle-fill" viewBox="0 0 16 16">
+                          <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M5.496 6.033h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286a.237.237 0 0 0 .241.247m2.325 6.443c.61 0 1.029-.394 1.029-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94 0 .533.425.927 1.01.927z"/>
+                        </svg>
+                        <p id="IneWTooltipText">Tooltip text</p>
+                      </div><br>
+                      
+                      <div>
+                        <label for="c1">Cognitive component</label>
+                        <input type="text" id="c1" name="c1" value="2" size="1">
+                        <svg id="c1Help" onmouseover="c1showHelp()" onmouseout="c1hideHelp()" xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-question-circle-fill" viewBox="0 0 16 16">
+                          <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M5.496 6.033h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286a.237.237 0 0 0 .241.247m2.325 6.443c.61 0 1.029-.394 1.029-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94 0 .533.425.927 1.01.927z"/>
+                        </svg>
+                        <p id="c1TooltipText">Tooltip text</p>
+                      </div><br>
+
+                      <div>
+                        <label for="c2">Social component</label>
+                        <input type="text" id="c2" name="c2" value="2" size="1">
+                        <svg id="c2Help" onmouseover="c2showHelp()" onmouseout="c2hideHelp()" xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-question-circle-fill" viewBox="0 0 16 16">
+                          <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M5.496 6.033h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286a.237.237 0 0 0 .241.247m2.325 6.443c.61 0 1.029-.394 1.029-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94 0 .533.425.927 1.01.927z"/>
+                        </svg>
+                        <p id="c2TooltipText">Tooltip text</p>
+                      </div><br>
+                      
                     </div>
                 </div>
             </div>
 
         </div>
-        <div class="BottonButtons">
+        <div class="BottomButtons">
           <div id="Save">
             <button type="button" class="btn btn-primary" onclick="saveConf()">Save definition</button>
           </div>

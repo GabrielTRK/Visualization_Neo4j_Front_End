@@ -50,3 +50,50 @@ function algoritmo(){
     }
     )*/
 }
+
+function allowDrop(ev) {
+    ev.preventDefault();
+}
+  
+function drag(ev) {
+    ev.dataTransfer.setData("text", ev.target.id);
+}
+  
+function drop(ev) {
+    ev.preventDefault();
+    var data = ev.dataTransfer.getData("text");
+    ev.target.appendChild(document.getElementById(data));
+}
+
+function NumPshowHelp(){
+    document.getElementById("NumPTooltipText").style.visibility = "visible";
+
+}
+
+function NumPhideHelp(){
+    document.getElementById("NumPTooltipText").style.visibility = "hidden";
+}
+
+function IneWshowHelp(){
+    document.getElementById("IneWTooltipText").style.visibility = "visible";
+}
+
+function IneWhideHelp(){
+    document.getElementById("IneWTooltipText").style.visibility = "hidden";
+}
+
+function c1showHelp(){
+    document.getElementById("c1TooltipText").style.visibility = "visible";
+}
+
+function c1hideHelp(){
+    document.getElementById("c1TooltipText").style.visibility = "hidden";
+}
+
+function c2showHelp(){
+    document.getElementById("c2TooltipText").style.visibility = "visible";
+}
+
+function c2hideHelp(){
+    document.getElementById("c2TooltipText").style.visibility = "hidden";
+}
