@@ -1,8 +1,13 @@
-const weightsVAR = [0.4,0.6];
-
 function algoritmo(){
+    idOrder = []
+    const parents = document.getElementsByClassName("DDContainer");
+    
+    for(i = 1; i < parents[2].children.length-1; i++){
+        idOrder[i-1] = parseInt(parents[2].children[i].children[0].id)
+    }
+
     const params = {
-        "weights": [0.4,0.6]
+        "order": idOrder
     };
     const options = {
         method: 'POST',
@@ -14,6 +19,8 @@ function algoritmo(){
         .then( response => {
             console.log(response)
         } );
+
+
     /*fecha_I = new Date(document.getElementById("start").value)
     fecha_F = new Date(document.getElementById("end").value)
     año_I = String(fecha_I.getFullYear()) + "&"
@@ -63,6 +70,9 @@ function drop(ev) {
     ev.preventDefault();
     var data = ev.dataTransfer.getData("text");
     ev.target.appendChild(document.getElementById(data));
+    parent = document.getElementById('div1b');
+    children = parent.children[0];
+    console.log(children.id)
 }
 
 function NumPshowHelp(){
