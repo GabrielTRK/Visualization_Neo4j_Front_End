@@ -9,11 +9,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     
-    <script> 
-        $(function(){
-          $("#header").load("Utils/nav.html");
-        });
-    </script>
     <script src="https://d3js.org/d3.v4.js" defer></script>
     <script src="https://unpkg.com/topojson@3" defer></script>
     <script src="mapApp.js" defer></script>
@@ -50,19 +45,34 @@
     </style>
 </head>
 <body>
-    <div id="header"></div>
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: rgb(214, 213, 213);">
+        <a class="navbar-brand" href="index.html">
+            <img src="/Utils/UPMLogoBackground.png" width="90" height="65" class="d-inline-block align-top" alt="">
+        </a>
+        <div class="collapse navbar-collapse" id="navbarText">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/description.html">New project</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/list.html">Saved projects</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+
     <form>
         <label for="start">Start date:</label>
-        <input type="date" id="start" name="start_date" value="2020-01-01" min="2020-01-01" max="2021-01-01" />
+        <input type="date" id="start" name="start_date" value="2020-09-24" min="2020-01-01" max="2021-01-01" disabled="true"/>
         <label for="end">End date:</label>
-        <input type="date" id="end" name="end_date" value="2020-01-01" min="2020-01-01" max="2021-01-01" />
-        <label for="ite">Number of iterations</label>
-        <input type="text" id="ite" name="ite"><br><br>
-        <button type="button" onclick="algoritmo()">Execute algorithm</button>
-        <button type="button" id="anterior" onclick="solucionDiaAnterior()">Previous day</button>
-        <button type="button" id="posterior" onclick="solucionDiaPosterior()">Next day</button>
-
-        <select name="Soluciones" id="Soluciones" onChange="selectChange(this)"></select>
+        <input type="date" id="end" name="end_date" value="2020-10-07" min="2020-01-01" max="2021-01-01" disabled="true"/>
+        
+        <button type="button" class="btn btn-outline-dark" id="anterior" onclick="solucionDiaAnterior()">Previous day</button>
+        <button type="button" class="btn btn-outline-dark" id="posterior" onclick="solucionDiaPosterior()">Next day</button>
+        <label for="end">Current day:</label>
+        <input type="date" id="start" name="start_date" value="2020-09-24" min="2020-01-01" max="2021-01-01" disabled="true"/>
+        
       </form>
     <div id="map"></div>
 </body>

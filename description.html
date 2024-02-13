@@ -2,415 +2,486 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Problem description</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
 
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
-    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-    crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
-    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-    crossorigin="anonymous"></script>
+    <script src="description.js" defer></script>
+    <style type="text/css">
+        html {
+            font-family: Helvetica;
+        }
 
-  <script src="description.js" defer></script>
-  <script>
-    $(function () {
-      $("#header").load("Utils/nav.html");
-    });
-    $(function () {
-      $("#footer").load("Utils/footer.html");
-    });
-  </script>
-  <style type="text/css">
-    html {
-      font-family: Helvetica;
-    }
+        body {
+            background-color: #eeeded;
+            padding-bottom: 100px;
+        }
 
-    body {
-      background-color: #eeeded;
-    }
+        .PageTitle {
+            padding: 1rem 1rem 0rem 1rem;
+        }
 
-    .PageTitle {
-      padding: 1rem 1rem;
-    }
+        .TitleChild {
+            display: inline-block;
+        }
 
-    .TitleChild {
-      display: inline-block;
-    }
+        #Load {
+            float: right;
+        }
 
-    #Load {
-      float: right;
-    }
+        #MainCard {
+            width: 60%;
+            margin: 0 auto;
+            margin-top: 2%;
+        }
 
-    #MainCard {
-      width: 60%;
-      margin: 0 auto
-    }
+        #StartDateDiv {
 
-    #StartDateDiv {
-      display: inline-block;
-      margin-left: 20%;
-    }
+            width: 30%;
+            margin-left: 15%;
+        }
 
-    #EndDateDiv {
-      float: right;
-      margin-right: 20%;
-    }
+        #EndDateDiv {
+            float: right;
+            width: 30%;
+            margin-right: 15%;
+            margin-top: -4.35%;
+        }
 
-    #Save {
-      padding: 1rem 1rem;
-      display: inline-block;
-    }
+        #Save {
+            padding: 1rem 1rem;
+            display: inline-block;
+        }
 
-    #Execute {
-      padding: 1rem 1rem;
-      float: right;
-    }
+        #Execute {
+            padding: 1rem 1rem;
+            float: right;
+        }
 
-    .DDContainer {
-      width: 100px;
-      height: 150px;
-      margin-left: 25%;
-    }
+        .DDContainer {
+            width: 100px;
+            height: 150px;
+            margin-left: 25%;
+        }
 
-    #div1a,
-    #div2a,
-    #div3a,
-    #div4a,
-    #div5a,
-    #div6a,
-    #div7a,
-    #div1b,
-    #div2b,
-    #div3b,
-    #div4b,
-    #div5b,
-    #div6b,
-    #div7b {
-      float: left;
-      width: 150px;
-      height: 50px;
-      border: 1px solid rgb(90, 89, 89);
-      border-radius: 6px;
-    }
+        #div1a,
+        #div2a,
+        #div3a,
+        #div4a,
+        #div5a,
+        #div6a,
+        #div7a,
+        #div1b,
+        #div2b,
+        #div3b,
+        #div4b,
+        #div5b,
+        #div6b,
+        #div7b {
+            float: left;
+            width: 150px;
+            height: 50px;
+            border: 1px solid rgb(90, 89, 89);
+            border-radius: 6px;
+        }
 
-    /* Create three unequal columns that floats next to each other */
-    .column {
-      float: left;
-      padding: 10px;
-    }
+        /* Create three unequal columns that floats next to each other */
+        .column {
+            float: left;
+            padding: 10px;
+        }
 
-    .left,
-    .right {
-      width: 37.5%;
-    }
+        .left,
+        .right {
+            width: 37.5%;
+        }
 
-    .middle {
-      width: 25%;
-    }
+        .middle {
+            width: 25%;
+        }
 
-    /* Clear floats after the columns */
-    .row:after {
-      content: "";
-      display: table;
-      clear: both;
-    }
+        /* Clear floats after the columns */
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
 
+        #NumPHelp {
+            margin-left: 5%;
+            
+        }
+        #IneWHelp {
+            margin-left: 6%;
+        }
+        #c1Help {
+            margin-left: 6%;
+        }
+        #c2Help {
+            margin-left: 6%;
+        }
 
-    #NumP {
-      margin-left: 5%;
-      display: inline-block;
-    }
+        #NumPTooltipText,
+        #IneWTooltipText,
+        #c1TooltipText,
+        #c2TooltipText {
+            visibility: hidden;
+            width: 50%;
+            background-color: black;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 5px 0;
+            display: inline-block;
+            /* Position the tooltip */
+        }
 
-    #NumPHelp {
-      margin-left: 5%;
-      display: inline-block;
-    }
-
-    #IneW {
-      margin-left: 10%;
-    }
-
-    #IneWHelp {
-      margin-left: 6.5%;
-    }
-
-    #c1 {
-      margin-left: 3.7%;
-    }
-
-    #c1Help {
-      margin-left: 7.4%;
-    }
-
-    #c2 {
-      margin-left: 6.8%;
-    }
-
-    #c2Help {
-      margin-left: 7.2%;
-    }
-
-    #NumPTooltipText,
-    #IneWTooltipText,
-    #c1TooltipText,
-    #c2TooltipText {
-      visibility: hidden;
-      width: 50%;
-      background-color: black;
-      color: #fff;
-      text-align: center;
-      border-radius: 6px;
-      padding: 5px 0;
-      display: inline-block;
-      /* Position the tooltip */
-    }
-  </style>
+        .footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
 </head>
 
 <body>
-  <div id="header"></div>
-  <div class="card" id="MainCard">
-    <div class="PageTitle">
-      <h1 class="TitleChild">Problem description</h1>
-      <div class="TitleChild" id="Load">
-        <button type="button" class="btn btn-outline-dark">Load saved problem</button>
-      </div>
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: rgb(214, 213, 213);">
+        <a class="navbar-brand" href="/home.html">
+            <img src="/Utils/UPMLogoBackground.png" width="90" height="65" class="d-inline-block align-top" alt="">
+        </a>
+        <div class="collapse navbar-collapse" id="navbarText">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/description.html">New project (current)</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/list.html">Load project</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="card" id="MainCard">
+        <div class="PageTitle">
+            <h2 class="TitleChild">Project description</h2>
+            <!--<div class="TitleChild" id="Load">
+              <button type="button" class="btn btn-outline-dark">Load saved problem</button>
+            </div>-->
+            <form action="" class="was-validated TitleChild" style="width: 50%; float: right; margin-top: 0.5%;">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-default">Project name</span>
+                    </div>
+                    <input type="text" class="form-control" aria-label="Default"
+                        aria-describedby="inputGroup-sizing-default" required>
+                    <div class="invalid-feedback" style="margin-left: 77%;">Mandatory field</div>
+                    <div class="valid-feedback" style="margin-left: 92.5%;">Valid</div>
+                </div>
+            </form>
+
+        </div>
+
+
+
+
+        <div class="accordion" id="accordionPanelsStayOpenExample">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true"
+                        aria-controls="panelsStayOpen-collapseOne">
+                        Dates
+                    </button>
+                </h2>
+                <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse"
+                    aria-labelledby="panelsStayOpen-headingOne">
+                    <div class="accordion-body">
+                        <!--<div id="StartDateDiv">
+                            <label for="start">Start date:</label>
+                            <input type="date" id="start" name="start_date" value="2020-01-01" min="2020-01-01"
+                                max="2021-01-01" />
+                        </div>-->
+
+                        <div class="input-group" id="StartDateDiv">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroup-sizing-default">Start date</span>
+                            </div>
+                            <input type="date" class="form-control" aria-label="Default"
+                                aria-describedby="inputGroup-sizing-default" required value="2020-01-01"
+                                min="2020-01-01" max="2021-01-01">
+                        </div>
+
+                        <div class="input-group" id="EndDateDiv">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroup-sizing-default">End date</span>
+                            </div>
+                            <input type="date" class="form-control" aria-label="Default"
+                                aria-describedby="inputGroup-sizing-default" required value="2020-01-01"
+                                min="2020-01-01" max="2021-01-01">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false"
+                        aria-controls="panelsStayOpen-collapseTwo">
+                        Problem constraints
+                    </button>
+                </h2>
+                <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse"
+                    aria-labelledby="panelsStayOpen-headingTwo">
+                    <div class="accordion-body">
+                        <div style="display: flex; justify-content: center;">
+                            <p>Maximum percentage of Epidemiological Risk imported by Spanish airports during
+                                optimization</p><br>
+                        </div>
+                        <div style="display: flex; justify-content: center;">
+                            <input type="range" value="50" min="0" max="100"
+                                oninput="this.nextElementSibling.value = this.value + '%'">
+                            <output>50%</output>
+                        </div><br>
+
+                        <div style="display: flex; justify-content: center;">
+                            <p>Connections to capitals from each region to mantain</p><br>
+                        </div>
+                        <div style="display: flex; justify-content: space-around;">
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+                                <label class="form-check-label" for="flexSwitchCheckDefault">Europe</label>
+                            </div>
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+                                <label class="form-check-label" for="flexSwitchCheckDefault">North America</label>
+                            </div>
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+                                <label class="form-check-label" for="flexSwitchCheckDefault">South America</label>
+                            </div>
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+                                <label class="form-check-label" for="flexSwitchCheckDefault">Asia</label>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="panelsStayOpen-headingThree">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false"
+                        aria-controls="panelsStayOpen-collapseThree">
+                        Quantification of decision maker's preferences
+                    </button>
+                </h2>
+                <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse"
+                    aria-labelledby="panelsStayOpen-headingThree">
+                    <div class="accordion-body">
+                        <div class="row" style="margin-bottom: -5%;">
+                            <div class="column left">
+                                <p style="display: flex; justify-content: center;"><b>Economic criteria</b></p>
+
+                                <div class="DDContainer">
+                                    <div id="div1a" ondrop="drop(event)" ondragover="allowDrop(event)">
+                                        <img src="Utils/Objective1.png" draggable="true" ondragstart="drag(event)"
+                                            id="1" width="149" height="49">
+                                    </div>
+                                    <div id="div2a" ondrop="drop(event)" ondragover="allowDrop(event)">
+                                        <img src="Utils/Objective2.png" draggable="true" ondragstart="drag(event)"
+                                            id="2" width="149" height="49">
+                                    </div>
+                                    <div id="div3a" ondrop="drop(event)" ondragover="allowDrop(event)">
+                                        <img src="Utils/Objective3.png" draggable="true" ondragstart="drag(event)"
+                                            id="3" width="149" height="49">
+                                    </div>
+                                    <div id="div4a" ondrop="drop(event)" ondragover="allowDrop(event)">
+                                        <img src="Utils/Objective4.png" draggable="true" ondragstart="drag(event)"
+                                            id="4" width="149" height="49">
+                                    </div>
+                                    <div id="div5a" ondrop="drop(event)" ondragover="allowDrop(event)">
+                                        <img src="Utils/Objective5.png" draggable="true" ondragstart="drag(event)"
+                                            id="5" width="149" height="49">
+                                    </div>
+                                </div><br><br><br><br><br>
+                                <p style="display: flex; justify-content: center;"><b>Social criteria</b></p>
+                                <div class="DDContainer">
+                                    <div id="div6a" ondrop="drop(event)" ondragover="allowDrop(event)">
+                                        <img src="Utils/Objective6.png" draggable="true" ondragstart="drag(event)"
+                                            id="6" width="149" height="49">
+                                    </div>
+                                    <div id="div7a" ondrop="drop(event)" ondragover="allowDrop(event)">
+                                        <img src="Utils/Objective7.png" draggable="true" ondragstart="drag(event)"
+                                            id="7" width="149" height="49">
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="column middle">
+                                <div style="opacity: 0.5; display: flex; justify-content: center; margin-top: 5%;">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="currentColor"
+                                        class="bi bi-arrow-right-square" viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd"
+                                            d="M15 2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1zM0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm4.5 5.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5z" />
+                                    </svg>
+                                </div>
+
+                                <div
+                                    style="border-style: solid; border-width: 2px; border-radius: 6px; border-color: #989898; margin-top: 15%">
+                                    <p class="text-center"
+                                        style="display: flex; justify-content: center; margin-top: 30px; color: #989898;">
+                                        Drag and drop the
+                                        criteria on the left to create a ranking on the right column according to the
+                                        decision maker's
+                                        preferences. The criteria on the higher cells will be prioritized more than the
+                                        ones on the lower
+                                        cells during optimization.</p>
+                                </div>
+                            </div>
+                            <div class="column right">
+                                <p style="display: flex; justify-content: center;"><b>Criteria ranking</b></p>
+
+
+                                <div class="DDContainer">
+                                    <div
+                                        style="display: flex; justify-content: center; margin-bottom: 8px; margin-left: 50px;">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                            fill="currentColor" class="bi bi-file-plus" viewBox="0 0 16 16">
+                                            <path
+                                                d="M8.5 6a.5.5 0 0 0-1 0v1.5H6a.5.5 0 0 0 0 1h1.5V10a.5.5 0 0 0 1 0V8.5H10a.5.5 0 0 0 0-1H8.5z" />
+                                            <path
+                                                d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2zm10-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1" />
+                                        </svg>
+                                    </div>
+
+                                    <div id="div1b" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                                    <div id="div2b" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                                    <div id="div3b" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                                    <div id="div4b" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                                    <div id="div5b" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                                    <div id="div6b" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                                    <div id="div7b" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                                    <div style="margin-left: 68%; margin-top: 10%;">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                            fill="currentColor" class="bi bi-file-minus" viewBox="0 0 16 16">
+                                            <path d="M5.5 8a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1H6a.5.5 0 0 1-.5-.5" />
+                                            <path
+                                                d="M4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zm0 1h8a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1" />
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="panelsStayOpen-headingFour">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#panelsStayOpen-collapseFour" aria-expanded="false"
+                        aria-controls="panelsStayOpen-collapseFour">
+                        Advanced options
+                    </button>
+                </h2>
+                <div id="panelsStayOpen-collapseFour" class="accordion-collapse collapse"
+                    aria-labelledby="panelsStayOpen-headingFour">
+                    <div class="accordion-body">
+                        <p><b>Metaheuristic parameters</b></p>
+                        <div>
+                            <div class="input-group-prepend" style="width: 24%; display: inline-block;">
+                                <span class="input-group-text" id="inputGroup-sizing-default">Number of particles (N)</span>
+                            </div>
+                            <input type="text" class="form-control" aria-label="Default"
+                        aria-describedby="inputGroup-sizing-default" required style="width: 8%; margin-left: -0.5%; display: inline-block;" value="5000">
+                            <svg id="NumPHelp" onmouseover="NumPshowHelp()" onmouseout="NumPhideHelp()"
+                                xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
+                                class="bi bi-question-circle-fill" viewBox="0 0 16 16">
+                                <path
+                                    d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M5.496 6.033h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286a.237.237 0 0 0 .241.247m2.325 6.443c.61 0 1.029-.394 1.029-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94 0 .533.425.927 1.01.927z" />
+                            </svg>
+                            <p id="NumPTooltipText">Number of particles to use in the Binary Particle Swarm Optimization
+                                algorithm</p>
+                        </div><br>
+
+                        <div>
+                            <div class="input-group-prepend" style="width: 24%; display: inline-block;">
+                                <span class="input-group-text" id="inputGroup-sizing-default">Inertia weight (W)</span>
+                            </div>
+                            <input type="text" class="form-control" aria-label="Default"
+                        aria-describedby="inputGroup-sizing-default" required style="width: 7%; margin-left: -0.5%; display: inline-block;" value="0.9">
+                            <svg id="IneWHelp" onmouseover="IneWshowHelp()" onmouseout="IneWhideHelp()"
+                                xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
+                                class="bi bi-question-circle-fill" viewBox="0 0 16 16">
+                                <path
+                                    d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M5.496 6.033h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286a.237.237 0 0 0 .241.247m2.325 6.443c.61 0 1.029-.394 1.029-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94 0 .533.425.927 1.01.927z" />
+                            </svg>
+                            <p id="IneWTooltipText">Defines how fast the particles move through the search space</p>
+                        </div><br>
+
+                        <div>
+                            <div class="input-group-prepend" style="width: 24%; display: inline-block;">
+                                <span class="input-group-text" id="inputGroup-sizing-default">Cognitive component (C1)</span>
+                            </div>
+                            <input type="text" class="form-control" aria-label="Default"
+                        aria-describedby="inputGroup-sizing-default" required style="width: 7%; margin-left: -0.5%; display: inline-block;" value="1.5">
+                            <svg id="c1Help" onmouseover="c1showHelp()" onmouseout="c1hideHelp()"
+                                xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
+                                class="bi bi-question-circle-fill" viewBox="0 0 16 16">
+                                <path
+                                    d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M5.496 6.033h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286a.237.237 0 0 0 .241.247m2.325 6.443c.61 0 1.029-.394 1.029-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94 0 .533.425.927 1.01.927z" />
+                            </svg>
+                            <p id="c1TooltipText">Defines how much importance should particle's personal bests have over
+                                the global
+                                best</p>
+                        </div><br>
+
+                        <div>
+                            <div class="input-group-prepend" style="width: 24%; display: inline-block;">
+                                <span class="input-group-text" id="inputGroup-sizing-default">Social component (C2)</span>
+                            </div>
+                            <input type="text" class="form-control" aria-label="Default"
+                        aria-describedby="inputGroup-sizing-default" required style="width: 7%; margin-left: -0.5%; display: inline-block;" value="1.5">
+                            <svg id="c2Help" onmouseover="c2showHelp()" onmouseout="c2hideHelp()"
+                                xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
+                                class="bi bi-question-circle-fill" viewBox="0 0 16 16">
+                                <path
+                                    d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M5.496 6.033h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286a.237.237 0 0 0 .241.247m2.325 6.443c.61 0 1.029-.394 1.029-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94 0 .533.425.927 1.01.927z" />
+                            </svg>
+                            <p id="c2TooltipText">Defines how much importance should the global best have over the
+                                personal bests of
+                                the particles</p>
+                        </div><br>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="BottomButtons">
+            <!--<div id="Save">
+              <button type="button" class="btn btn-outline-dark" onclick="saveConf()">Save description</button>
+            </div>-->
+            <div id="Execute">
+                <button type="button" class="btn btn-outline-dark btn-lg" onclick="algoritmo()">Run
+                    optimization</button>
+            </div>
+        </div>
     </div>
 
-    <div id="accordion1">
-      <div class="card">
-        <div class="card-header" id="headingTwo">
-          <h5 class="mb-0">
-            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo"
-              aria-expanded="true" aria-controls="collapseTwo">
-              Dates
-            </button>
-          </h5>
-        </div>
-        <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordion1">
-          <div class="card-body" id="DatesDiv">
-            <div id="StartDateDiv">
-              <label for="start">Start date:</label>
-              <input type="date" id="start" name="start_date" value="2020-01-01" min="2020-01-01" max="2021-01-01" />
-            </div>
-            <div id="EndDateDiv">
-              <label for="end">End date:</label>
-              <input type="date" id="end" name="end_date" value="2020-01-01" min="2020-01-01" max="2021-01-01" />
-            </div>
-          </div>
-        </div>
-      </div>
 
-      <div class="card">
-        <div class="card-header" id="headingThree">
-          <h5 class="mb-0">
-            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree"
-              aria-expanded="false" aria-controls="collapseThree">
-              Problem constraint
-            </button>
-          </h5>
-        </div>
-        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion0">
-          <div class="card-body">
-            <div style="display: flex; justify-content: center;">
-              <p>Maximum percentage of Epidemiological Risk imported by Spanish airports during optimization</p><br>
-            </div>
-            <div style="display: flex; justify-content: center;">
-              <input type="range" value="50" min="0" max="100"
-                oninput="this.nextElementSibling.value = this.value + '%'">
-              <output>50%</output>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="card-header" id="headingFour">
-          <h5 class="mb-0">
-            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseFour"
-              aria-expanded="false" aria-controls="collapseFour">
-              Quantification of decision maker's preferences
-            </button>
-          </h5>
-        </div>
-        <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordion2">
-          <div class="card-body">
-            <div class="row">
-              <div class="column left">
-                <h3 style="display: flex; justify-content: center;">Economic criteria</h3><br>
-
-                <div class="DDContainer">
-                  <div id="div1a" ondrop="drop(event)" ondragover="allowDrop(event)">
-                    <img src="Utils/Objective1.png" draggable="true" ondragstart="drag(event)" id="1" width="149"
-                      height="49">
-                  </div>
-                  <div id="div2a" ondrop="drop(event)" ondragover="allowDrop(event)">
-                    <img src="Utils/Objective2.png" draggable="true" ondragstart="drag(event)" id="2" width="149"
-                      height="49">
-                  </div>
-                  <div id="div3a" ondrop="drop(event)" ondragover="allowDrop(event)">
-                    <img src="Utils/Objective3.png" draggable="true" ondragstart="drag(event)" id="3" width="149"
-                      height="49">
-                  </div>
-                  <div id="div4a" ondrop="drop(event)" ondragover="allowDrop(event)">
-                    <img src="Utils/Objective4.png" draggable="true" ondragstart="drag(event)" id="4" width="149"
-                      height="49">
-                  </div>
-                  <div id="div5a" ondrop="drop(event)" ondragover="allowDrop(event)">
-                    <img src="Utils/Objective5.png" draggable="true" ondragstart="drag(event)" id="5" width="149"
-                      height="49">
-                  </div>
-                </div><br><br><br><br><br>
-                <h3 style="display: flex; justify-content: center;">Social criteria</h3><br>
-                <div class="DDContainer">
-                  <div id="div6a" ondrop="drop(event)" ondragover="allowDrop(event)">
-                    <img src="Utils/Objective6.png" draggable="true" ondragstart="drag(event)" id="6" width="149"
-                      height="49">
-                  </div>
-                  <div id="div7a" ondrop="drop(event)" ondragover="allowDrop(event)">
-                    <img src="Utils/Objective7.png" draggable="true" ondragstart="drag(event)" id="7" width="149"
-                      height="49">
-                  </div>
-                </div>
-
-              </div>
-              <div class="column middle">
-                <div style="opacity: 0.5; display: flex; justify-content: center; margin-top: 100px;">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="currentColor"
-                    class="bi bi-arrow-right-square" viewBox="0 0 16 16">
-                    <path fill-rule="evenodd"
-                      d="M15 2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1zM0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm4.5 5.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5z" />
-                  </svg>
-                </div>
-
-                <div style="border-style: solid; border-width: 2px; border-radius: 6px; border-color: #989898; margin-top: 30px">
-                  <p class="text-center" style="display: flex; justify-content: center; margin-top: 30px; color: #989898;">Drag and drop the
-                    criteria on the left to create a ranking on the right column according to the decision maker's
-                    preferences. The criteria on the higher cells will be prioritized more than the ones on the lower
-                    cells during optimization.</p>
-                </div>
-              </div>
-              <div class="column right">
-                <h3 style="display: flex; justify-content: center;">Criteria ranking</h3><br>
-
-
-                <div class="DDContainer">
-                  <div style="display: flex; justify-content: center; margin-bottom: 8px; margin-left: 50px;">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                      class="bi bi-file-plus" viewBox="0 0 16 16">
-                      <path
-                        d="M8.5 6a.5.5 0 0 0-1 0v1.5H6a.5.5 0 0 0 0 1h1.5V10a.5.5 0 0 0 1 0V8.5H10a.5.5 0 0 0 0-1H8.5z" />
-                      <path
-                        d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2zm10-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1" />
-                    </svg>
-                  </div>
-
-                  <div id="div1b" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-                  <div id="div2b" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-                  <div id="div3b" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-                  <div id="div4b" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-                  <div id="div5b" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-                  <div id="div6b" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-                  <div id="div7b" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-                  <div style="margin-left: 68%; margin-top: 10%;">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                      class="bi bi-file-minus" viewBox="0 0 16 16">
-                      <path d="M5.5 8a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1H6a.5.5 0 0 1-.5-.5" />
-                      <path
-                        d="M4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zm0 1h8a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1" />
-                    </svg>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-
-          </div>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="card-header" id="headingFive">
-          <h5 class="mb-0">
-            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseFive"
-              aria-expanded="false" aria-controls="collapseFive">
-              Advanced options
-            </button>
-          </h5>
-        </div>
-        <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordion3">
-          <div class="card-body">
-            <h3>Metaheuristic parameters</h3>
-            <div>
-              <label for="NumP">Number of particles</label>
-              <input type="text" id="NumP" name="NumP" value="1000" size="4">
-              <svg id="NumPHelp" onmouseover="NumPshowHelp()" onmouseout="NumPhideHelp()"
-                xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
-                class="bi bi-question-circle-fill" viewBox="0 0 16 16">
-                <path
-                  d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M5.496 6.033h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286a.237.237 0 0 0 .241.247m2.325 6.443c.61 0 1.029-.394 1.029-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94 0 .533.425.927 1.01.927z" />
-              </svg>
-              <p id="NumPTooltipText">Number of particles to use in the Binary Particle Swarm Optimization algorithm</p>
-            </div><br>
-
-            <div>
-              <label for="IneW">Inertia weight</label>
-              <input type="text" id="IneW" name="IneW" value="0.9" size="2">
-              <svg id="IneWHelp" onmouseover="IneWshowHelp()" onmouseout="IneWhideHelp()"
-                xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
-                class="bi bi-question-circle-fill" viewBox="0 0 16 16">
-                <path
-                  d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M5.496 6.033h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286a.237.237 0 0 0 .241.247m2.325 6.443c.61 0 1.029-.394 1.029-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94 0 .533.425.927 1.01.927z" />
-              </svg>
-              <p id="IneWTooltipText">Defines how fast the particles move through the search space</p>
-            </div><br>
-
-            <div>
-              <label for="c1">Cognitive component</label>
-              <input type="text" id="c1" name="c1" value="2" size="1">
-              <svg id="c1Help" onmouseover="c1showHelp()" onmouseout="c1hideHelp()" xmlns="http://www.w3.org/2000/svg"
-                width="30" height="30" fill="currentColor" class="bi bi-question-circle-fill" viewBox="0 0 16 16">
-                <path
-                  d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M5.496 6.033h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286a.237.237 0 0 0 .241.247m2.325 6.443c.61 0 1.029-.394 1.029-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94 0 .533.425.927 1.01.927z" />
-              </svg>
-              <p id="c1TooltipText">Defines how much importance should particle's personal bests have over the global
-                best</p>
-            </div><br>
-
-            <div>
-              <label for="c2">Social component</label>
-              <input type="text" id="c2" name="c2" value="2" size="1">
-              <svg id="c2Help" onmouseover="c2showHelp()" onmouseout="c2hideHelp()" xmlns="http://www.w3.org/2000/svg"
-                width="30" height="30" fill="currentColor" class="bi bi-question-circle-fill" viewBox="0 0 16 16">
-                <path
-                  d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M5.496 6.033h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286a.237.237 0 0 0 .241.247m2.325 6.443c.61 0 1.029-.394 1.029-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94 0 .533.425.927 1.01.927z" />
-              </svg>
-              <p id="c2TooltipText">Defines how much importance should the global best have over the personal bests of
-                the particles</p>
-            </div><br>
-
-          </div>
-        </div>
-      </div>
-    </div>
-
-
-    <div class="BottomButtons">
-      <div id="Save">
-        <button type="button" class="btn btn-outline-dark" onclick="saveConf()">Save description</button>
-      </div>
-      <div id="Execute">
-        <button type="button" class="btn btn-outline-dark" onclick="algoritmo()">Run optimization</button>
-      </div>
-    </div>
-  </div>
-
-  <div id="footer"></div>
 </body>
+<footer class="text-center text-lg-start text-dark footer">
+    <!-- Copyright -->
+    <div class="text-center p-3" style="background-color: rgb(214, 213, 213);">
+        Decision Analysis and Statistics Group
+        <a class="text-dark" href="http://www.dasg.upm.es/">dasg.upm.es</a>
+    </div>
+    <!-- Copyright -->
+</footer>
 
 </html>
