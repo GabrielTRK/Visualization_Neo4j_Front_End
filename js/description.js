@@ -58,6 +58,70 @@ function algoritmo(){
     )*/
 }
 
+function saveConf(){
+    projectName = document.getElementById("projectName").value;
+    
+    fecha_I = String(document.getElementById("start").value) + '&'
+    fecha_F = String(document.getElementById("end").value) + '&'
+
+    epiRes = String(document.getElementById("restriction").value) + '&'
+    
+    switchs = document.getElementsByClassName("form-check-input")
+
+    polRes = []
+
+    cont = 0
+    for(i = 0; i < switchs.length; i++){
+        if(switchs[i].checked){
+            polRes[cont] = switchs[i].id
+            cont++
+        }
+    }
+
+    idOrder = []
+    const parents = document.getElementsByClassName("DDContainer");
+    for(i = 0; i < parents[2].children.length; i++){
+        idOrder[i] = parseInt(parents[2].children[i].children[0].id)
+    }
+
+    numP = String(document.getElementById("numP").value) + '&'
+    iW = String(document.getElementById("iW").value) + '&'
+    c1 = String(document.getElementById("c1").value) + '&'
+    c2 = String(document.getElementById("c2").value) + '&'
+
+    p_fecha_I = 'fecha_inicial='
+    p_fecha_F = 'fecha_final='
+    p_iteraciones = 'iteraciones='
+    p_num_P = 'numIndividuos='
+    p_iW = 'inertiaW='
+    p_c1 = 'c1='
+    p_c2 = 'c2='
+    p_m = 'm='
+    p_p = 'p='
+    p_c1 = 'c1='
+    p_res_epi = 'res_epi='
+
+    p_nombre = 'nombre='
+    
+    url = 'http://localhost:8080/saveP' + '?' + p_fecha_I + fecha_I + p_fecha_F + fecha_F + p_iteraciones + String(0)+'&' + p_num_P + numP + 
+    p_iW + iW + p_c1 + c1 + p_c2 + c2 + p_m + String(0.0)+'&' + p_p + String(0.0)+'&' + p_res_epi + epiRes + 'res_pol=' + 'EU&' + p_nombre + 
+    projectName
+
+    const params = {
+        "order": idOrder
+    };
+    const options = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify( params )
+    };
+    fetch( url, options )
+        .then( response => response.json() )
+        .then( response => {
+            console.log(response)
+        } );
+}
+
 function allowDrop(ev) {
     ev.preventDefault();
 }
@@ -70,9 +134,6 @@ function drop(ev) {
     ev.preventDefault();
     var data = ev.dataTransfer.getData("text");
     ev.target.appendChild(document.getElementById(data));
-    parent = document.getElementById('div1b');
-    children = parent.children[0];
-    console.log(children.id)
 }
 
 function NumPshowHelp(){

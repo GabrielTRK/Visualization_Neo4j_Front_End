@@ -11,7 +11,7 @@
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
 
-    <script src="description.js" defer></script>
+    <script src="../js/description.js" defer></script>
     <style type="text/css">
         html {
             font-family: Helvetica;
@@ -206,7 +206,7 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="inputGroup-sizing-default">Project name</span>
                     </div>
-                    <input type="text" class="form-control" aria-label="Default"
+                    <input id="projectName" type="text" class="form-control" aria-label="Default"
                         aria-describedby="inputGroup-sizing-default" required>
                     <div class="invalid-feedback" style="margin-left: 77%;">Mandatory field</div>
                     <div class="valid-feedback" style="margin-left: 92.5%;">Valid</div>
@@ -240,7 +240,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="inputGroup-sizing-default">Start date</span>
                             </div>
-                            <input type="date" class="form-control" aria-label="Default"
+                            <input id="start" type="date" class="form-control" aria-label="Default"
                                 aria-describedby="inputGroup-sizing-default" required value="2020-01-01"
                                 min="2020-01-01" max="2021-01-01">
                         </div>
@@ -249,7 +249,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="inputGroup-sizing-default">End date</span>
                             </div>
-                            <input type="date" class="form-control" aria-label="Default"
+                            <input id="end" type="date" class="form-control" aria-label="Default"
                                 aria-describedby="inputGroup-sizing-default" required value="2020-01-01"
                                 min="2020-01-01" max="2021-01-01">
                         </div>
@@ -271,7 +271,7 @@
                             <p>Maximum percentage risk of  pandemic importation at  Spanish airports during optimization</p><br>
                         </div>
                         <div style="display: flex; justify-content: center;">
-                            <input type="range" value="50" min="0" max="100"
+                            <input id="restriction" type="range" value="50" min="0" max="100"
                                 oninput="this.nextElementSibling.value = this.value + '%'">
                             <output>50%</output>
                         </div><br>
@@ -281,24 +281,24 @@
                         </div>
                         <div style="display: flex; justify-content: space-around;">
                             <div class="form-check form-switch">
-                                <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
-                                <label class="form-check-label" for="flexSwitchCheckDefault">Europe</label>
+                                <input class="form-check-input" type="checkbox" id="EU">
+                                <label class="form-check-label" for="EU">Europe</label>
                             </div>
                             <div class="form-check form-switch">
-                                <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
-                                <label class="form-check-label" for="flexSwitchCheckDefault">North America</label>
+                                <input class="form-check-input" type="checkbox" id="NA">
+                                <label class="form-check-label" for="NA">North America</label>
                             </div>
                             <div class="form-check form-switch">
-                                <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
-                                <label class="form-check-label" for="flexSwitchCheckDefault">South America</label>
+                                <input class="form-check-input" type="checkbox" id="SA">
+                                <label class="form-check-label" for="SA">South America</label>
                             </div>
                             <div class="form-check form-switch">
-                                <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
-                                <label class="form-check-label" for="flexSwitchCheckDefault">Asia</label>
+                                <input class="form-check-input" type="checkbox" id="AS">
+                                <label class="form-check-label" for="AS">Asia</label>
                             </div>
                             <div class="form-check form-switch">
-                                <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
-                                <label class="form-check-label" for="flexSwitchCheckDefault">Africa</label>
+                                <input class="form-check-input" type="checkbox" id="AF">
+                                <label class="form-check-label" for="AF">Africa</label>
                             </div>
                         </div>
 
@@ -323,34 +323,34 @@
 
                                 <div class="DDContainer">
                                     <div id="div1a" ondrop="drop(event)" ondragover="allowDrop(event)">
-                                        <img src="Utils/Objective1.png" draggable="true" ondragstart="drag(event)"
+                                        <img src="../Utils/Objective1.png" draggable="true" ondragstart="drag(event)"
                                             id="1" width="149" height="49">
                                     </div>
                                     <div id="div2a" ondrop="drop(event)" ondragover="allowDrop(event)">
-                                        <img src="Utils/Objective2.png" draggable="true" ondragstart="drag(event)"
+                                        <img src="../Utils/Objective2.png" draggable="true" ondragstart="drag(event)"
                                             id="2" width="149" height="49">
                                     </div>
                                     <div id="div3a" ondrop="drop(event)" ondragover="allowDrop(event)">
-                                        <img src="Utils/Objective3.png" draggable="true" ondragstart="drag(event)"
+                                        <img src="../Utils/Objective3.png" draggable="true" ondragstart="drag(event)"
                                             id="3" width="149" height="49">
                                     </div>
                                     <div id="div4a" ondrop="drop(event)" ondragover="allowDrop(event)">
-                                        <img src="Utils/Objective4.png" draggable="true" ondragstart="drag(event)"
+                                        <img src="../Utils/Objective4.png" draggable="true" ondragstart="drag(event)"
                                             id="4" width="149" height="49">
                                     </div>
                                     <div id="div5a" ondrop="drop(event)" ondragover="allowDrop(event)">
-                                        <img src="Utils/Objective5.png" draggable="true" ondragstart="drag(event)"
+                                        <img src="../Utils/Objective5.png" draggable="true" ondragstart="drag(event)"
                                             id="5" width="149" height="49">
                                     </div>
                                 </div><br><br><br><br><br><br>
                                 <p style="display: flex; justify-content: center;"><b>Social objectives</b></p>
                                 <div class="DDContainer">
                                     <div id="div6a" ondrop="drop(event)" ondragover="allowDrop(event)">
-                                        <img src="Utils/Objective6.png" draggable="true" ondragstart="drag(event)"
+                                        <img src="../Utils/Objective6.png" draggable="true" ondragstart="drag(event)"
                                             id="6" width="149" height="49">
                                     </div>
                                     <div id="div7a" ondrop="drop(event)" ondragover="allowDrop(event)">
-                                        <img src="Utils/Objective7.png" draggable="true" ondragstart="drag(event)"
+                                        <img src="../Utils/Objective7.png" draggable="true" ondragstart="drag(event)"
                                             id="7" width="149" height="49">
                                     </div>
                                 </div>
@@ -429,7 +429,7 @@
                             <div class="input-group-prepend" style="width: 24%; display: inline-block;">
                                 <span class="input-group-text" id="inputGroup-sizing-default">Number of particles (N)</span>
                             </div>
-                            <input type="text" class="form-control" aria-label="Default"
+                            <input id="numP" type="text" class="form-control" aria-label="Default"
                         aria-describedby="inputGroup-sizing-default" required style="width: 8%; margin-left: -0.5%; display: inline-block;" value="5000">
                             <!--<svg id="NumPHelp" onmouseover="NumPshowHelp()" onmouseout="NumPhideHelp()"
                                 xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
@@ -444,7 +444,7 @@
                             <div class="input-group-prepend" style="width: 24%; display: inline-block;">
                                 <span class="input-group-text" id="inputGroup-sizing-default">Inertia weight (W)</span>
                             </div>
-                            <input type="text" class="form-control" aria-label="Default"
+                            <input id="iW" type="text" class="form-control" aria-label="Default"
                         aria-describedby="inputGroup-sizing-default" required style="width: 7%; margin-left: -0.5%; display: inline-block;" value="0.9">
                             <!--<svg id="IneWHelp" onmouseover="IneWshowHelp()" onmouseout="IneWhideHelp()"
                                 xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
@@ -459,7 +459,7 @@
                             <div class="input-group-prepend" style="width: 24%; display: inline-block;">
                                 <span class="input-group-text" id="inputGroup-sizing-default">Cognitive component (C1)</span>
                             </div>
-                            <input type="text" class="form-control" aria-label="Default"
+                            <input id="c1" type="text" class="form-control" aria-label="Default"
                         aria-describedby="inputGroup-sizing-default" required style="width: 7%; margin-left: -0.5%; display: inline-block;" value="1.5">
                             <!--<svg id="c1Help" onmouseover="c1showHelp()" onmouseout="c1hideHelp()"
                                 xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
@@ -476,7 +476,7 @@
                             <div class="input-group-prepend" style="width: 24%; display: inline-block;">
                                 <span class="input-group-text" id="inputGroup-sizing-default">Social component (C2)</span>
                             </div>
-                            <input type="text" class="form-control" aria-label="Default"
+                            <input id="c2" type="text" class="form-control" aria-label="Default"
                         aria-describedby="inputGroup-sizing-default" required style="width: 7%; margin-left: -0.5%; display: inline-block;" value="1.5">
                             <!--<svg id="c2Help" onmouseover="c2showHelp()" onmouseout="c2hideHelp()"
                                 xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
