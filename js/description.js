@@ -104,10 +104,10 @@ function saveConf(){
     p_nombre = 'nombre='
     
     url = 'http://localhost:8080/saveP' + '?' + p_fecha_I + fecha_I + p_fecha_F + fecha_F + p_iteraciones + String(0)+'&' + p_num_P + numP + 
-    p_iW + iW + p_c1 + c1 + p_c2 + c2 + p_m + String(0.0)+'&' + p_p + String(0.0)+'&' + p_res_epi + epiRes + 'res_pol=' + 'EU&' + p_nombre + 
-    projectName
+    p_iW + iW + p_c1 + c1 + p_c2 + c2 + p_m + String(0.0)+'&' + p_p + String(0.0)+'&' + p_res_epi + epiRes + p_nombre + projectName
 
     const params = {
+        "pol": polRes,
         "order": idOrder
     };
     const options = {
@@ -132,8 +132,10 @@ function drag(ev) {
   
 function drop(ev) {
     ev.preventDefault();
-    var data = ev.dataTransfer.getData("text");
-    ev.target.appendChild(document.getElementById(data));
+    if(ev.target.tagName == 'DIV'){
+        var data = ev.dataTransfer.getData("text");
+        ev.target.appendChild(document.getElementById(data));
+    }
 }
 
 function NumPshowHelp(){
