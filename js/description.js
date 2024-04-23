@@ -118,8 +118,38 @@ function saveConf(){
     fetch( url, options )
         .then( response => response.json() )
         .then( response => {
-            console.log(response)
+            if(response){
+                //Mostrar modal
+
+                for(i = 0; i < switchs.length; i++){
+                    switchs[i].setAttribute("disabled", true)
+                }
+
+                imgs = parents[2].children
+                for(i = 0; i < imgs.length; i++){
+                    imgs[i].children[0].setAttribute("draggable", false)
+                }
+                
+                inputs = document.getElementsByTagName('input')
+                for(i = 0; i < inputs.length; i++){
+                    inputs[i].setAttribute("disabled", true)
+                }
+
+                document.getElementById("SaveButton").style.display = 'none'
+                document.getElementById("NewPButton").style.display = 'block'
+
+                //button.setAttribute("onclick", refresh())
+            }
+            else{
+                //Mostrar modal con error
+            }
         } );
+}
+
+function refresh(){
+    document.getElementById("SaveButton").style.display = 'block'
+    document.getElementById("NewPButton").style.display = 'none'
+    location.reload()
 }
 
 function allowDrop(ev) {
