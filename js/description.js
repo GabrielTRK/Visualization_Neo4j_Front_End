@@ -178,6 +178,7 @@ function drag(ev) {
 }
   
 function drop(ev) {
+    cont = 0
     ev.preventDefault();
     if(ev.target.tagName == 'DIV'){
         var data = ev.dataTransfer.getData("text");
@@ -189,7 +190,16 @@ function drop(ev) {
     for(i = 0; i < parents[2].children.length; i++){
         if(parents[2].children[i].children.length == 0){
             parents[2].children[i].style.border = "1px solid #de4251"
+        }else{
+            cont++
         }
+    }
+    if(cont == parents[2].children.length){
+        document.getElementById('PrefValid').style.color = "#198754"
+        document.getElementById('PrefValid').innerHTML = "Valid"
+    }else{
+        document.getElementById('PrefValid').style.color = "#de4251"
+        document.getElementById('PrefValid').innerHTML = "All the criteria must be on the right column"
     }
 }
 
