@@ -1,3 +1,20 @@
+// Get the modal
+var modal = document.getElementById("myModalSaved");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+span.onclick = function() {
+    modal.style.display = "none";
+}
+
+window.onclick = function(event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+}
+
+
 function algoritmo(){
     idOrder = []
     const parents = document.getElementsByClassName("DDContainer");
@@ -121,6 +138,8 @@ function saveConf(){
             if(response){
                 //Mostrar modal
 
+                modal.style.display = "block";
+
                 for(i = 0; i < switchs.length; i++){
                     switchs[i].setAttribute("disabled", true)
                 }
@@ -137,8 +156,6 @@ function saveConf(){
 
                 document.getElementById("SaveButton").style.display = 'none'
                 document.getElementById("NewPButton").style.display = 'block'
-
-                //button.setAttribute("onclick", refresh())
             }
             else{
                 //Mostrar modal con error
@@ -164,7 +181,15 @@ function drop(ev) {
     ev.preventDefault();
     if(ev.target.tagName == 'DIV'){
         var data = ev.dataTransfer.getData("text");
+        ev.target.style.border = "1px solid rgb(90, 89, 89)"
         ev.target.appendChild(document.getElementById(data));
+    }
+    //Comprobar con un for los que no tienen asociado un criterio y ponerlos en rojo
+    const parents = document.getElementsByClassName("DDContainer");
+    for(i = 0; i < parents[2].children.length; i++){
+        if(parents[2].children[i].children.length == 0){
+            parents[2].children[i].style.border = "1px solid #de4251"
+        }
     }
 }
 
@@ -199,4 +224,9 @@ function c2showHelp(){
 
 function c2hideHelp(){
     document.getElementById("c2TooltipText").style.visibility = "hidden";
+}
+
+function startsDateOnChange(){
+    date = document.getElementById('start')
+    console.log(date.value)
 }
