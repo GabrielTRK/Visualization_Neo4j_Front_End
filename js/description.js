@@ -139,6 +139,7 @@ function saveConf(){
                 //Mostrar modal
 
                 modal.style.display = "block";
+                document.getElementById('ModalText').innerHTML = "Project saved"
 
                 for(i = 0; i < switchs.length; i++){
                     switchs[i].setAttribute("disabled", true)
@@ -159,6 +160,8 @@ function saveConf(){
             }
             else{
                 //Mostrar modal con error
+                modal.style.display = "block";
+                document.getElementById('ModalText').innerHTML = "The name of the project already exists"
             }
         } );
 }
