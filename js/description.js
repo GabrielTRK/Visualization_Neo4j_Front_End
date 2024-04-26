@@ -14,6 +14,8 @@ window.onclick = function(event) {
     }
 }
 
+date_PDMAX = new Date(document.getElementById("end").max)
+date_PDMIN = new Date(document.getElementById("end").min)
 
 function algoritmo(){
     idOrder = []
@@ -96,7 +98,7 @@ function saveConf(){
 
     if(document.getElementById("start").value == '' || document.getElementById("end").value == ''){
         err = true
-    }else if(fecha_ID < fecha_PDMIN || fecha_ID > fecha_PDMAX || fecha_FD < fecha_PDMIN || fecha_FD > fecha_PDMAX){
+    }else if(fecha_ID < fecha_PDMIN || fecha_ID > fecha_PDMAX || fecha_FD < fecha_PDMIN || fecha_FD > fecha_PDMAX || fecha_ID > fecha_FD){
         err = true
     }
     
@@ -161,7 +163,8 @@ function saveConf(){
 
     if(err){
         //Mostrar modal con error
-        console.log('aaaa')
+        modal.style.display = "block";
+        document.getElementById('ModalText').innerHTML = "Invalid data"
     }else{
         p_fecha_I = 'fecha_inicial='
     p_fecha_F = 'fecha_final='
@@ -296,7 +299,47 @@ function c2hideHelp(){
     document.getElementById("c2TooltipText").style.visibility = "hidden";
 }
 
-function startsDateOnChange(){
-    date = document.getElementById('start')
-    console.log(date.value)
+function startDateOnChange(){
+    date = document.getElementById('start').value
+
+    fecha_PDMAX = new Date(document.getElementById("start").max)
+    fecha_PDMIN = new Date(document.getElementById("start").min)
+
+    fecha_ID = new Date(date)
+
+    if(date != '' && fecha_ID >= fecha_PDMIN && fecha_ID <= fecha_PDMAX){
+        document.getElementById('end').min = date
+    }else{
+        document.getElementById('end').min = date_PDMIN
+    }
+}
+
+function endDateOnChange(){
+    date = document.getElementById('end').value
+
+    fecha_PDMAX = new Date(document.getElementById("end").max)
+    fecha_PDMIN = new Date(document.getElementById("end").min)
+
+    fecha_FD = new Date(date)
+
+    if(date != '' && fecha_FD >= fecha_PDMIN && fecha_FD <= fecha_PDMAX){
+        document.getElementById('start').max = date
+    }else{
+        document.getElementById('start').max = date_PDMAX
+    }
+}
+
+function numPOnChange(){
+    //console.log(document.getElementById('numP').value)
+    /*if(document.getElementById('numP').value == ''){
+        document.getElementById('numP').value = ''
+    }else if(document.getElementById('numP').value > document.getElementById('numP').max){
+        document.getElementById('numP').value = document.getElementById('numP').max
+        console.log(document.getElementById('numP').value)
+    }*/
+    if(document.getElementById('numP').value > document.getElementById('numP').max){
+        document.getElementById('numP').value = document.getElementById('numP').max
+    }
+        
+    
 }

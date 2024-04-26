@@ -260,21 +260,21 @@
 
     <div class="card" id="MainCard">
         <div class="PageTitle">
-            <h2 class="TitleChild">Project description</h2>
-            <!--<div class="TitleChild" id="Load">
-              <button type="button" class="btn btn-outline-dark">Load saved problem</button>
-            </div>-->
-            <form action="" class="was-validated TitleChild" style="width: 50%; float: right; margin-top: 0.5%;">
+            
+            
                 <div class="input-group mb-3">
+                    <h2 class="TitleChild" style="margin-right: 20%;">Project description</h2>
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="inputGroup-sizing-default">Project name</span>
                     </div>
+                    <form action="" class="was-validated TitleChild" style="width: 35%; float: right;">
                     <input id="projectName" type="text" class="form-control" aria-label="Default"
                         aria-describedby="inputGroup-sizing-default" required>
-                    <div class="invalid-feedback" style="margin-left: 77%;">Mandatory field</div>
-                    <div class="valid-feedback" style="margin-left: 92.5%;">Valid</div>
+                    <div class="invalid-feedback" style="margin-left: 67%;">Mandatory field</div>
+                    <div class="valid-feedback" style="margin-left: 89%;">Valid</div>
+                    </form>
                 </div>
-            </form>
+            
 
         </div>
 
@@ -301,7 +301,7 @@
                             <form action="" class="was-validated">
                                 <input id="start" type="date" class="form-control" aria-label="Default"
                                     aria-describedby="inputGroup-sizing-default" required min="2020-01-01"
-                                    max="2021-01-01">
+                                    max="2021-01-01" onchange="startDateOnChange()">
                                 <div class="invalid-feedback" style="margin-left: 55%;">Invalid date</div>
                                 <div class="valid-feedback" style="margin-left: 82%;">Valid</div>
                             </form>
@@ -315,7 +315,7 @@
                             <form action="" class="was-validated">
                                 <input id="end" type="date" class="form-control" aria-label="Default"
                                     aria-describedby="inputGroup-sizing-default" required 
-                                    min="2020-01-01" max="2021-01-01">
+                                    min="2020-01-01" max="2021-01-01" onchange="endDateOnChange()">
                                 <div class="invalid-feedback" style="margin-left: 55%;">Invalid date</div>
                                 <div class="valid-feedback" style="margin-left: 82%;">Valid</div>
                             </form>
@@ -516,7 +516,7 @@
                             </div>
                             <input id="numP" type="number" class="form-control" aria-label="Default"
                                 aria-describedby="inputGroup-sizing-default" required
-                                style="width: 9%; margin-left: -0.5%; display: inline-block;" placeholder="5000" step="1" min="1" max="9999">
+                                style="width: 9%; margin-left: -0.5%; display: inline-block;" placeholder="5000" step="1" min="1" max="9999" maxlength="4" onchange="numPOnChange()">
                             </form>
                             <!--<svg id="NumPHelp" onmouseover="NumPshowHelp()" onmouseout="NumPhideHelp()"
                                 xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
