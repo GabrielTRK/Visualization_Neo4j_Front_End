@@ -76,10 +76,41 @@ function algoritmo(){
 }
 
 function saveConf(){
+    //Comprobar datos y enviar error en caso de no validez
+    err = false
+    
     projectName = document.getElementById("projectName").value;
+
+    if(projectName == ''){
+        err = true
+    }
     
     fecha_I = String(document.getElementById("start").value) + '&'
     fecha_F = String(document.getElementById("end").value) + '&'
+
+    fecha_ID = new Date(document.getElementById("start").value)
+    fecha_FD = new Date(document.getElementById("end").value)
+
+    fecha_PDMAX = new Date(document.getElementById("start").max)
+    fecha_PDMIN = new Date(document.getElementById("start").min)
+
+    if(document.getElementById("start").value == '' || document.getElementById("end").value == ''){
+        err = true
+    }else if(fecha_ID < fecha_PDMIN || fecha_ID > fecha_PDMAX || fecha_FD < fecha_PDMIN || fecha_FD > fecha_PDMAX){
+        err = true
+    }
+    
+    cont = 0
+    
+    const parents = document.getElementsByClassName("DDContainer");
+    for(i = 0; i < parents[2].children.length; i++){
+        if(parents[2].children[i].children.length != 0){
+            cont++
+        }
+    }
+    if(cont != parents[2].children.length){
+        err = true
+    }
 
     epiRes = String(document.getElementById("restriction").value) + '&'
     
@@ -96,17 +127,43 @@ function saveConf(){
     }
 
     idOrder = []
-    const parents = document.getElementsByClassName("DDContainer");
-    for(i = 0; i < parents[2].children.length; i++){
-        idOrder[i] = parseInt(parents[2].children[i].children[0].id)
+    
+    if(cont == parents[2].children.length){
+        for(i = 0; i < parents[2].children.length; i++){
+            idOrder[i] = parseInt(parents[2].children[i].children[0].id)
+        }
+    }
+    
+
+    if(document.getElementById("numP").value != ''){
+        numP = String(document.getElementById("numP").value) + '&'
+    }else{
+        numP = String(document.getElementById("numP").placeholder) + '&'
     }
 
-    numP = String(document.getElementById("numP").value) + '&'
-    iW = String(document.getElementById("iW").value) + '&'
-    c1 = String(document.getElementById("c1").value) + '&'
-    c2 = String(document.getElementById("c2").value) + '&'
+    if(document.getElementById("iW").value != ''){
+        iW = String(document.getElementById("iW").value) + '&'
+    }else{
+        iW = String(document.getElementById("iW").placeholder) + '&'
+    }
+    
+    if(document.getElementById("c1").value != ''){
+        c1 = String(document.getElementById("c1").value) + '&'
+    }else{
+        c1 = String(document.getElementById("c1").placeholder) + '&'
+    }
 
-    p_fecha_I = 'fecha_inicial='
+    if(document.getElementById("c2").value != ''){
+        c2 = String(document.getElementById("c2").value) + '&'
+    }else{
+        c2 = String(document.getElementById("c2").placeholder) + '&'
+    }
+
+    if(err){
+        //Mostrar modal con error
+        console.log('aaaa')
+    }else{
+        p_fecha_I = 'fecha_inicial='
     p_fecha_F = 'fecha_final='
     p_iteraciones = 'iteraciones='
     p_num_P = 'numIndividuos='
@@ -136,8 +193,6 @@ function saveConf(){
         .then( response => response.json() )
         .then( response => {
             if(response){
-                //Mostrar modal
-
                 modal.style.display = "block";
                 document.getElementById('ModalText').innerHTML = "Project saved"
 
@@ -164,6 +219,8 @@ function saveConf(){
                 document.getElementById('ModalText').innerHTML = "The name of the project already exists"
             }
         } );
+    }
+    
 }
 
 function refresh(){
