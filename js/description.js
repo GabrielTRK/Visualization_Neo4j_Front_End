@@ -324,6 +324,8 @@ function saveConf() {
                         inputs[i].setAttribute("disabled", true)
                     }
 
+                    document.getElementById("EndDateDiv").style.marginTop = '-4.4%'
+
                     document.getElementById("SaveButton").style.display = 'none'
                     document.getElementById("NewPButton").style.display = 'block'
 
