@@ -213,15 +213,15 @@ function saveConf() {
         err = true
     }
 
-    cont = 0
+    contPref = 0
 
     const parents = document.getElementsByClassName("DDContainer");
     for (i = 0; i < parents[2].children.length; i++) {
         if (parents[2].children[i].children.length != 0) {
-            cont++
+            contPref++
         }
     }
-    if (cont != parents[2].children.length) {
+    if (contPref != parents[2].children.length) {
         err = true
     }
 
@@ -231,22 +231,21 @@ function saveConf() {
 
     polRes = []
 
-    cont = 0
+    contSwitch = 0
     for (i = 0; i < switchs.length; i++) {
         if (switchs[i].checked) {
-            polRes[cont] = switchs[i].id
-            cont++
+            polRes[contSwitch] = switchs[i].id
+            contSwitch++
         }
     }
 
     idOrder = []
 
-    if (cont == parents[2].children.length) {
+    if (contPref == parents[2].children.length) {
         for (i = 0; i < parents[2].children.length; i++) {
             idOrder[i] = parseInt(parents[2].children[i].children[0].id)
         }
     }
-
 
     if (document.getElementById("numP").value != '') {
         numP = String(document.getElementById("numP").value) + '&'
