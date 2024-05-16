@@ -218,6 +218,6 @@ function addPrefImgs(divDecMain, dataBack) {
 function myF(event){
     //Redirigir a lista de soluciones guardando el nombre del proyecto en localstorage
     console.log(event.target.classList[0])
-
-    //window.location.href = "SList.html"
+    localStorage.setItem("projectName",event.target.classList[0]);
+    window.location.href = "SList.html"
 }
