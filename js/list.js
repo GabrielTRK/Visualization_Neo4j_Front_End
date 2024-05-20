@@ -18,7 +18,7 @@ fetch(url).then(res => {
             projectI.classList.add("list-group-item-action")
             projectI.classList.add("flex-column")
             projectI.classList.add("align-items-start")
-            projectI.setAttribute('onclick', 'myF(event)')
+            projectI.setAttribute('onclick', 'optionSelected(event)')
             
 
             divInputs = document.createElement("div")
@@ -215,7 +215,7 @@ function addPrefImgs(divDecMain, dataBack) {
 
 }
 
-function myF(event){
+function optionSelected(event){
     //Redirigir a lista de soluciones guardando el nombre del proyecto en localstorage
     console.log(event.target.classList[0])
     localStorage.setItem("projectName",event.target.classList[0]);

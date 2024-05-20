@@ -2,11 +2,16 @@ var margin = {top: 50, left: 50, right: 50, bottom: 50};
 var margin2 = {top: 100, left: 100, right: 400, bottom: 100};
 height = 400 //- margin.top - margin.bottom;
 width = 800 //- margin.left - margin.right;
-var params = {numDias: 0, diaActual: 0, numSoluciones: 0, solucionActual: 0};
+var params = {numDias: 0, diaActual: 0};
 
 var html_p_Open = '<p>'
 
 var html_p_Close = '</p>'
+
+projectName = localStorage.getItem("projectName")
+solutionID = localStorage.getItem("solutionID")
+
+mainURL = 'http://localhost:8080/' + projectName + '/' + solutionID
 
 var projection = d3.geoMercator()
     .translate([width / 2, height / 2])
@@ -59,7 +64,7 @@ var mouseover = function(d) {
 var mousemove = function(d) {
         Tooltip
           .html(html_p_Open + 'Departures: ' + d.iataOrigen + html_p_Close + html_p_Open + 'Destination: ' + d.iataDestino + html_p_Close
-          + html_p_Open + 'Number of passengers: 230' + html_p_Close)
+          + html_p_Open + 'Number of passengers: ' + d.pasajeros + html_p_Close)
           .style("left", (d3.mouse(this)[0]) + 0 + "px")
           .style("top", (d3.mouse(this)[1]) + 0 + "px")
       }
@@ -72,7 +77,7 @@ var mouseleave = function(d) {
 
 
 d3.queue()
-    .defer(d3.json, 'world.topojson')
+    .defer(d3.json, '../world.topojson')
     .await(drawWorld);
 
 init();
@@ -94,41 +99,14 @@ function drawWorld(error, world){
 }
 
 function init(){
-    getNumSoluciones()
+    getNumDias();
+    circulosYConexiones();
     
-}
-
-function getNumSoluciones(){
-    fetch('http://localhost:8080/numSoluciones').then(res => {
-        return res.json()
-    })
-    .then(dataBack => {
-        
-        params.numSoluciones = dataBack
-        params.solucionActual = dataBack-1
-        getNumDias();
-        circulosYConexiones();
-        //actualizarListaSoluciones();
-
-
-    }
-    )
 }
 
 function getNumDias(){
 
-    /*p_id_sol = 'id='
-
-    id_sol = params.solucionActual
-    
-    url = 'http://localhost:8080/solucionI/numDias' + '?' + p_id_sol + id_sol*/
-
-    id = params.solucionActual
-    
-    url = 'http://localhost:8080/' + id + '  /numDias'
-
-
-    fetch(url).then(res => {
+    fetch(mainURL + '/numDias').then(res => {
         return res.json()
     })
     .then(dataBack => {
@@ -143,21 +121,9 @@ function getNumDias(){
 
 function circulosYConexiones(){
 
-    /*p_id_sol = 'id='
-    p_dia = 'dia='
-
-    id_sol = params.solucionActual + '&'
     dia = params.diaActual
-    
-    url = 'http://localhost:8080/solucionI/diaJ' + '?' + p_id_sol + id_sol + p_dia + dia*/
 
-    id = params.solucionActual
-    dia = params.diaActual
-    
-    url = 'http://localhost:8080/' + id + '/' + dia
-
-
-    fetch(url)
+    fetch(mainURL + '/' + dia)
     .then(res => {
         return res.json()
     })
@@ -214,48 +180,14 @@ function drawServerResult(dataBack){
             
 }
 
-
-
-function actualizarListaSoluciones(){
-    
-    const select = document.getElementById("Soluciones");
-
-    for(var i = 0; i < params.numSoluciones; i++){
-        const newOption = document.createElement('option');
-        const optionText = document.createTextNode(i);
-        newOption.appendChild(optionText);
-        newOption.setAttribute('value', i);
-        select.appendChild(newOption);
-        if(i == params.numSoluciones-1){
-            newOption.selected = true;
-        }
-    }
-}
-
 function solucionDiaAnterior(){
 
-    /*p_id_sol = 'id='
-    p_dia = 'dia='
-
     params.diaActual -= 1
     console.log(params)
 
-    id_sol = params.solucionActual
     dia = params.diaActual
-
-
-    url = 'http://localhost:8080/solucionI/diaJ' + '?' + p_id_sol + id_sol + p_dia + dia*/
-
-    params.diaActual -= 1
-    console.log(params)
-
-    id = params.solucionActual
-    dia = params.diaActual
-
-
-    url = 'http://localhost:8080/' + id + '/' + dia
     
-    return fetch(url).then(res => {
+    return fetch(mainURL + '/' + dia).then(res => {
         return res.json()
     })
     .then(dataBack => {
@@ -267,28 +199,12 @@ function solucionDiaAnterior(){
 
 function solucionDiaPosterior(){
 
-    /*p_id_sol = 'id='
-    p_dia = 'dia='
-
     params.diaActual += 1
     console.log(params)
 
-    id_sol = params.solucionActual
     dia = params.diaActual
-
-
-    url = 'http://localhost:8080/solucionI/diaJ' + '?' + p_id_sol + id_sol + p_dia + dia*/
-
-    params.diaActual += 1
-    console.log(params)
-
-    id = params.solucionActual
-    dia = params.diaActual
-
-
-    url = 'http://localhost:8080/' + id + '/' + dia
     
-    return fetch(url).then(res => {
+    return fetch(mainURL + '/' + dia).then(res => {
         return res.json()
     })
     .then(dataBack => {
@@ -310,55 +226,4 @@ function actualizarBotones(){
         document.getElementById("posterior").disabled = false;
     }
 
-}
-
-//Cuando se seleccione una solución, llamar al back con el id seleccionado para actualizar el mapa
-function selectChange(sel){
-    //console.log(sel.options[sel.selectedIndex].value)
-    params.solucionActual = parseInt(sel.options[sel.selectedIndex].value)
-    params.diaActual = 0
-    getNumDias();
-    circulosYConexiones();
-}
-
-function algoritmo(){
-    fecha_I = new Date(document.getElementById("start").value)
-    fecha_F = new Date(document.getElementById("end").value)
-    año_I = String(fecha_I.getFullYear()) + "&"
-    mes_I = String(addZ(fecha_I.getMonth() + 1)) + "&"
-    dia_I = String(addZ(fecha_I.getUTCDate())) + "&"
-    
-    año_F = String(fecha_F.getFullYear()) + "&"
-    mes_F = String(addZ(fecha_F.getMonth() + 1)) + "&"
-    dia_F = String(addZ(fecha_F.getUTCDate())) + "&"
-
-    iteraciones = document.getElementById("ite").value
-
-    p_año_I = 'año_inicial='
-    p_mes_I = 'mes_inicial='
-    p_dia_I = 'dia_inicial='
-
-    p_año_F = 'año_final='
-    p_mes_F = 'mes_final='
-    p_dia_F = 'dia_final='
-    p_iteraciones = 'iteraciones='
-    
-    url = 'http://localhost:8080/algoritmo/dia' + '?' + p_dia_I + dia_I + p_dia_F + dia_F + p_mes_I + mes_I + p_mes_F + mes_F + p_año_I + año_I + p_año_F + año_F + p_iteraciones + iteraciones
-    
-    return fetch(url).then(res => {
-        return res.json()
-    })
-    .then(dataBack => {
-        params.diaActual = 0
-        params.numSoluciones += 1
-        params.solucionActual = params.numSoluciones - 1
-        drawServerResult(dataBack)
-        getNumDias()
-        //actualizarBotones()
-    }
-    )
-}
-
-function addZ(fecha){
-    return fecha<10? '0'+fecha:''+fecha
 }
