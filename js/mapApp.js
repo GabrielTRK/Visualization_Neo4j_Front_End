@@ -11,6 +11,8 @@ var html_p_Close = '</p>'
 projectName = localStorage.getItem("projectName")
 solutionID = localStorage.getItem("solutionID")
 
+currentAnimation = false;
+
 mainURL = 'http://localhost:8080/' + projectName + '/' + solutionID
 
 var projection = d3.geoMercator()
@@ -133,6 +135,11 @@ function circulosYConexiones(){
 }
 
 function drawServerResult(dataBack){
+    document.getElementById('startDate').value = dataBack.fechas.Fecha_Inicial
+    document.getElementById('endDate').value = dataBack.fechas.Fecha_Final
+    document.getElementById('curDate').value = dataBack.fechas.Fecha_Actual
+
+
     d3.selectAll('.airport').remove()
     d3.selectAll('.connection').remove()
     svg.selectAll('.airport')
@@ -182,8 +189,22 @@ function drawServerResult(dataBack){
 
 function solucionDiaAnterior(){
 
+    if(currentAnimation){
+        document.getElementById('curDate').style.animationName = 'changedDate1st'
+        document.getElementById('curDate').style.animationDuration = '5s'
+        document.getElementById('curDateSpan').style.animationName = 'changedDate1st'
+        document.getElementById('curDateSpan').style.animationDuration = '5s'
+    }else{
+        document.getElementById('curDate').style.animationName = 'changedDate2nd'
+        document.getElementById('curDate').style.animationDuration = '5s'
+        document.getElementById('curDateSpan').style.animationName = 'changedDate2nd'
+        document.getElementById('curDateSpan').style.animationDuration = '5s'
+    }
+    currentAnimation = !currentAnimation
+
+    
+    
     params.diaActual -= 1
-    console.log(params)
 
     dia = params.diaActual
     
@@ -193,14 +214,27 @@ function solucionDiaAnterior(){
     .then(dataBack => {
         drawServerResult(dataBack)
         actualizarBotones()
+        
     }
     )
 }
 
 function solucionDiaPosterior(){
 
+    if(currentAnimation){
+        document.getElementById('curDate').style.animationName = 'changedDate1st'
+        document.getElementById('curDate').style.animationDuration = '5s'
+        document.getElementById('curDateSpan').style.animationName = 'changedDate1st'
+        document.getElementById('curDateSpan').style.animationDuration = '5s'
+    }else{
+        document.getElementById('curDate').style.animationName = 'changedDate2nd'
+        document.getElementById('curDate').style.animationDuration = '5s'
+        document.getElementById('curDateSpan').style.animationName = 'changedDate2nd'
+        document.getElementById('curDateSpan').style.animationDuration = '5s'
+    }
+    currentAnimation = !currentAnimation
+
     params.diaActual += 1
-    console.log(params)
 
     dia = params.diaActual
     
@@ -210,6 +244,7 @@ function solucionDiaPosterior(){
     .then(dataBack => {
         drawServerResult(dataBack)
         actualizarBotones()
+        
     }
     )
 }
