@@ -11,15 +11,16 @@ numDias = 0
 
 mainURL = 'http://localhost:8080/' + projectName + separator + solutionID + separator
 
-getData()
+getConnections()
+getObj()
+getFit()
 
-function getData() {
+function getConnections() {
     fetch(mainURL + currentDay + separator + currentAir).then(res => {
         return res.json()
     })
         .then(dataBack => {
             //Si databack.length == 0 poner mensaje de empty list
-            console.log(dataBack)
             document.getElementById('Sdate').value = dataBack.fechas.Fecha_Actual
             document.getElementById('Sdate').min = dataBack.fechas.Fecha_Inicial
             document.getElementById('Sdate').max = dataBack.fechas.Fecha_Final
@@ -67,6 +68,32 @@ function getData() {
         )
 }
 
+function getObj(){
+    fetch(mainURL + 'objetivos').then(res => {
+        return res.json()
+    })
+        .then(dataBack => {
+            //Si databack.length == 0 poner mensaje de empty list
+            console.log(dataBack)
+            
+
+        }
+        )
+}
+
+function getFit(){
+    fetch(mainURL + 'hist').then(res => {
+        return res.json()
+    })
+        .then(dataBack => {
+            //Si databack.length == 0 poner mensaje de empty list
+            console.log(dataBack)
+            
+
+        }
+        )
+}
+
 function datesDifference(fecha) {
     let date1 = new Date(fecha);
     currentDay = Math.round((date1.getTime() - minDate.getTime()) / (1000 * 3600 * 24))
@@ -81,7 +108,7 @@ function applyFilter() {
     datesDifference(document.getElementById('Sdate').value)
     removeChildren(document.getElementById('row1'))
     removeChildren(document.getElementById('row2'))
-    getData()
+    getConnections()
 }
 
 function resetFilter() {
@@ -91,7 +118,7 @@ function resetFilter() {
     document.getElementById('airInput').value = ''
     removeChildren(document.getElementById('row1'))
     removeChildren(document.getElementById('row2'))
-    getData()
+    getConnections()
 }
 
 function removeChildren(element) {
@@ -99,5 +126,36 @@ function removeChildren(element) {
     while (child) {
         element.removeChild(child);
         child = element.lastElementChild;
+    }
+}
+
+function exportTableToExcel(tableID, filename = ''){
+    var downloadLink;
+    var dataType = 'application/vnd.ms-excel';
+    var tableSelect = document.getElementById(tableID);
+    var tableHTML = tableSelect.outerHTML.replace(/ /g, '%20');
+    
+    // Specify file name
+    filename = filename?filename+'.xls':'excel_data.xls';
+    
+    // Create download link element
+    downloadLink = document.createElement("a");
+    
+    document.body.appendChild(downloadLink);
+    
+    if(navigator.msSaveOrOpenBlob){
+        var blob = new Blob(['\ufeff', tableHTML], {
+            type: dataType
+        });
+        navigator.msSaveOrOpenBlob( blob, filename);
+    }else{
+        // Create a link to the file
+        downloadLink.href = 'data:' + dataType + ', ' + tableHTML;
+    
+        // Setting the file name
+        downloadLink.download = filename;
+        
+        //triggering the function
+        downloadLink.click();
     }
 }
