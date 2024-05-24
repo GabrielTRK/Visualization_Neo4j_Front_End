@@ -155,7 +155,7 @@
             </div>
 
             <div style="float: right; margin-top: -3.5%;">
-                <a href="#" title="Download Excel">
+                <a href="#" onclick="exportTableToExcel('objTable','objectives')" title="Download Excel">
                     <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
                         <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5"/>
                         <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708z"/>
@@ -169,34 +169,13 @@
                         <!--<caption></caption>-->
     
                         <thead>
-                          <tr>
-                            <th scope="col">Objectives</th>
-                            <th class="text-center" scope="col"><img src="../Utils/Objective1.png" draggable="true" ondragstart="drag(event)"
-                                id="1" width="149" height="49"></th>
-                            <th class="text-center" scope="col"><img src="../Utils/Objective2.png" draggable="true" ondragstart="drag(event)"
-                                id="2" width="149" height="49"></th>
-                            <th class="text-center" scope="col"><img src="../Utils/Objective3.png" draggable="true" ondragstart="drag(event)"
-                                id="3" width="149" height="49"></th>
-                            <th class="text-center" scope="col"><img src="../Utils/Objective4.png" draggable="true" ondragstart="drag(event)"
-                                id="4" width="149" height="49"></th>
-                            <th class="text-center" scope="col"><img src="../Utils/Objective5.png" draggable="true" ondragstart="drag(event)"
-                                id="5" width="149" height="49"></th>
-                            <th class="text-center" scope="col"><img src="../Utils/Objective6.png" draggable="true" ondragstart="drag(event)"
-                                id="6" width="149" height="49"></th>
-                            <th class="text-center" scope="col"><img src="../Utils/Objective7.png" draggable="true" ondragstart="drag(event)"
-                                id="7" width="149" height="49"></th>
+                          <tr id="row3">
+                            
                           </tr>
                         </thead>
                         <tbody>
-                          <tr>
-                            <th scope="row">Optimized values</th>
-                            <td class="text-center">0.2451</td>
-                            <td class="text-center">0.14</td>
-                            <td class="text-center">0.275</td>
-                            <td class="text-center">0.251</td>
-                            <td class="text-center">0.28</td>
-                            <td class="text-center">0.2456</td>
-                            <td class="text-center">0.2334</td>
+                          <tr id="row4">
+                            
                           </tr>
                           
                         </tbody>
@@ -208,7 +187,7 @@
             
 
             <div style="float: right; margin-top: -3.5%;">
-                <a href="#" title="Download Excel">
+                <a href="#" onclick="exportTableToExcel('fitTable','fitness')" title="Download Excel">
                     <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
                         <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5"/>
                         <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708z"/>
@@ -218,35 +197,17 @@
 
             <div style="padding-bottom: 5rem;">
                 <div class="table-responsive">
-                    <table class="table table-bordered">
+                    <table id="fitTable" class="table table-bordered">
                         <!--<caption></caption>-->
     
                         <thead>
-                          <tr>
-                            <th scope="col">Number of iteration</th>
-                            <th class="text-center" scope="col">0</th>
-                            <th class="text-center" scope="col">1</th>
-                            <th class="text-center" scope="col">2</th>
-                            <th class="text-center" scope="col">3</th>
-                            <th class="text-center" scope="col">4</th>
-                            <th class="text-center" scope="col">5</th>
-                            <th class="text-center" scope="col">6</th>
-                            <th class="text-center" scope="col">7</th>
-                            <th class="text-center" scope="col">8</th>
-                            <th class="text-center" scope="col">9</th>
-                            <th class="text-center" scope="col">10</th>
+                          <tr id="row5">
+                            
                           </tr>
                         </thead>
                         <tbody>
-                          <tr>
-                            <th scope="row">Fitness value</th>
-                            <td class="text-center">0.10142748220942055</td>
-                            <td class="text-center">0.10068235955100313</td>
-                            <td class="text-center">0.0928098072203829</td>
-                            <td class="text-center">0.05184312165333311</td>
-                            <td class="text-center">0.1255470355126821</td>
-                            <td class="text-center">0.0577618404644227</td>
-                            <td class="text-center">0.020547109316408522</td>
+                          <tr id="row6">
+                            
                           </tr>
                           
                         </tbody>

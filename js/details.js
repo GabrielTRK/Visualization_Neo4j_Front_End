@@ -75,7 +75,38 @@ function getObj(){
         .then(dataBack => {
             //Si databack.length == 0 poner mensaje de empty list
             console.log(dataBack)
-            
+
+            row3 = document.getElementById('row3')
+            row4 = document.getElementById('row4')
+
+            th3 = document.createElement('th')
+            th3.setAttribute("scope", "col");
+            th3.classList.add('text-center')
+            th3.innerHTML = 'Objectives'
+
+            th4 = document.createElement('th')
+            th4.setAttribute("scope", "col");
+            th4.classList.add('text-center')
+            th4.innerHTML = 'Optimized values'
+
+            row3.appendChild(th3)
+            row4.appendChild(th4)
+
+            for(j = 1; j < dataBack.length; j++){
+
+                row3TH = document.createElement('th')
+                row3TH.setAttribute("scope", "col");
+                row3TH.classList.add('text-center')
+                row3TH.innerHTML = '<img src="../Utils/Objective' + dataBack[j].nombre + '.png" width="149" height="49">'
+
+                row4TD = document.createElement('td')
+                row4TD.setAttribute("scope", "col");
+                row4TD.classList.add('text-center')
+                row4TD.innerHTML = dataBack[j].valor
+
+                row3.appendChild(row3TH)
+                row4.appendChild(row4TD)
+            }
 
         }
         )
@@ -89,6 +120,37 @@ function getFit(){
             //Si databack.length == 0 poner mensaje de empty list
             console.log(dataBack)
             
+            row5 = document.getElementById('row5')
+            row6 = document.getElementById('row6')
+
+            th5 = document.createElement('th')
+            th5.setAttribute("scope", "col");
+            th5.classList.add('text-center')
+            th5.innerHTML = 'Number of iteration'
+
+            th6 = document.createElement('th')
+            th6.setAttribute("scope", "col");
+            th6.classList.add('text-center')
+            th6.innerHTML = 'Fitness value'
+
+            row5.appendChild(th5)
+            row6.appendChild(th6)
+
+            for(k = 0; k < dataBack.length; k++){
+
+                row5TH = document.createElement('th')
+                row5TH.setAttribute("scope", "col");
+                row5TH.classList.add('text-center')
+                row5TH.innerHTML = dataBack[k].iteracion
+
+                row6TD = document.createElement('td')
+                row6TD.setAttribute("scope", "col");
+                row6TD.classList.add('text-center')
+                row6TD.innerHTML = dataBack[k].fitness
+
+                row5.appendChild(row5TH)
+                row6.appendChild(row6TD)
+            }
 
         }
         )
