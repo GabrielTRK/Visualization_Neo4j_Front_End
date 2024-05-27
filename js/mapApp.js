@@ -92,12 +92,6 @@ function drawWorld(error, world){
         .enter().append('path')
         .attr('class', 'country')
         .attr('d', path)
-        /*.on('mouseover', function(d){
-            d3.select(this).classed('selected', true)
-        })
-        .on('mouseout', function(d){
-            d3.select(this).classed('selected', false)
-        })*/
 }
 
 function init(){

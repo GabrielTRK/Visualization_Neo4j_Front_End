@@ -34,6 +34,7 @@ fetch(url).then(res => {
             epiP.classList.add(dataBack[i].nombre)
 
             divEpi = document.createElement("div")
+            divEpi.classList.add(dataBack[i].nombre)
             divEpi.classList.add('progress')
             divEpi.classList.add('mb-3')
             divEpi.style.height = '25px'
