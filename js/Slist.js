@@ -168,3 +168,8 @@ function optionSelected(event){
     localStorage.setItem("solutionID",event.target.classList[0].split("-")[1]);
     window.location.href = "map.html"
 }
+
+function goToDetails(){
+    localStorage.setItem("load",'load')
+    window.location.href = "description.html"
+}

@@ -1,5 +1,30 @@
 projectName = ''
 
+if (localStorage.getItem("load")) {
+    projectName = localStorage.getItem("projectName")
+
+    //Load project, desactivar inputs, y cambiar botones
+    url = 'http://localhost:8080/loadP'
+
+    fetch(url).then(res => {
+        return res.json()
+    })
+        .then(dataBack => {
+            //Si databack.length == 0 poner mensaje de empty list
+            for (i = 0; i < dataBack.length; i++) {
+                if (dataBack[i].nombre == projectName) {
+                    fillForm(dataBack[i])
+                }
+            }
+        }
+        )
+
+    deactivateFormChangeButtons()
+
+}
+
+
+
 // Get the modal
 var modal = document.getElementById("myModalSaved");
 var modalR = document.getElementById("myModalRun");
@@ -164,26 +189,26 @@ function algoritmoGuardado() {
     modalR.style.display = "block";
     document.getElementById('ModalRText').innerHTML = "Saving project and Running optimization..."
 
-    url = 'http://localhost:8080/' + projectName + '/optimize' 
+    url = 'http://localhost:8080/' + projectName + '/optimize'
 
     fetch(url)
-            .then(response => response.json())
-            .then(response => {
-                if (response) {
-                    modalR.style.display = "none";
+        .then(response => response.json())
+        .then(response => {
+            if (response) {
+                modalR.style.display = "none";
 
-                    //Guardar id de solucion y proyecto en local storage
+                //Guardar id de solucion y proyecto en local storage
 
-                    //Redirigir a mapa
+                //Redirigir a mapa
 
 
 
-                }
-                else {
-                    //Mostrar modal con error
-                    modalR.style.display = "none";
-                }
-            });
+            }
+            else {
+                //Mostrar modal con error
+                modalR.style.display = "none";
+            }
+        });
 
 
 }
@@ -309,27 +334,7 @@ function saveConf() {
                     modal.style.display = "block";
                     document.getElementById('ModalText').innerHTML = "Project saved"
 
-                    for (i = 0; i < switchs.length; i++) {
-                        switchs[i].setAttribute("disabled", true)
-                    }
-
-                    imgs = parents[2].children
-                    for (i = 0; i < imgs.length; i++) {
-                        imgs[i].children[0].setAttribute("draggable", false)
-                    }
-
-                    inputs = document.getElementsByTagName('input')
-                    for (i = 0; i < inputs.length; i++) {
-                        inputs[i].setAttribute("disabled", true)
-                    }
-
-                    document.getElementById("EndDateDiv").style.marginTop = '-4.4%'
-
-                    document.getElementById("SaveButton").style.display = 'none'
-                    document.getElementById("NewPButton").style.display = 'block'
-
-                    document.getElementById("RunNew").style.display = 'none'
-                    document.getElementById("RunSaved").style.display = 'block'
+                    deactivateFormChangeButtons()
                 }
                 else {
                     //Mostrar modal con error
@@ -342,8 +347,7 @@ function saveConf() {
 }
 
 function refresh() {
-    document.getElementById("SaveButton").style.display = 'block'
-    document.getElementById("NewPButton").style.display = 'none'
+    localStorage.removeItem("load")
     location.reload()
 }
 
@@ -352,33 +356,40 @@ function allowDrop(ev) {
 }
 
 function drag(ev) {
-    ev.dataTransfer.setData("text", ev.target.id);
+    if (ev.target.tagName == 'IMG') {
+        ev.dataTransfer.setData("text", ev.target.id);
+    }
 }
 
 function drop(ev) {
-    cont = 0
-    ev.preventDefault();
-    if (ev.target.tagName == 'DIV') {
-        var data = ev.dataTransfer.getData("text");
-        ev.target.style.border = "1px solid rgb(90, 89, 89)"
-        ev.target.appendChild(document.getElementById(data));
-    }
-    //Comprobar con un for los que no tienen asociado un criterio y ponerlos en rojo
-    const parents = document.getElementsByClassName("DDContainer");
-    for (i = 0; i < parents[2].children.length; i++) {
-        if (parents[2].children[i].children.length == 0) {
-            parents[2].children[i].style.border = "1px solid #de4251"
+    if (!localStorage.getItem("load")) {
+        cont = 0
+        ev.preventDefault();
+        if (ev.target.tagName == 'DIV') {
+            var data = ev.dataTransfer.getData("text");
+            if (data > 0) {
+                ev.target.style.border = "1px solid rgb(90, 89, 89)"
+                ev.target.appendChild(document.getElementById(data));
+            }
+        }
+        //Comprobar con un for los que no tienen asociado un criterio y ponerlos en rojo
+        const parents = document.getElementsByClassName("DDContainer");
+        for (i = 0; i < parents[2].children.length; i++) {
+            if (parents[2].children[i].children.length == 0) {
+                parents[2].children[i].style.border = "1px solid #de4251"
+            } else {
+                cont++
+            }
+        }
+        if (cont == parents[2].children.length) {
+            document.getElementById('PrefValid').style.color = "#198754"
+            document.getElementById('PrefValid').innerHTML = "Valid"
         } else {
-            cont++
+            document.getElementById('PrefValid').style.color = "#de4251"
+            document.getElementById('PrefValid').innerHTML = "All the criteria must be on the right column"
         }
     }
-    if (cont == parents[2].children.length) {
-        document.getElementById('PrefValid').style.color = "#198754"
-        document.getElementById('PrefValid').innerHTML = "Valid"
-    } else {
-        document.getElementById('PrefValid').style.color = "#de4251"
-        document.getElementById('PrefValid').innerHTML = "All the criteria must be on the right column"
-    }
+
 }
 
 function NumPshowHelp() {
@@ -457,4 +468,43 @@ function numPOnChange() {
     }
 
 
+}
+
+function deactivateFormChangeButtons() {
+
+    document.getElementById('PrefValid').innerHTML = ''
+
+    const parents = document.getElementsByClassName("DDContainer");
+
+    switchs = document.getElementsByClassName("form-check-input")
+
+    for (i = 0; i < switchs.length; i++) {
+        switchs[i].setAttribute("disabled", true)
+    }
+
+    for (i = 0; i < parents.length; i++) {
+        for (j = 0; j < parents[i].children.length; j++) {
+            parents[i].children[j].style.border = "1px solid rgb(90, 89, 89)"
+            if (parents[i].children[j].children.length > 0) {
+                parents[i].children[j].children[0].setAttribute("draggable", false)
+            }
+        }
+    }
+
+    inputs = document.getElementsByTagName('input')
+    for (i = 0; i < inputs.length; i++) {
+        inputs[i].setAttribute("disabled", true)
+    }
+
+    document.getElementById("EndDateDiv").style.marginTop = '-4.4%'
+
+    document.getElementById("SaveButton").style.display = 'none'
+    document.getElementById("NewPButton").style.display = 'block'
+
+    document.getElementById("RunNew").style.display = 'none'
+    document.getElementById("RunSaved").style.display = 'block'
+}
+
+function fillForm(dataBack) {
+    console.log('aaaa')
 }
