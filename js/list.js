@@ -1,3 +1,5 @@
+localStorage.removeItem("load")
+
 switchsIDs = ['EU', 'NA', 'SA', 'AS', 'AF']
 switchsNames = ['Europe', 'North America', 'South America', 'Asia', 'Africa']
 

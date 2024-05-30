@@ -191,7 +191,12 @@ function algoritmoGuardado() {
 
     url = 'http://localhost:8080/' + projectName + '/optimize'
 
-    fetch(url)
+    const options = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' }
+    };
+
+    fetch(url, options)
         .then(response => response.json())
         .then(response => {
             if (response) {
@@ -506,5 +511,27 @@ function deactivateFormChangeButtons() {
 }
 
 function fillForm(dataBack) {
-    console.log('aaaa')
+
+    document.getElementById('projectName').value = dataBack.nombre
+
+    document.getElementById('start').value = dataBack.fechas.fechaI
+    document.getElementById('end').value = dataBack.fechas.fechaF
+
+    document.getElementById('restriction').value = dataBack.res.epi
+    document.getElementById('restrictionOut').innerHTML = dataBack.res.epi + '%'
+
+    for(i = 0; i < dataBack.res.pol.length; i++){
+        document.getElementById(dataBack.res.pol[i]).checked = true
+    }
+
+    for(i = 0; i < dataBack.order.order.length; i++){
+        document.getElementById(dataBack.order.order[i]).remove()
+        document.getElementsByClassName("DDContainer")[2].children[i].innerHTML = '<img src="../Utils/Objective' + dataBack.order.order[i] + '.png" draggable="false" width="149" height="49">'
+    }
+
+    document.getElementById("numP").value = dataBack.params.numIndividuos
+    document.getElementById("iW").value = dataBack.params.inertiaW
+    document.getElementById("c1").value = dataBack.params.c1
+    document.getElementById("c2").value = dataBack.params.c2
+
 }
