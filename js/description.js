@@ -535,3 +535,35 @@ function fillForm(dataBack) {
     document.getElementById("c2").value = dataBack.params.c2
 
 }
+
+function emptyForm(){
+    
+    document.getElementById('projectName').value = ''
+
+    document.getElementById('start').value = ''
+    document.getElementById('end').value = ''
+
+    document.getElementById('restriction').value = 50.0
+    document.getElementById('restrictionOut').innerHTML = 50.0 + '%'
+
+    switchs = document.getElementsByClassName("form-check-input")
+
+    for (i = 0; i < switchs.length; i++) {
+        switchs[i].checked = false
+    }
+
+    document.getElementById("numP").value = ''
+    document.getElementById("iW").value = ''
+    document.getElementById("c1").value = ''
+    document.getElementById("c2").value = ''
+}
+
+function goHome(){
+    emptyForm()
+    window.location.href = "/html/home.html"
+}
+
+function goLoad(){
+    emptyForm()
+    window.location.href = "/html/list.html"
+}

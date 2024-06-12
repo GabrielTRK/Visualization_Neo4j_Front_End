@@ -256,3 +256,8 @@ function actualizarBotones(){
     }
 
 }
+
+function goDescription(){
+    localStorage.setItem("load",'load')
+    window.location.href = "/html/description.html"
+}
