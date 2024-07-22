@@ -1,7 +1,16 @@
+if(!sessionStorage.getItem("logged")){
+    window.location.href = "login.html"
+}
+
+
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();   
+  });
+
 projectName = ''
 
-if (localStorage.getItem("load")) {
-    projectName = localStorage.getItem("projectName")
+if (sessionStorage.getItem("load")) {
+    projectName = sessionStorage.getItem("projectName")
 
     //Load project, desactivar inputs, y cambiar botones
     url = 'http://localhost:8080/loadP'
@@ -69,15 +78,16 @@ function algoritmo() {
         err = true
     }
 
-    cont = 0
+    contIMG = 0
 
     const parents = document.getElementsByClassName("DDContainer");
     for (i = 0; i < parents[2].children.length; i++) {
         if (parents[2].children[i].children.length != 0) {
-            cont++
+            contIMG++
         }
     }
-    if (cont != parents[2].children.length) {
+    
+    if (contIMG != parents[2].children.length) {
         err = true
     }
 
@@ -87,22 +97,21 @@ function algoritmo() {
 
     polRes = []
 
-    cont = 0
+    contSW = 0
     for (i = 0; i < switchs.length; i++) {
         if (switchs[i].checked) {
-            polRes[cont] = switchs[i].id
-            cont++
+            polRes[contSW] = switchs[i].id
+            contSW++
         }
     }
 
     idOrder = []
-
-    if (cont == parents[2].children.length) {
+    
+    if (contIMG == parents[2].children.length) {
         for (i = 0; i < parents[2].children.length; i++) {
             idOrder[i] = parseInt(parents[2].children[i].children[0].id)
         }
     }
-
 
     if (document.getElementById("numP").value != '') {
         numP = String(document.getElementById("numP").value) + '&'
@@ -352,7 +361,7 @@ function saveConf() {
 }
 
 function refresh() {
-    localStorage.removeItem("load")
+    sessionStorage.removeItem("load")
     location.reload()
 }
 
@@ -367,7 +376,7 @@ function drag(ev) {
 }
 
 function drop(ev) {
-    if (!localStorage.getItem("load")) {
+    if (!sessionStorage.getItem("load")) {
         cont = 0
         ev.preventDefault();
         if (ev.target.tagName == 'DIV') {

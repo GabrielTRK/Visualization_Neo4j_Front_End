@@ -36,6 +36,7 @@ function login(){
         .then( response => {
             if(response){
                 //GUardar usuario en sesión
+                sessionStorage.setItem("logged", true);
                 location.replace("../html/home.html")
             }else{
                 modal.style.display = "block";

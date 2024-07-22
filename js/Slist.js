@@ -1,4 +1,9 @@
-projectName = localStorage.getItem("projectName")
+if(!sessionStorage.getItem("logged")){
+    window.location.href = "login.html"
+}
+
+if (sessionStorage.getItem("projectName")){
+    projectName = sessionStorage.getItem("projectName")
 
 document.getElementById('ListTitle').innerHTML = 'Solutions list from project ' + projectName
 
@@ -63,6 +68,11 @@ fetch(url).then(res => {
         }
     }
     )
+}else{
+    window.location.href = "list.html"
+}
+
+
 
 function addIDInputs(divIDInputs, dataBack) {
     SolutionID = document.createElement('h4')
@@ -163,13 +173,13 @@ function addRisk(divInputIR, databack) {
 }
 
 function optionSelected(event){
-    //Redirigir a lista de soluciones guardando el nombre del proyecto en localstorage
+    //Redirigir a lista de soluciones guardando el nombre del proyecto en sessionStorage
     console.log(event.target.classList[0].split("-")[1])
-    localStorage.setItem("solutionID",event.target.classList[0].split("-")[1]);
+    sessionStorage.setItem("solutionID",event.target.classList[0].split("-")[1]);
     window.location.href = "map.html"
 }
 
 function goToDetails(){
-    localStorage.setItem("load",'load')
+    sessionStorage.setItem("load",'load')
     window.location.href = "description.html"
 }

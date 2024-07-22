@@ -1,4 +1,8 @@
-localStorage.removeItem("load")
+if(!sessionStorage.getItem("logged")){
+    window.location.href = "login.html"
+}
+
+sessionStorage.removeItem("load")
 
 switchsIDs = ['EU', 'NA', 'SA', 'AS', 'AF']
 switchsNames = ['Europe', 'North America', 'South America', 'Asia', 'Africa']
@@ -219,8 +223,8 @@ function addPrefImgs(divDecMain, dataBack) {
 }
 
 function optionSelected(event){
-    //Redirigir a lista de soluciones guardando el nombre del proyecto en localstorage
+    //Redirigir a lista de soluciones guardando el nombre del proyecto en sessionStorage
     console.log(event.target.classList[0])
-    localStorage.setItem("projectName",event.target.classList[0]);
+    sessionStorage.setItem("projectName",event.target.classList[0]);
     window.location.href = "SList.html"
 }

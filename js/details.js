@@ -1,19 +1,28 @@
-projectName = localStorage.getItem("projectName")
-solutionID = localStorage.getItem("solutionID")
+if(!sessionStorage.getItem("logged")){
+    window.location.href = "login.html"
+}
 
-currentDay = 0
-currentAir = ''
-separator = '/'
-minDate = new Date("2020/01/01")
-maxDate = new Date("2020/01/01")
-minDateString = ''
-numDias = 0
+if (sessionStorage.getItem("projectName") && sessionStorage.getItem("solutionID")) {
+    projectName = sessionStorage.getItem("projectName")
+    solutionID = sessionStorage.getItem("solutionID")
 
-mainURL = 'http://localhost:8080/' + projectName + separator + solutionID + separator
+    currentDay = 0
+    currentAir = ''
+    separator = '/'
+    minDate = new Date("2020/01/01")
+    maxDate = new Date("2020/01/01")
+    minDateString = ''
+    numDias = 0
 
-getConnections()
-getObj()
-getFit()
+    mainURL = 'http://localhost:8080/' + projectName + separator + solutionID + separator
+
+    getConnections()
+    getObj()
+    getFit()
+}else{
+    window.location.href = "list.html"
+}
+
 
 function getConnections() {
     fetch(mainURL + currentDay + separator + currentAir).then(res => {
@@ -40,11 +49,11 @@ function getConnections() {
             th2 = document.createElement('th')
             th2.setAttribute("scope", "col");
             th2.classList.add('text-center')
-            th2.innerHTML = 'Bits'
+            th2.innerHTML = 'Cancelled connections'
 
             row1.appendChild(th1)
             row2.appendChild(th2)
-            for(i = 0; i < dataBack.coordenadasConexiones.length; i++){
+            for (i = 0; i < dataBack.coordenadasConexiones.length; i++) {
                 row1TH = document.createElement('th')
                 row1TH.setAttribute("scope", "col");
                 row1TH.classList.add('text-center')
@@ -53,9 +62,9 @@ function getConnections() {
                 row2TD = document.createElement('td')
                 row2TD.setAttribute("scope", "col");
                 row2TD.classList.add('text-center')
-                if(dataBack.coordenadasConexiones[i].abierto_cerrado){
+                if (dataBack.coordenadasConexiones[i].abierto_cerrado) {
                     row2TD.innerHTML = '1'
-                }else{
+                } else {
                     row2TD.innerHTML = '0'
                 }
 
@@ -68,7 +77,7 @@ function getConnections() {
         )
 }
 
-function getObj(){
+function getObj() {
     fetch(mainURL + 'objetivos').then(res => {
         return res.json()
     })
@@ -87,12 +96,12 @@ function getObj(){
             th4 = document.createElement('th')
             th4.setAttribute("scope", "col");
             th4.classList.add('text-center')
-            th4.innerHTML = 'Optimized values'
+            th4.innerHTML = 'Optimal values'
 
             row3.appendChild(th3)
             row4.appendChild(th4)
 
-            for(j = 1; j < dataBack.length; j++){
+            for (j = 1; j < 6; j++) {
 
                 row3TH = document.createElement('th')
                 row3TH.setAttribute("scope", "col");
@@ -102,54 +111,92 @@ function getObj(){
                 row4TD = document.createElement('td')
                 row4TD.setAttribute("scope", "col");
                 row4TD.classList.add('text-center')
-                row4TD.innerHTML = dataBack[j].valor
+                if (j == 1 || j == 4) {
+                    row4TD.innerHTML = dataBack[j].valor + '%'
+                } else {
+                    row4TD.innerHTML = dataBack[j].valor
+                }
+
+
 
                 row3.appendChild(row3TH)
                 row4.appendChild(row4TD)
             }
 
-        }
-        )
-}
-
-function getFit(){
-    fetch(mainURL + 'hist').then(res => {
-        return res.json()
-    })
-        .then(dataBack => {
-            //Si databack.length == 0 poner mensaje de empty list
-            console.log(dataBack)
-            
             row5 = document.getElementById('row5')
             row6 = document.getElementById('row6')
 
             th5 = document.createElement('th')
             th5.setAttribute("scope", "col");
             th5.classList.add('text-center')
-            th5.innerHTML = 'Number of iteration'
+            th5.innerHTML = 'Objectives'
 
             th6 = document.createElement('th')
             th6.setAttribute("scope", "col");
             th6.classList.add('text-center')
-            th6.innerHTML = 'Fitness value'
+            th6.innerHTML = 'Optimal values'
 
             row5.appendChild(th5)
             row6.appendChild(th6)
 
-            for(k = 0; k < dataBack.length; k++){
+            for (j = 6; j < dataBack.length; j++) {
 
                 row5TH = document.createElement('th')
                 row5TH.setAttribute("scope", "col");
                 row5TH.classList.add('text-center')
-                row5TH.innerHTML = dataBack[k].iteracion
+                row5TH.innerHTML = '<img src="../Utils/Objective' + dataBack[j].nombre + '.png" width="149" height="49">'
 
                 row6TD = document.createElement('td')
                 row6TD.setAttribute("scope", "col");
                 row6TD.classList.add('text-center')
-                row6TD.innerHTML = dataBack[k].fitness
+                row6TD.innerHTML = dataBack[j].valor + '%'
 
                 row5.appendChild(row5TH)
                 row6.appendChild(row6TD)
+            }
+
+        }
+        )
+}
+
+function getFit() {
+    fetch(mainURL + 'hist').then(res => {
+        return res.json()
+    })
+        .then(dataBack => {
+            //Si databack.length == 0 poner mensaje de empty list
+            console.log(dataBack)
+
+            row9 = document.getElementById('row9')
+            row10 = document.getElementById('row10')
+
+            th9 = document.createElement('th')
+            th9.setAttribute("scope", "col");
+            th9.classList.add('text-center')
+            th9.innerHTML = 'Number of iteration'
+
+            th10 = document.createElement('th')
+            th10.setAttribute("scope", "col");
+            th10.classList.add('text-center')
+            th10.innerHTML = 'Fitness value'
+
+            row9.appendChild(th9)
+            row10.appendChild(th10)
+
+            for (k = 0; k < dataBack.length; k++) {
+
+                row9TH = document.createElement('th')
+                row9TH.setAttribute("scope", "col");
+                row9TH.classList.add('text-center')
+                row9TH.innerHTML = dataBack[k].iteracion
+
+                row10TD = document.createElement('td')
+                row10TD.setAttribute("scope", "col");
+                row10TD.classList.add('text-center')
+                row10TD.innerHTML = dataBack[k].fitness
+
+                row9.appendChild(row9TH)
+                row10.appendChild(row10TD)
             }
 
         }
@@ -191,32 +238,32 @@ function removeChildren(element) {
     }
 }
 
-function exportTableToExcel(tableID, filename = ''){
+function exportTableToExcel(tableID, filename = '') {
     var downloadLink;
     var dataType = 'application/vnd.ms-excel';
     var tableSelect = document.getElementById(tableID);
     var tableHTML = tableSelect.outerHTML.replace(/ /g, '%20');
-    
+
     // Specify file name
-    filename = filename?filename+'.xls':'excel_data.xls';
-    
+    filename = filename ? filename + '.xls' : 'excel_data.xls';
+
     // Create download link element
     downloadLink = document.createElement("a");
-    
+
     document.body.appendChild(downloadLink);
-    
-    if(navigator.msSaveOrOpenBlob){
+
+    if (navigator.msSaveOrOpenBlob) {
         var blob = new Blob(['\ufeff', tableHTML], {
             type: dataType
         });
-        navigator.msSaveOrOpenBlob( blob, filename);
-    }else{
+        navigator.msSaveOrOpenBlob(blob, filename);
+    } else {
         // Create a link to the file
         downloadLink.href = 'data:' + dataType + ', ' + tableHTML;
-    
+
         // Setting the file name
         downloadLink.download = filename;
-        
+
         //triggering the function
         downloadLink.click();
     }
