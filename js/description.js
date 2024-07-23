@@ -576,3 +576,8 @@ function goLoad(){
     emptyForm()
     window.location.href = "/html/list.html"
 }
+
+function logOut(){
+    sessionStorage.clear()
+    window.location.href = "../index.html"
+}

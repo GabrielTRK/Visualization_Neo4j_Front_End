@@ -3,6 +3,9 @@ if(!sessionStorage.getItem("logged")){
 }
 
 if (sessionStorage.getItem("projectName") && sessionStorage.getItem("solutionID")) {
+    $(document).ready(function(){
+        $('[data-toggle="tooltip"]').tooltip();   
+      });
     var margin = { top: 50, left: 50, right: 50, bottom: 50 };
     var margin2 = { top: 100, left: 100, right: 400, bottom: 100 };
     height = 400 //- margin.top - margin.bottom;
@@ -271,4 +274,9 @@ function actualizarBotones() {
 function goDescription() {
     sessionStorage.setItem("load", 'load')
     window.location.href = "/html/description.html"
+}
+
+function logOut(){
+    sessionStorage.clear()
+    window.location.href = "../index.html"
 }

@@ -1,74 +1,77 @@
-if(!sessionStorage.getItem("logged")){
+if (!sessionStorage.getItem("logged")) {
     window.location.href = "login.html"
 }
 
-if (sessionStorage.getItem("projectName")){
+if (sessionStorage.getItem("projectName")) {
+    $(document).ready(function(){
+        $('[data-toggle="tooltip"]').tooltip();   
+      });
     projectName = sessionStorage.getItem("projectName")
 
-document.getElementById('ListTitle').innerHTML = 'Solutions list from project ' + projectName
+    document.getElementById('ListTitle').innerHTML = 'Solutions list from project ' + projectName
 
-url = 'http://localhost:8080/' + projectName + '/loadS'
+    url = 'http://localhost:8080/' + projectName + '/loadS'
 
-fetch(url).then(res => {
-    return res.json()
-})
-    .then(dataBack => {
-        main = document.getElementById("MainList")
-        //Si databack.length == 0 poner mensaje de empty list
-        for (i = 0; i < dataBack.length; i++) {
-            console.log(dataBack[i])
-            solutionI = document.createElement("button")
-            solutionI.setAttribute("type", "button");
-            solutionI.classList.add("Solution-" + dataBack[i].id)
-            solutionI.classList.add("list-group-item")
-            solutionI.classList.add("list-group-item-action")
-            solutionI.classList.add("flex-column")
-            solutionI.classList.add("align-items-start")
-            solutionI.setAttribute('onclick', 'optionSelected(event)')
+    fetch(url).then(res => {
+        return res.json()
+    })
+        .then(dataBack => {
+            main = document.getElementById("MainList")
+            //Si databack.length == 0 poner mensaje de empty list
+            for (i = 0; i < dataBack.length; i++) {
+                console.log(dataBack[i])
+                solutionI = document.createElement("button")
+                solutionI.setAttribute("type", "button");
+                solutionI.classList.add("Solution-" + dataBack[i].id)
+                solutionI.classList.add("list-group-item")
+                solutionI.classList.add("list-group-item-action")
+                solutionI.classList.add("flex-column")
+                solutionI.classList.add("align-items-start")
+                solutionI.setAttribute('onclick', 'optionSelected(event)')
 
-            divIDInputs = document.createElement("div")
-            divIDInputs.classList.add("Solution-" + dataBack[i].id)
-            divIDInputs.classList.add("d-flex")
-            divIDInputs.classList.add("w-100")
+                divIDInputs = document.createElement("div")
+                divIDInputs.classList.add("Solution-" + dataBack[i].id)
+                divIDInputs.classList.add("d-flex")
+                divIDInputs.classList.add("w-100")
 
-            addIDInputs(divIDInputs, dataBack[i])
+                addIDInputs(divIDInputs, dataBack[i])
 
-            ObjP = document.createElement('p')
-            ObjP.innerHTML = 'Objective values:'
-            ObjP.classList.add("Solution-" + dataBack[i].id)
+                ObjP = document.createElement('p')
+                ObjP.innerHTML = 'Objective values:'
+                ObjP.classList.add("Solution-" + dataBack[i].id)
 
-            divIMGS = document.createElement('div')
-            divIMGS.classList.add("Solution-" + dataBack[i].id)
-            divIMGS.classList.add('parent')
-            divIMGS.classList.add('mb-3')
+                divIMGS = document.createElement('div')
+                divIMGS.classList.add("Solution-" + dataBack[i].id)
+                divIMGS.classList.add('parent')
+                divIMGS.classList.add('mb-3')
 
-            addIMGS(divIMGS, dataBack[i])
+                addIMGS(divIMGS, dataBack[i])
 
-            divObjs = document.createElement('div')
-            divObjs.classList.add("Solution-" + dataBack[i].id)
-            divObjs.classList.add('parent')
-            divObjs.classList.add('mb-3')
+                divObjs = document.createElement('div')
+                divObjs.classList.add("Solution-" + dataBack[i].id)
+                divObjs.classList.add('parent')
+                divObjs.classList.add('mb-3')
 
-            addObjs(divObjs, dataBack[i])
+                addObjs(divObjs, dataBack[i])
 
-            divInputIR = document.createElement('div')
-            divInputIR.classList.add("Solution-" + dataBack[i].id)
-            divInputIR.classList.add('d-flex')
+                divInputIR = document.createElement('div')
+                divInputIR.classList.add("Solution-" + dataBack[i].id)
+                divInputIR.classList.add('d-flex')
 
-            addRisk(divInputIR, dataBack[i])
+                addRisk(divInputIR, dataBack[i])
 
-            solutionI.appendChild(divIDInputs)
-            solutionI.appendChild(ObjP)
-            solutionI.appendChild(divIMGS)
-            solutionI.appendChild(divObjs)
-            solutionI.appendChild(divInputIR)
+                solutionI.appendChild(divIDInputs)
+                solutionI.appendChild(ObjP)
+                solutionI.appendChild(divIMGS)
+                solutionI.appendChild(divObjs)
+                solutionI.appendChild(divInputIR)
 
 
-            main.appendChild(solutionI)
+                main.appendChild(solutionI)
+            }
         }
-    }
-    )
-}else{
+        )
+} else {
     window.location.href = "list.html"
 }
 
@@ -172,14 +175,19 @@ function addRisk(divInputIR, databack) {
     divInputIR.appendChild(inputIR)
 }
 
-function optionSelected(event){
+function optionSelected(event) {
     //Redirigir a lista de soluciones guardando el nombre del proyecto en sessionStorage
     console.log(event.target.classList[0].split("-")[1])
-    sessionStorage.setItem("solutionID",event.target.classList[0].split("-")[1]);
+    sessionStorage.setItem("solutionID", event.target.classList[0].split("-")[1]);
     window.location.href = "map.html"
 }
 
-function goToDetails(){
-    sessionStorage.setItem("load",'load')
+function goToDetails() {
+    sessionStorage.setItem("load", 'load')
     window.location.href = "description.html"
+}
+
+function logOut() {
+    sessionStorage.clear()
+    window.location.href = "../index.html"
 }

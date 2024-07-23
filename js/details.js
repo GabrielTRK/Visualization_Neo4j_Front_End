@@ -3,6 +3,9 @@ if(!sessionStorage.getItem("logged")){
 }
 
 if (sessionStorage.getItem("projectName") && sessionStorage.getItem("solutionID")) {
+    $(document).ready(function(){
+        $('[data-toggle="tooltip"]').tooltip();   
+      });
     projectName = sessionStorage.getItem("projectName")
     solutionID = sessionStorage.getItem("solutionID")
 
@@ -267,4 +270,9 @@ function exportTableToExcel(tableID, filename = '') {
         //triggering the function
         downloadLink.click();
     }
+}
+
+function logOut(){
+    sessionStorage.clear()
+    window.location.href = "../index.html"
 }

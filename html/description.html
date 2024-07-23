@@ -7,7 +7,7 @@
     <title>Description</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
@@ -79,13 +79,14 @@
         #div4a,
         #div5a,
         #div6a,
-        #div7a{
+        #div7a {
             float: left;
             width: 150px;
             height: 50px;
             border: 1px solid rgb(90, 89, 89);
             border-radius: 6px;
         }
+
         #div1b,
         #div2b,
         #div3b,
@@ -137,22 +138,6 @@
 
         #c2Help {
             margin-left: 6%;
-        }
-
-        #NumPTooltipText,
-        #IneWTooltipText,
-        #c1TooltipText,
-        #c2TooltipText {
-            /*visibility: hidden;*/
-            width: 60%;
-            /*background-color: black;
-            color: #fff;*/
-
-            text-align: justify;
-            /*border-radius: 6px;*/
-            padding-left: 1rem;
-            display: inline-block;
-            /* Position the tooltip */
         }
 
         .footer {
@@ -218,7 +203,7 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-light" style="background-color: rgb(214, 213, 213);">
         <div class="container-fluid">
-            <a class="navbar-brand" href="/html/index.html">
+            <a class="navbar-brand" href="#">
                 <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor"
                     class="bi bi-globe-americas" viewBox="0 0 16 16">
                     <path
@@ -246,7 +231,7 @@
                     </li>
                 </ul>
                 <form class="d-flex" role="search">
-                    <a href="login.html" title="Log out">
+                    <a href="#" onclick="logOut()" data-toggle="tooltip" title="Log out">
                         <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="black"
                             class="bi bi-door-open" viewBox="0 0 16 16">
                             <path d="M8.5 10c-.276 0-.5-.448-.5-1s.224-1 .5-1 .5.448.5 1-.224 1-.5 1" />
@@ -261,21 +246,22 @@
 
     <div class="card" id="MainCard">
         <div class="PageTitle">
-            
-            
-                <div class="input-group mb-3">
-                    <h2 class="TitleChild" style="margin-right: 20%;">Project description</h2>
-                    <div class="input-group-prepend">
-                        <span class="input-group-text" id="inputGroup-sizing-default">Project name</span>
+
+            <div class="input-group mb-3">
+                <h2 class="TitleChild" style="margin-right: 20%;">Project description</h2>
+                <form action="" class="was-validated" style="width: 40%;">
+                    <div class="input-group has-validation">
+                        <span class="input-group-text" id="inputGroupPrepend">Project name</span>
+                        <input type="text" class="form-control" id="projectName"
+                            aria-describedby="inputGroupPrepend" required>
+                        <div class="invalid-feedback">
+                            Mandatory field
+                        </div>
+
                     </div>
-                    <form action="" class="was-validated TitleChild" style="width: 35%; float: right;">
-                    <input id="projectName" type="text" class="form-control" aria-label="Default"
-                        aria-describedby="inputGroup-sizing-default" required>
-                    <div class="invalid-feedback" style="margin-left: 67%;">Mandatory field</div>
-                    <div class="valid-feedback" style="margin-left: 89%;">Valid</div>
-                    </form>
-                </div>
-            
+                </form>
+            </div>
+
 
         </div>
 
@@ -296,7 +282,7 @@
                     <div class="accordion-body">
 
                         <div class="input-group" id="StartDateDiv">
-                            <div class="input-group-prepend" >
+                            <div class="input-group-prepend">
                                 <span class="input-group-text" id="inputGroup-sizing-default">Start date</span>
                             </div>
                             <form action="" class="was-validated">
@@ -315,8 +301,8 @@
                             </div>
                             <form action="" class="was-validated">
                                 <input id="end" type="date" class="form-control" aria-label="Default"
-                                    aria-describedby="inputGroup-sizing-default" required 
-                                    min="2020-01-01" max="2021-01-01" onchange="endDateOnChange()">
+                                    aria-describedby="inputGroup-sizing-default" required min="2020-01-01"
+                                    max="2021-01-01" onchange="endDateOnChange()">
                                 <div class="invalid-feedback" style="margin-left: 55%;">Invalid date</div>
                                 <div class="valid-feedback" style="margin-left: 82%;">Valid</div>
                             </form>
@@ -393,34 +379,41 @@
                                 <div class="DDContainer">
                                     <div id="div1a" ondrop="drop(event)" ondragover="allowDrop(event)">
                                         <img src="../Utils/Objective1.png" draggable="true" ondragstart="drag(event)"
-                                            id="1" width="149" height="49" data-toggle="tooltip" title="The losses in the catchment areas if all connections are cancelled would be over 40 million euros per day.">
+                                            id="1" width="149" height="49" data-toggle="tooltip"
+                                            title="The losses in the catchment areas if all connections are cancelled would be over 40 million euros per day.">
                                     </div>
                                     <div id="div2a" ondrop="drop(event)" ondragover="allowDrop(event)">
                                         <img src="../Utils/Objective2.png" draggable="true" ondragstart="drag(event)"
-                                            id="2" width="149" height="49" data-toggle="tooltip" title="Depending on the popularity of the destination, their income may vary from €100,000 up to €9,000,000 per day">
+                                            id="2" width="149" height="49" data-toggle="tooltip"
+                                            title="Depending on the popularity of the destination, their income may vary from €100,000 up to €9,000,000 per day">
                                     </div>
                                     <div id="div3a" ondrop="drop(event)" ondragover="allowDrop(event)">
                                         <img src="../Utils/Objective3.png" draggable="true" ondragstart="drag(event)"
-                                            id="3" width="149" height="49" data-toggle="tooltip" title="Depending on the activity of each airline, they operate for range of 200 to more than 15,000 passengers per day">
+                                            id="3" width="149" height="49" data-toggle="tooltip"
+                                            title="Depending on the activity of each airline, they operate for range of 200 to more than 15,000 passengers per day">
                                     </div>
                                     <div id="div4a" ondrop="drop(event)" ondragover="allowDrop(event)">
                                         <img src="../Utils/Objective4.png" draggable="true" ondragstart="drag(event)"
-                                            id="4" width="149" height="49" data-toggle="tooltip" title="Each flight may produce from €400 to €3,500 due to airport taxes depending on the airport fee and the weight of the aircraft">
+                                            id="4" width="149" height="49" data-toggle="tooltip"
+                                            title="Each flight may produce from €400 to €3,500 due to airport taxes depending on the airport fee and the weight of the aircraft">
                                     </div>
                                     <div id="div5a" ondrop="drop(event)" ondragover="allowDrop(event)">
                                         <img src="../Utils/Objective5.png" draggable="true" ondragstart="drag(event)"
-                                            id="5" width="149" height="49" data-toggle="tooltip" title="The least busy airports may gain around €3,000 per day from taxes, while the bussiest ones may gain up to €100,000">
+                                            id="5" width="149" height="49" data-toggle="tooltip"
+                                            title="The least busy airports may gain around €3,000 per day from taxes, while the bussiest ones may gain up to €100,000">
                                     </div>
                                 </div><br><br><br><br><br><br>
                                 <p style="display: flex; justify-content: center;"><b>Social objectives</b></p>
                                 <div class="DDContainer">
                                     <div id="div6a" ondrop="drop(event)" ondragover="allowDrop(event)">
                                         <img src="../Utils/Objective6.png" draggable="true" ondragstart="drag(event)"
-                                            id="6" width="149" height="49" data-toggle="tooltip" title="Most commercial flights carry between 80 to 300 passengers">
+                                            id="6" width="149" height="49" data-toggle="tooltip"
+                                            title="Most commercial flights carry between 80 to 300 passengers">
                                     </div>
                                     <div id="div7a" ondrop="drop(event)" ondragover="allowDrop(event)">
                                         <img src="../Utils/Objective7.png" draggable="true" ondragstart="drag(event)"
-                                            id="7" width="149" height="49" data-toggle="tooltip" title="The measurment of Hub Connectivity proposed by ACI Europe may vary from below 30 up to 70,000 depending on the activity of the airport">
+                                            id="7" width="149" height="49" data-toggle="tooltip"
+                                            title="The measurment of Hub Connectivity proposed by ACI Europe may vary from below 30 up to 70,000 depending on the activity of the airport">
                                     </div>
                                 </div>
 
@@ -444,7 +437,8 @@
                                         during optimization</p>
                                 </div>
                                 <div>
-                                    <p id="PrefValid" style="color: #de4251; text-align: center;">All the criteria must be on the right column</p>
+                                    <p id="PrefValid" style="color: #de4251; text-align: center;">All the criteria must
+                                        be on the right column</p>
                                 </div>
                             </div>
                             <div class="column right">
@@ -469,13 +463,20 @@
 
                                 <div class="DDContainer">
 
-                                    <div id="div1b" ondrop="drop(event)" ondragover="allowDrop(event)" draggable="false"></div>
-                                    <div id="div2b" ondrop="drop(event)" ondragover="allowDrop(event)" draggable="false"></div>
-                                    <div id="div3b" ondrop="drop(event)" ondragover="allowDrop(event)" draggable="false"></div>
-                                    <div id="div4b" ondrop="drop(event)" ondragover="allowDrop(event)" draggable="false"></div>
-                                    <div id="div5b" ondrop="drop(event)" ondragover="allowDrop(event)" draggable="false"></div>
-                                    <div id="div6b" ondrop="drop(event)" ondragover="allowDrop(event)" draggable="false"></div>
-                                    <div id="div7b" ondrop="drop(event)" ondragover="allowDrop(event)" draggable="false"></div>
+                                    <div id="div1b" ondrop="drop(event)" ondragover="allowDrop(event)"
+                                        draggable="false"></div>
+                                    <div id="div2b" ondrop="drop(event)" ondragover="allowDrop(event)"
+                                        draggable="false"></div>
+                                    <div id="div3b" ondrop="drop(event)" ondragover="allowDrop(event)"
+                                        draggable="false"></div>
+                                    <div id="div4b" ondrop="drop(event)" ondragover="allowDrop(event)"
+                                        draggable="false"></div>
+                                    <div id="div5b" ondrop="drop(event)" ondragover="allowDrop(event)"
+                                        draggable="false"></div>
+                                    <div id="div6b" ondrop="drop(event)" ondragover="allowDrop(event)"
+                                        draggable="false"></div>
+                                    <div id="div7b" ondrop="drop(event)" ondragover="allowDrop(event)"
+                                        draggable="false"></div>
 
                                 </div>
                                 <div>
@@ -517,7 +518,8 @@
                             </div>
                             <input id="numP" type="number" class="form-control" aria-label="Default"
                                 aria-describedby="inputGroup-sizing-default" required
-                                style="width: 9%; margin-left: -0.5%; display: inline-block;" placeholder="5000" step="1" min="1" max="9999" maxlength="4" onchange="numPOnChange()">
+                                style="width: 9%; margin-left: -0.5%; display: inline-block;" placeholder="5000"
+                                step="1" min="1" max="9999" maxlength="4" onchange="numPOnChange()">
                             </form>
                             <!--<svg id="NumPHelp" onmouseover="NumPshowHelp()" onmouseout="NumPhideHelp()"
                                 xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
@@ -525,7 +527,8 @@
                                 <path
                                     d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M5.496 6.033h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286a.237.237 0 0 0 .241.247m2.325 6.443c.61 0 1.029-.394 1.029-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94 0 .533.425.927 1.01.927z" />
                             </svg>-->
-                            <p id="NumPTooltipText" style="margin-left: -1%;">Defines the number of particles to be used in the BPSOM</p>
+                            <p id="NumPTooltipText" style="margin-left: -1%;">Defines the number of particles to be used
+                                in the BPSOM</p>
                         </div><br>
 
                         <div>
@@ -534,7 +537,8 @@
                             </div>
                             <input id="iW" type="number" class="form-control" aria-label="Default"
                                 aria-describedby="inputGroup-sizing-default" required
-                                style="width: 8%; margin-left: -0.5%; display: inline-block;" placeholder="0.9" step="0.1" min="0.0" max="9.9">
+                                style="width: 8%; margin-left: -0.5%; display: inline-block;" placeholder="0.9"
+                                step="0.1" min="0.0" max="9.9">
                             <!--<svg id="IneWHelp" onmouseover="IneWshowHelp()" onmouseout="IneWhideHelp()"
                                 xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
                                 class="bi bi-question-circle-fill" viewBox="0 0 16 16">
@@ -551,7 +555,8 @@
                             </div>
                             <input id="c1" type="number" class="form-control" aria-label="Default"
                                 aria-describedby="inputGroup-sizing-default" required
-                                style="width: 8%; margin-left: -0.5%; display: inline-block;" placeholder="1.5" step="0.1" min="0.0" max="9.9">
+                                style="width: 8%; margin-left: -0.5%; display: inline-block;" placeholder="1.5"
+                                step="0.1" min="0.0" max="9.9">
                             <!--<svg id="c1Help" onmouseover="c1showHelp()" onmouseout="c1hideHelp()"
                                 xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
                                 class="bi bi-question-circle-fill" viewBox="0 0 16 16">
@@ -570,7 +575,8 @@
                             </div>
                             <input id="c2" type="number" class="form-control" aria-label="Default"
                                 aria-describedby="inputGroup-sizing-default" required
-                                style="width: 8%; margin-left: -0.5%; display: inline-block;" placeholder="1.5" step="0.1" min="0.0" max="9.9">
+                                style="width: 8%; margin-left: -0.5%; display: inline-block;" placeholder="1.5"
+                                step="0.1" min="0.0" max="9.9">
                             <!--<svg id="c2Help" onmouseover="c2showHelp()" onmouseout="c2hideHelp()"
                                 xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
                                 class="bi bi-question-circle-fill" viewBox="0 0 16 16">
@@ -594,8 +600,8 @@
             <div id="Execute">
                 <button id="RunNew" type="button" class="btn btn-outline-dark btn-lg" onclick="algoritmo()">Run
                     optimization</button>
-                <button id="RunSaved" type="button" class="btn btn-outline-dark btn-lg" onclick="algoritmoGuardado()" 
-                style="display: none;">Run optimization</button>
+                <button id="RunSaved" type="button" class="btn btn-outline-dark btn-lg" onclick="algoritmoGuardado()"
+                    style="display: none;">Run optimization</button>
             </div>
         </div>
     </div>

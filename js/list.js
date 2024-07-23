@@ -2,6 +2,10 @@ if(!sessionStorage.getItem("logged")){
     window.location.href = "login.html"
 }
 
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();   
+  });
+
 sessionStorage.removeItem("load")
 
 switchsIDs = ['EU', 'NA', 'SA', 'AS', 'AF']
@@ -227,4 +231,9 @@ function optionSelected(event){
     console.log(event.target.classList[0])
     sessionStorage.setItem("projectName",event.target.classList[0]);
     window.location.href = "SList.html"
+}
+
+function logOut(){
+    sessionStorage.clear()
+    window.location.href = "../index.html"
 }
