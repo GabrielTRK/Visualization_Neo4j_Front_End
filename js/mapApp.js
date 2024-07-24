@@ -72,6 +72,16 @@ if (sessionStorage.getItem("projectName") && sessionStorage.getItem("solutionID"
         d3.select(this)
             .attr('class', 'connection')
     }
+
+    function handlezoom() {
+        const currentTransform = d3.event.transform;
+    
+        svg.attr('transform', currentTransform);
+    }
+    
+    function initzoom() {
+        svg.call(zoom)
+    }
     
     
     d3.queue()
@@ -85,17 +95,7 @@ if (sessionStorage.getItem("projectName") && sessionStorage.getItem("solutionID"
 }
 
 
-function handlezoom() {
-    const currentTransform = d3.event.transform;
 
-    d3.select('svg')
-        .attr('transform', currentTransform);
-}
-
-function initzoom() {
-    d3.select('svg')
-        .call(zoom)
-}
 
 
 
