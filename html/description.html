@@ -54,7 +54,7 @@
             float: right;
             width: 30%;
             margin-right: 15%;
-            margin-top: -7%;
+            
         }
 
         #Save {
@@ -280,33 +280,38 @@
                 <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse"
                     aria-labelledby="panelsStayOpen-headingOne">
                     <div class="accordion-body">
-
-                        <div class="input-group" id="StartDateDiv">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="inputGroup-sizing-default">Start date</span>
+                        <div class="row">
+                            <div class="input-group col" >
+                                <form action="" class="was-validated" style="width: 70%; margin-left: 15%;">
+                                    <div class="input-group has-validation">
+                                        <span class="input-group-text" id="inputGroupPrepend">Start date</span>
+                                        <input id="start" type="date" class="form-control" aria-label="Default"
+                                        aria-describedby="inputGroup-sizing-default" required min="2020-01-01"
+                                        max="2021-01-01" onchange="startDateOnChange()">
+                                        <div class="invalid-feedback">
+                                            Invalid date
+                                        </div>
+                
+                                    </div>
+                                </form>
                             </div>
-                            <form action="" class="was-validated">
-                                <input id="start" type="date" class="form-control" aria-label="Default"
-                                    aria-describedby="inputGroup-sizing-default" required min="2020-01-01"
-                                    max="2021-01-01" onchange="startDateOnChange()">
-                                <div class="invalid-feedback" style="margin-left: 55%;">Invalid date</div>
-                                <div class="valid-feedback" style="margin-left: 82%;">Valid</div>
-                            </form>
-
-                        </div>
-
-                        <div class="input-group" id="EndDateDiv">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="inputGroup-sizing-default">End date</span>
+    
+                            <div class="input-group col">
+                                <form action="" class="was-validated" style="width: 70%;">
+                                    <div class="input-group has-validation">
+                                        <span class="input-group-text" id="inputGroupPrepend">End date</span>
+                                        <input id="end" type="date" class="form-control" aria-label="Default"
+                                        aria-describedby="inputGroup-sizing-default" required min="2020-01-01"
+                                        max="2021-01-01" onchange="endDateOnChange()">
+                                        <div class="invalid-feedback">
+                                            Invalid date
+                                        </div>
+                
+                                    </div>
+                                </form>
                             </div>
-                            <form action="" class="was-validated">
-                                <input id="end" type="date" class="form-control" aria-label="Default"
-                                    aria-describedby="inputGroup-sizing-default" required min="2020-01-01"
-                                    max="2021-01-01" onchange="endDateOnChange()">
-                                <div class="invalid-feedback" style="margin-left: 55%;">Invalid date</div>
-                                <div class="valid-feedback" style="margin-left: 82%;">Valid</div>
-                            </form>
                         </div>
+                        
                     </div>
                 </div>
             </div>
