@@ -1,11 +1,11 @@
-if(!sessionStorage.getItem("logged")){
+if (!sessionStorage.getItem("logged")) {
     window.location.href = "login.html"
 }
 
 if (sessionStorage.getItem("projectName") && sessionStorage.getItem("solutionID")) {
-    $(document).ready(function(){
-        $('[data-toggle="tooltip"]').tooltip();   
-      });
+    $(document).ready(function () {
+        $('[data-toggle="tooltip"]').tooltip();
+    });
     projectName = sessionStorage.getItem("projectName")
     solutionID = sessionStorage.getItem("solutionID")
 
@@ -21,8 +21,9 @@ if (sessionStorage.getItem("projectName") && sessionStorage.getItem("solutionID"
 
     getConnections()
     getObj()
+    getRanges()
     getFit()
-}else{
+} else {
     window.location.href = "list.html"
 }
 
@@ -162,6 +163,62 @@ function getObj() {
         )
 }
 
+function getRanges() {
+    fetch(mainURL + 'rangos').then(res => {
+        return res.json()
+    })
+        .then(dataBack => {
+            //Si databack.length == 0 poner mensaje de empty list
+            console.log(dataBack)
+
+            row7 = document.getElementById('row7')
+            row8 = document.getElementById('row8')
+
+            row7TH = document.createElement('th')
+            row7TH.setAttribute("scope", "col");
+            row7TH.classList.add('text-center')
+            row7TH.innerHTML = 'Influence areas'
+
+            row7.appendChild(row7TH)
+
+            row7TH = document.createElement('th')
+            row7TH.setAttribute("scope", "col");
+            row7TH.classList.add('text-center')
+            row7TH.innerHTML = 'Airlines'
+
+            row7.appendChild(row7TH)
+
+            row7TH = document.createElement('th')
+            row7TH.setAttribute("scope", "col");
+            row7TH.classList.add('text-center')
+            row7TH.innerHTML = 'Airports'
+
+            row7.appendChild(row7TH)
+
+            row8TD = document.createElement('td')
+            row8TD.setAttribute("scope", "col");
+            row8TD.classList.add('text-center')
+            row8TD.innerHTML = '(' + dataBack.listaIngresoPerdidoPorAreaInf[0] + ', ' + dataBack.listaIngresoPerdidoPorAreaInf[1] + ')%'
+
+            row8.appendChild(row8TD)
+
+            row8TD = document.createElement('td')
+            row8TD.setAttribute("scope", "col");
+            row8TD.classList.add('text-center')
+            row8TD.innerHTML = '(' + dataBack.listaPasajerosPerdidosPorCompanyia[0] + ', ' + dataBack.listaPasajerosPerdidosPorCompanyia[1] + ')%'
+
+            row8.appendChild(row8TD)
+
+            row8TD = document.createElement('td')
+            row8TD.setAttribute("scope", "col");
+            row8TD.classList.add('text-center')
+            row8TD.innerHTML = '(' + dataBack.listaIngresoPerdidoPorAerDest[0] + ', ' + dataBack.listaIngresoPerdidoPorAerDest[1] + ')%'
+
+            row8.appendChild(row8TD)
+        }
+        )
+}
+
 function getFit() {
     fetch(mainURL + 'hist').then(res => {
         return res.json()
@@ -272,7 +329,7 @@ function exportTableToExcel(tableID, filename = '') {
     }
 }
 
-function logOut(){
+function logOut() {
     sessionStorage.clear()
     window.location.href = "../index.html"
 }
