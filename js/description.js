@@ -1,11 +1,11 @@
-if(!sessionStorage.getItem("logged")){
+if (!sessionStorage.getItem("logged")) {
     window.location.href = "login.html"
 }
 
 
-$(document).ready(function(){
-    $('[data-toggle="tooltip"]').tooltip();   
-  });
+$(document).ready(function () {
+    $('[data-toggle="tooltip"]').tooltip();
+});
 
 projectName = ''
 
@@ -53,6 +53,8 @@ window.onclick = function (event) {
 
 date_PDMAX = new Date(document.getElementById("end").max)
 date_PDMIN = new Date(document.getElementById("end").min)
+startDateValid = false
+endDateValid = false
 
 function algoritmo() {
     err = false
@@ -86,7 +88,7 @@ function algoritmo() {
             contIMG++
         }
     }
-    
+
     if (contIMG != parents[2].children.length) {
         err = true
     }
@@ -106,7 +108,7 @@ function algoritmo() {
     }
 
     idOrder = []
-    
+
     if (contIMG == parents[2].children.length) {
         for (i = 0; i < parents[2].children.length; i++) {
             idOrder[i] = parseInt(parents[2].children[i].children[0].id)
@@ -449,9 +451,12 @@ function startDateOnChange() {
 
     if (date != '' && fecha_ID >= fecha_PDMIN && fecha_ID <= fecha_PDMAX) {
         document.getElementById('end').min = date
+        startDateValid = true
     } else {
         document.getElementById('end').min = date_PDMIN
+        startDateValid = false
     }
+    checkDatesSendRequest()
 }
 
 function endDateOnChange() {
@@ -464,8 +469,52 @@ function endDateOnChange() {
 
     if (date != '' && fecha_FD >= fecha_PDMIN && fecha_FD <= fecha_PDMAX) {
         document.getElementById('start').max = date
+        endDateValid = true
     } else {
         document.getElementById('start').max = date_PDMAX
+        endDateValid = false
+    }
+    checkDatesSendRequest()
+}
+
+function checkDatesSendRequest() {
+    if (startDateValid && endDateValid) {
+        fecha_I = String(document.getElementById("start").value) + '&'
+        fecha_F = String(document.getElementById("end").value)
+        p_fecha_I = 'fecha_inicial='
+        p_fecha_F = 'fecha_final='
+
+
+        url = 'http://localhost:8080/tooltips' + '?' + p_fecha_I + fecha_I + p_fecha_F + fecha_F
+
+        fetch(url).then(res => {
+            return res.json()
+        })
+            .then(dataBack => {
+                //Si databack.length == 0 poner mensaje de empty list
+                document.getElementById('1').setAttribute('data-bs-original-title', dataBack.z1)
+                document.getElementById('1').setAttribute('aria-label', dataBack.z1)
+
+                document.getElementById('2').setAttribute('data-bs-original-title', dataBack.z2)
+                document.getElementById('2').setAttribute('aria-label', dataBack.z2)
+
+                document.getElementById('3').setAttribute('data-bs-original-title', dataBack.z3)
+                document.getElementById('3').setAttribute('aria-label', dataBack.z3)
+
+                document.getElementById('4').setAttribute('data-bs-original-title', dataBack.z4)
+                document.getElementById('4').setAttribute('aria-label', dataBack.z4)
+
+                document.getElementById('5').setAttribute('data-bs-original-title', dataBack.z5)
+                document.getElementById('5').setAttribute('aria-label', dataBack.z5)
+
+
+                document.getElementById('6').setAttribute('data-bs-original-title', dataBack.z6)
+                document.getElementById('6').setAttribute('aria-label', dataBack.z6)
+
+                document.getElementById('7').setAttribute('data-bs-original-title', dataBack.z7)
+                document.getElementById('7').setAttribute('aria-label', dataBack.z7)
+            }
+            )
     }
 }
 
@@ -510,7 +559,7 @@ function deactivateFormChangeButtons() {
         inputs[i].setAttribute("disabled", true)
     }
 
-    document.getElementById("EndDateDiv").style.marginTop = '-4.4%'
+    //document.getElementById("EndDateDiv").style.marginTop = '-4.4%'
 
     document.getElementById("SaveButton").style.display = 'none'
     document.getElementById("NewPButton").style.display = 'block'
@@ -529,11 +578,11 @@ function fillForm(dataBack) {
     document.getElementById('restriction').value = dataBack.res.epi
     document.getElementById('restrictionOut').innerHTML = dataBack.res.epi + '%'
 
-    for(i = 0; i < dataBack.res.pol.length; i++){
+    for (i = 0; i < dataBack.res.pol.length; i++) {
         document.getElementById(dataBack.res.pol[i]).checked = true
     }
 
-    for(i = 0; i < dataBack.order.order.length; i++){
+    for (i = 0; i < dataBack.order.order.length; i++) {
         document.getElementById(dataBack.order.order[i]).remove()
         document.getElementsByClassName("DDContainer")[2].children[i].innerHTML = '<img src="../Utils/Objective' + dataBack.order.order[i] + '.png" draggable="false" width="149" height="49">'
     }
@@ -545,8 +594,8 @@ function fillForm(dataBack) {
 
 }
 
-function emptyForm(){
-    
+function emptyForm() {
+
     document.getElementById('projectName').value = ''
 
     document.getElementById('start').value = ''
@@ -567,17 +616,17 @@ function emptyForm(){
     document.getElementById("c2").value = ''
 }
 
-function goHome(){
+function goHome() {
     emptyForm()
     window.location.href = "/html/home.html"
 }
 
-function goLoad(){
+function goLoad() {
     emptyForm()
     window.location.href = "/html/list.html"
 }
 
-function logOut(){
+function logOut() {
     sessionStorage.clear()
     window.location.href = "../index.html"
 }
