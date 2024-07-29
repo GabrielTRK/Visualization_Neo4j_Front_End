@@ -105,7 +105,32 @@ function getObj() {
             row3.appendChild(th3)
             row4.appendChild(th4)
 
-            for (j = 1; j < 6; j++) {
+            for (id = 1; id < 6; id++) {
+                for (obj = 1; obj < dataBack.length; obj++) {
+                    if (dataBack[obj].nombre == id.toString()) {
+                        row3TH = document.createElement('th')
+                        row3TH.setAttribute("scope", "col");
+                        row3TH.classList.add('text-center')
+                        row3TH.innerHTML = '<img src="../Utils/Objective' + dataBack[obj].nombre + '.png" width="149" height="49">'
+
+                        row4TD = document.createElement('td')
+                        row4TD.setAttribute("scope", "col");
+                        row4TD.classList.add('text-center')
+                        if (id == 1 || id == 4) {
+                            row4TD.innerHTML = dataBack[obj].valor + '%'
+                        } else {
+                            row4TD.innerHTML = dataBack[obj].valor
+                        }
+
+
+
+                        row3.appendChild(row3TH)
+                        row4.appendChild(row4TD)
+                    }
+                }
+            }
+
+            /*for (j = 1; j < 6; j++) {
 
                 row3TH = document.createElement('th')
                 row3TH.setAttribute("scope", "col");
@@ -125,7 +150,7 @@ function getObj() {
 
                 row3.appendChild(row3TH)
                 row4.appendChild(row4TD)
-            }
+            }*/
 
             row5 = document.getElementById('row5')
             row6 = document.getElementById('row6')
@@ -143,7 +168,26 @@ function getObj() {
             row5.appendChild(th5)
             row6.appendChild(th6)
 
-            for (j = 6; j < dataBack.length; j++) {
+            for (id = 6; id < 8; id++) {
+                for (obj = 1; obj < dataBack.length; obj++) {
+                    if (dataBack[obj].nombre == id.toString()) {
+                        row5TH = document.createElement('th')
+                        row5TH.setAttribute("scope", "col");
+                        row5TH.classList.add('text-center')
+                        row5TH.innerHTML = '<img src="../Utils/Objective' + dataBack[obj].nombre + '.png" width="149" height="49">'
+
+                        row6TD = document.createElement('td')
+                        row6TD.setAttribute("scope", "col");
+                        row6TD.classList.add('text-center')
+                        row6TD.innerHTML = dataBack[obj].valor + '%'
+
+                        row5.appendChild(row5TH)
+                        row6.appendChild(row6TD)
+                    }
+                }
+            }
+
+            /*for (j = 6; j < dataBack.length; j++) {
 
                 row5TH = document.createElement('th')
                 row5TH.setAttribute("scope", "col");
@@ -157,7 +201,7 @@ function getObj() {
 
                 row5.appendChild(row5TH)
                 row6.appendChild(row6TD)
-            }
+            }*/
 
         }
         )
