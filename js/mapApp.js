@@ -1,11 +1,26 @@
-if(!sessionStorage.getItem("logged")){
+if (!sessionStorage.getItem("logged")) {
     window.location.href = "login.html"
 }
 
 if (sessionStorage.getItem("projectName") && sessionStorage.getItem("solutionID")) {
-    $(document).ready(function(){
-        $('[data-toggle="tooltip"]').tooltip();   
-      });
+    // Get the modal
+    var modal = document.getElementById("myModal");
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+
+    span.onclick = function () {
+        modal.style.display = "none";
+    }
+
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+
+    $(document).ready(function () {
+        $('[data-toggle="tooltip"]').tooltip();
+    });
     var margin = { top: 50, left: 50, right: 50, bottom: 50 };
     var margin2 = { top: 100, left: 100, right: 400, bottom: 100 };
     height = 400 //- margin.top - margin.bottom;
@@ -35,14 +50,14 @@ if (sessionStorage.getItem("projectName") && sessionStorage.getItem("solutionID"
         .scaleExtent([1, 10])
         .on('zoom', handlezoom);
 
-        var svg = d3.select('#map')
+    var svg = d3.select('#map')
         .append('svg')
         .attr("viewBox", [0, 0, width, height])
         .attr('height', height + margin2.top + margin2.bottom)
         .attr('width', width + margin2.left + margin2.right)
         .append('g')
         .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
-    
+
     var Tooltip = d3.select('#map')
         .append("div")
         .style("opacity", 0)
@@ -52,7 +67,7 @@ if (sessionStorage.getItem("projectName") && sessionStorage.getItem("solutionID"
         .style("border-width", "2px")
         .style("border-radius", "5px")
         .style("padding", "5px")
-    
+
     var mouseover = function (d) {
         Tooltip
             .style("opacity", 1)
@@ -73,24 +88,81 @@ if (sessionStorage.getItem("projectName") && sessionStorage.getItem("solutionID"
             .attr('class', 'connection')
     }
 
+    var connectionClicked = function (d) {
+        console.log(d)
+        modal.style.display = "block";
+        if (d.abierto_cerrado) {
+            document.getElementById('ModalText').innerHTML =
+                html_p_Open +
+                'Departures: ' + d.iataOrigen +
+                html_p_Close +
+
+                html_p_Open +
+                'Destination: ' + d.iataDestino +
+                html_p_Close
+
+                + html_p_Open +
+                'Number of passengers: ' + d.pasajeros +
+                html_p_Close
+
+                + html_p_Open +
+                'Revenue gained in the catchment area: ' + d.ingresos + ' euros' +
+                html_p_Close
+
+                + html_p_Open +
+                'Revenue gained in the destination airport: ' + d.tasas + ' euros' +
+                html_p_Close
+
+                + html_p_Open +
+                'Imported risk: ' + d.riesgo +
+                html_p_Close
+        } else {
+            document.getElementById('ModalText').innerHTML =
+                html_p_Open +
+                'Departures: ' + d.iataOrigen +
+                html_p_Close +
+
+                html_p_Open +
+                'Destination: ' + d.iataDestino +
+                html_p_Close
+
+                + html_p_Open +
+                'Number of affected passengers: ' + d.pasajeros +
+                html_p_Close
+
+                + html_p_Open +
+                'Revenue lost in the catchment area: ' + d.ingresos + ' euros' +
+                html_p_Close
+
+                + html_p_Open +
+                'Revenue lost in the destination airport: ' + d.tasas + ' euros' +
+                html_p_Close
+
+                + html_p_Open +
+                'Avoided risk: ' + d.riesgo +
+                html_p_Close
+        }
+
+    }
+
     function handlezoom() {
         const currentTransform = d3.event.transform;
-    
+
         svg.attr('transform', currentTransform);
     }
-    
+
     function initzoom() {
         svg.call(zoom)
     }
-    
-    
+
+
     d3.queue()
         .defer(d3.json, '../world.topojson')
         .await(drawWorld);
-    
+
     init();
     initzoom();
-}else{
+} else {
     window.location.href = "list.html"
 }
 
@@ -192,6 +264,7 @@ function drawServerResult(dataBack) {
         .on("mouseover", mouseover)
         .on("mousemove", mousemove)
         .on("mouseleave", mouseleave)
+        .on("click", connectionClicked)
 
 }
 
@@ -276,7 +349,7 @@ function goDescription() {
     window.location.href = "/html/description.html"
 }
 
-function logOut(){
+function logOut() {
     sessionStorage.clear()
     window.location.href = "../index.html"
 }

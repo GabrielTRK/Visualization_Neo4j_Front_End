@@ -3,6 +3,12 @@ if (!sessionStorage.getItem("logged")) {
 }
 
 if (sessionStorage.getItem("projectName") && sessionStorage.getItem("solutionID")) {
+    var html_p_Open = '<p>'
+
+    var html_p_Close = '</p>'
+
+    data = null
+    
     $(document).ready(function () {
         $('[data-toggle="tooltip"]').tooltip();
     });
@@ -26,14 +32,83 @@ if (sessionStorage.getItem("projectName") && sessionStorage.getItem("solutionID"
 } else {
     window.location.href = "list.html"
 }
+// Get the modal
+var modal = document.getElementById("myModal");
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
 
+span.onclick = function () {
+    modal.style.display = "none";
+}
 
+window.onclick = function (event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+var connectionClicked = function (d){
+    elemento = encontrarElemento(d.target.innerHTML.split(" - "), data.coordenadasConexiones)
+
+    modal.style.display = "block";
+        if (elemento.abierto_cerrado) {
+            document.getElementById('ModalText').innerHTML =
+                html_p_Open +
+                'Departures: ' + elemento.iataOrigen +
+                html_p_Close +
+
+                html_p_Open +
+                'Destination: ' + elemento.iataDestino +
+                html_p_Close
+
+                + html_p_Open +
+                'Number of passengers: ' + elemento.pasajeros +
+                html_p_Close
+
+                + html_p_Open +
+                'Revenue gained in the catchment area: ' + elemento.ingresos + ' euros' +
+                html_p_Close
+
+                + html_p_Open +
+                'Revenue gained in the destination airport: ' + elemento.tasas + ' euros' +
+                html_p_Close
+
+                + html_p_Open +
+                'Imported risk: ' + elemento.riesgo +
+                html_p_Close
+        } else {
+            document.getElementById('ModalText').innerHTML =
+                html_p_Open +
+                'Departures: ' + elemento.iataOrigen +
+                html_p_Close +
+
+                html_p_Open +
+                'Destination: ' + elemento.iataDestino +
+                html_p_Close
+
+                + html_p_Open +
+                'Number of affected passengers: ' + elemento.pasajeros +
+                html_p_Close
+
+                + html_p_Open +
+                'Revenue lost in the catchment area: ' + elemento.ingresos + ' euros' +
+                html_p_Close
+
+                + html_p_Open +
+                'Revenue lost in the destination airport: ' + elemento.tasas + ' euros' +
+                html_p_Close
+
+                + html_p_Open +
+                'Avoided risk: ' + elemento.riesgo +
+                html_p_Close
+        }
+}
 function getConnections() {
     fetch(mainURL + currentDay + separator + currentAir).then(res => {
         return res.json()
     })
         .then(dataBack => {
             //Si databack.length == 0 poner mensaje de empty list
+            data = dataBack
             document.getElementById('Sdate').value = dataBack.fechas.Fecha_Actual
             document.getElementById('Sdate').min = dataBack.fechas.Fecha_Inicial
             document.getElementById('Sdate').max = dataBack.fechas.Fecha_Final
@@ -62,6 +137,7 @@ function getConnections() {
                 row1TH.setAttribute("scope", "col");
                 row1TH.classList.add('text-center')
                 row1TH.innerHTML = dataBack.coordenadasConexiones[i].iataOrigen + ' - ' + dataBack.coordenadasConexiones[i].iataDestino
+                row1TH.onclick = connectionClicked
 
                 row2TD = document.createElement('td')
                 row2TD.setAttribute("scope", "col");
@@ -87,7 +163,7 @@ function getObj() {
     })
         .then(dataBack => {
             //Si databack.length == 0 poner mensaje de empty list
-            console.log(dataBack)
+            //console.log(dataBack)
 
             row3 = document.getElementById('row3')
             row4 = document.getElementById('row4')
@@ -213,7 +289,7 @@ function getRanges() {
     })
         .then(dataBack => {
             //Si databack.length == 0 poner mensaje de empty list
-            console.log(dataBack)
+            //console.log(dataBack)
 
             row7 = document.getElementById('row7')
             row8 = document.getElementById('row8')
@@ -269,7 +345,7 @@ function getFit() {
     })
         .then(dataBack => {
             //Si databack.length == 0 poner mensaje de empty list
-            console.log(dataBack)
+            //console.log(dataBack)
 
             row9 = document.getElementById('row9')
             row10 = document.getElementById('row10')
@@ -376,4 +452,18 @@ function exportTableToExcel(tableID, filename = '') {
 function logOut() {
     sessionStorage.clear()
     window.location.href = "../index.html"
+}
+
+function encontrarElemento(lista, conexiones){
+    pos = 0
+    encontrado = false
+    elemento = null
+    while(pos < conexiones.length && !encontrado){
+        if(conexiones[pos].iataOrigen == lista[0] && conexiones[pos].iataDestino == lista[1]){
+            encontrado = true
+            elemento = conexiones[pos]
+        }
+        pos++
+    }
+    return elemento
 }
