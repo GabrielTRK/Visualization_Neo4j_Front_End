@@ -19,7 +19,7 @@ if (sessionStorage.getItem("projectName")) {
             main = document.getElementById("MainList")
             //Si databack.length == 0 poner mensaje de empty list
             for (i = 0; i < dataBack.length; i++) {
-                console.log(dataBack[i])
+                
                 solutionI = document.createElement("button")
                 solutionI.setAttribute("type", "button");
                 solutionI.classList.add("Solution-" + dataBack[i].id)
@@ -177,12 +177,12 @@ function addRisk(divInputIR, databack) {
 
 function optionSelected(event) {
     //Redirigir a lista de soluciones guardando el nombre del proyecto en sessionStorage
-    console.log(event.target.classList[0].split("-")[1])
+    
     sessionStorage.setItem("solutionID", event.target.classList[0].split("-")[1]);
     window.location.href = "map.html"
 }
 
-function goToDetails() {
+function goToDescription() {
     sessionStorage.setItem("load", 'load')
     window.location.href = "description.html"
 }

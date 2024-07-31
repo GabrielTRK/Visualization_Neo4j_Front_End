@@ -43,11 +43,13 @@ var span = document.getElementsByClassName("close")[0];
 
 span.onclick = function () {
     modal.style.display = "none";
+    modalR.style.display = "none";
 }
 
 window.onclick = function (event) {
     if (event.target == modal) {
         modal.style.display = "none";
+        modalR.style.display = "none";
     }
 }
 
@@ -144,8 +146,8 @@ function algoritmo() {
         modal.style.display = "block";
         document.getElementById('ModalText').innerHTML = "Invalid data"
     } else {
-        modalR.style.display = "block";
-        document.getElementById('ModalRText').innerHTML = "Saving project and Running optimization..."
+        modal.style.display = "block";
+        document.getElementById('ModalText').innerHTML = "Saving project and Running optimization..."
 
         p_fecha_I = 'fecha_inicial='
         p_fecha_F = 'fecha_final='
@@ -161,7 +163,7 @@ function algoritmo() {
 
         p_nombre = 'nombre='
 
-        url = 'https://192.168.1.41:8080/optimize' + '?' + p_fecha_I + fecha_I + p_fecha_F + fecha_F + p_iteraciones + String(0) + '&' + p_num_P + numP +
+        url = 'https://192.168.1.41:8080/optimize' + '?' + p_fecha_I + fecha_I + p_fecha_F + fecha_F + p_iteraciones + String(10) + '&' + p_num_P + numP +
             p_iW + iW + p_c1 + c1 + p_c2 + c2 + p_m + String(0.0) + '&' + p_p + String(0.0) + '&' + p_res_epi + epiRes + p_nombre + projectName
 
         const params = {
@@ -176,8 +178,9 @@ function algoritmo() {
         fetch(url, options)
             .then(response => response.json())
             .then(response => {
-                if (response) {
-                    modalR.style.display = "none";
+                if (response.ok_KO) {
+                    //modalR.style.display = "none";
+                    console.log(response)
 
                     //Guardar id de solucion y proyecto en local storage
 
@@ -188,17 +191,17 @@ function algoritmo() {
                 }
                 else {
                     //Mostrar modal con error
-                    modalR.style.display = "none";
+                    //modalR.style.display = "none";
                     modal.style.display = "block";
-                    document.getElementById('ModalText').innerHTML = "The name of the project already exists"
+                    document.getElementById('ModalText').innerHTML = response.mensaje
                 }
             });
     }
 }
 
 function algoritmoGuardado() {
-    modalR.style.display = "block";
-    document.getElementById('ModalRText').innerHTML = "Saving project and Running optimization..."
+    modal.style.display = "block";
+    document.getElementById('ModalText').innerHTML = "Running optimization..."
 
     url = 'https://192.168.1.41:8080/' + projectName + '/optimize'
 
@@ -210,8 +213,8 @@ function algoritmoGuardado() {
     fetch(url, options)
         .then(response => response.json())
         .then(response => {
-            if (response) {
-                modalR.style.display = "none";
+            if (response.ok_KO) {
+                //modalR.style.display = "none";
 
                 //Guardar id de solucion y proyecto en local storage
 
@@ -222,7 +225,10 @@ function algoritmoGuardado() {
             }
             else {
                 //Mostrar modal con error
-                modalR.style.display = "none";
+                console.log(response)
+                //modalR.style.display = "none";
+                modal.style.display = "block";
+                document.getElementById('ModalText').innerHTML = response.mensaje
             }
         });
 
@@ -331,7 +337,7 @@ function saveConf() {
 
         p_nombre = 'nombre='
 
-        url = 'https://192.168.1.41:8080/saveP' + '?' + p_fecha_I + fecha_I + p_fecha_F + fecha_F + p_iteraciones + String(0) + '&' + p_num_P + numP +
+        url = 'https://192.168.1.41:8080/saveP' + '?' + p_fecha_I + fecha_I + p_fecha_F + fecha_F + p_iteraciones + String(10) + '&' + p_num_P + numP +
             p_iW + iW + p_c1 + c1 + p_c2 + c2 + p_m + String(0.0) + '&' + p_p + String(0.0) + '&' + p_res_epi + epiRes + p_nombre + projectName
 
         const params = {
@@ -346,16 +352,16 @@ function saveConf() {
         fetch(url, options)
             .then(response => response.json())
             .then(response => {
-                if (response) {
+                if (response.ok_KO) {
                     modal.style.display = "block";
-                    document.getElementById('ModalText').innerHTML = "Project saved"
+                    document.getElementById('ModalText').innerHTML = "Project saved."
 
                     deactivateFormChangeButtons()
                 }
                 else {
                     //Mostrar modal con error
                     modal.style.display = "block";
-                    document.getElementById('ModalText').innerHTML = "The name of the project already exists"
+                    document.getElementById('ModalText').innerHTML = response.mensaje
                 }
             });
     }

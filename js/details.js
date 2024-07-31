@@ -136,7 +136,7 @@ function getConnections() {
                 row1TH = document.createElement('th')
                 row1TH.setAttribute("scope", "col");
                 row1TH.classList.add('text-center')
-                row1TH.innerHTML = dataBack.coordenadasConexiones[i].iataOrigen + ' - ' + dataBack.coordenadasConexiones[i].iataDestino
+                row1TH.innerHTML = '<a href="#" style="text-decoration:none; color: #000;">' + dataBack.coordenadasConexiones[i].iataOrigen + ' - ' + dataBack.coordenadasConexiones[i].iataDestino + '</a>'
                 row1TH.onclick = connectionClicked
 
                 row2TD = document.createElement('td')
@@ -466,4 +466,9 @@ function encontrarElemento(lista, conexiones){
         pos++
     }
     return elemento
+}
+
+function goToDescription() {
+    sessionStorage.setItem("load", 'load')
+    window.location.href = "description.html"
 }
