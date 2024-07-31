@@ -36,20 +36,20 @@ if (sessionStorage.getItem("load")) {
 
 // Get the modal
 var modal = document.getElementById("myModalSaved");
-var modalR = document.getElementById("myModalRun");
+//var modalR = document.getElementById("myModalRun");
 
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close")[0];
 
 span.onclick = function () {
     modal.style.display = "none";
-    modalR.style.display = "none";
+    //modalR.style.display = "none";
 }
 
 window.onclick = function (event) {
     if (event.target == modal) {
         modal.style.display = "none";
-        modalR.style.display = "none";
+        //modalR.style.display = "none";
     }
 }
 

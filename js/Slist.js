@@ -3,9 +3,9 @@ if (!sessionStorage.getItem("logged")) {
 }
 
 if (sessionStorage.getItem("projectName")) {
-    $(document).ready(function(){
-        $('[data-toggle="tooltip"]').tooltip();   
-      });
+    $(document).ready(function () {
+        $('[data-toggle="tooltip"]').tooltip();
+    });
     projectName = sessionStorage.getItem("projectName")
 
     document.getElementById('ListTitle').innerHTML = 'Solutions list from project ' + projectName
@@ -19,7 +19,7 @@ if (sessionStorage.getItem("projectName")) {
             main = document.getElementById("MainList")
             //Si databack.length == 0 poner mensaje de empty list
             for (i = 0; i < dataBack.length; i++) {
-                
+
                 solutionI = document.createElement("button")
                 solutionI.setAttribute("type", "button");
                 solutionI.classList.add("Solution-" + dataBack[i].id)
@@ -177,7 +177,7 @@ function addRisk(divInputIR, databack) {
 
 function optionSelected(event) {
     //Redirigir a lista de soluciones guardando el nombre del proyecto en sessionStorage
-    
+
     sessionStorage.setItem("solutionID", event.target.classList[0].split("-")[1]);
     window.location.href = "map.html"
 }
@@ -185,6 +185,62 @@ function optionSelected(event) {
 function goToDescription() {
     sessionStorage.setItem("load", 'load')
     window.location.href = "description.html"
+}
+
+function algoritmoGuardado() {
+    // Get the modal
+    var modal = document.getElementById("myModalSaved");
+    //var modalR = document.getElementById("myModalRun");
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+
+    span.onclick = function () {
+        modal.style.display = "none";
+        //modalR.style.display = "none";
+    }
+
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+            //modalR.style.display = "none";
+        }
+    }
+
+
+    modal.style.display = "block";
+    document.getElementById('ModalText').innerHTML = "Running optimization..."
+
+    url = 'https://192.168.1.41:8080/' + projectName + '/optimize'
+
+    const options = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' }
+    };
+
+    fetch(url, options)
+        .then(response => response.json())
+        .then(response => {
+            if (response.ok_KO) {
+                //modalR.style.display = "none";
+
+                //Guardar id de solucion y proyecto en local storage
+
+                //Redirigir a mapa
+
+
+
+            }
+            else {
+                //Mostrar modal con error
+                console.log(response)
+                //modalR.style.display = "none";
+                modal.style.display = "block";
+                document.getElementById('ModalText').innerHTML = response.mensaje
+            }
+        });
+
+
 }
 
 function logOut() {
