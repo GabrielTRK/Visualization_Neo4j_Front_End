@@ -23,7 +23,7 @@ if (sessionStorage.getItem("projectName") && sessionStorage.getItem("solutionID"
     minDateString = ''
     numDias = 0
 
-    mainURL = 'http://localhost:8080/' + projectName + separator + solutionID + separator
+    mainURL = 'https://192.168.1.41:8080/' + projectName + separator + solutionID + separator
 
     getConnections()
     getObj()

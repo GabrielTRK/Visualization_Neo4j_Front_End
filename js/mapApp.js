@@ -36,7 +36,7 @@ if (sessionStorage.getItem("projectName") && sessionStorage.getItem("solutionID"
 
     currentAnimation = false;
 
-    mainURL = 'http://localhost:8080/' + projectName + '/' + solutionID
+    mainURL = 'http://192.168.1.41:8080/' + projectName + '/' + solutionID
 
     var projection = d3.geoMercator()
         .translate([width / 2, height / 2])
