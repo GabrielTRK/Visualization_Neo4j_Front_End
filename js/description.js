@@ -13,7 +13,7 @@ if (sessionStorage.getItem("load")) {
     projectName = sessionStorage.getItem("projectName")
 
     //Load project, desactivar inputs, y cambiar botones
-    url = 'https://localhost:8080/loadP'
+    url = 'https://192.168.1.41:8080/loadP'
 
     fetch(url).then(res => {
         return res.json()
@@ -161,7 +161,7 @@ function algoritmo() {
 
         p_nombre = 'nombre='
 
-        url = 'https://localhost:8080/optimize' + '?' + p_fecha_I + fecha_I + p_fecha_F + fecha_F + p_iteraciones + String(0) + '&' + p_num_P + numP +
+        url = 'https://192.168.1.41:8080/optimize' + '?' + p_fecha_I + fecha_I + p_fecha_F + fecha_F + p_iteraciones + String(0) + '&' + p_num_P + numP +
             p_iW + iW + p_c1 + c1 + p_c2 + c2 + p_m + String(0.0) + '&' + p_p + String(0.0) + '&' + p_res_epi + epiRes + p_nombre + projectName
 
         const params = {
@@ -200,7 +200,7 @@ function algoritmoGuardado() {
     modalR.style.display = "block";
     document.getElementById('ModalRText').innerHTML = "Saving project and Running optimization..."
 
-    url = 'https://localhost:8080/' + projectName + '/optimize'
+    url = 'https://192.168.1.41:8080/' + projectName + '/optimize'
 
     const options = {
         method: 'POST',
@@ -331,7 +331,7 @@ function saveConf() {
 
         p_nombre = 'nombre='
 
-        url = 'https://localhost:8080/saveP' + '?' + p_fecha_I + fecha_I + p_fecha_F + fecha_F + p_iteraciones + String(0) + '&' + p_num_P + numP +
+        url = 'https://192.168.1.41:8080/saveP' + '?' + p_fecha_I + fecha_I + p_fecha_F + fecha_F + p_iteraciones + String(0) + '&' + p_num_P + numP +
             p_iW + iW + p_c1 + c1 + p_c2 + c2 + p_m + String(0.0) + '&' + p_p + String(0.0) + '&' + p_res_epi + epiRes + p_nombre + projectName
 
         const params = {

@@ -10,7 +10,7 @@ if (sessionStorage.getItem("projectName")) {
 
     document.getElementById('ListTitle').innerHTML = 'Solutions list from project ' + projectName
 
-    url = 'http://192.168.1.41:8080/' + projectName + '/loadS'
+    url = 'https://192.168.1.41:8080/' + projectName + '/loadS'
 
     fetch(url).then(res => {
         return res.json()

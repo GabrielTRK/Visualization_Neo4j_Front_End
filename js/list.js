@@ -11,7 +11,7 @@ sessionStorage.removeItem("load")
 switchsIDs = ['EU', 'NA', 'SA', 'AS', 'AF']
 switchsNames = ['Europe', 'North America', 'South America', 'Asia', 'Africa']
 
-url = 'http://192.168.1.41:8080/loadP'
+url = 'https://192.168.1.41:8080/loadP'
 
 fetch(url).then(res => {
     return res.json()
