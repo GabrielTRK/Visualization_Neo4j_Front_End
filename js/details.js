@@ -53,11 +53,11 @@ var connectionClicked = function (d){
         if (elemento.abierto_cerrado) {
             document.getElementById('ModalText').innerHTML =
                 html_p_Open +
-                'Departures: ' + elemento.iataOrigen +
+                'Departures: '+ elemento.aerOrigen + ' (' + elemento.iataOrigen + ')'+
                 html_p_Close +
 
                 html_p_Open +
-                'Destination: ' + elemento.iataDestino +
+                'Destination: '+ elemento.aerDestino + ' (' + elemento.iataDestino + ')'+
                 html_p_Close
 
                 + html_p_Open +
@@ -78,11 +78,11 @@ var connectionClicked = function (d){
         } else {
             document.getElementById('ModalText').innerHTML =
                 html_p_Open +
-                'Departures: ' + elemento.iataOrigen +
+                'Departures: '+ elemento.aerOrigen + ' (' + elemento.iataOrigen + ')'+
                 html_p_Close +
 
                 html_p_Open +
-                'Destination: ' + elemento.iataDestino +
+                'Destination: '+ elemento.aerDestino + ' (' + elemento.iataDestino + ')'+
                 html_p_Close
 
                 + html_p_Open +

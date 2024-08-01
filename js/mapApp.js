@@ -94,11 +94,11 @@ if (sessionStorage.getItem("projectName") && sessionStorage.getItem("solutionID"
         if (d.abierto_cerrado) {
             document.getElementById('ModalText').innerHTML =
                 html_p_Open +
-                'Departures: ' + d.iataOrigen +
+                'Departures: '+ d.aerOrigen + ' (' + d.iataOrigen + ')'+
                 html_p_Close +
 
                 html_p_Open +
-                'Destination: ' + d.iataDestino +
+                'Destination: '+ d.aerDestino + ' (' + d.iataDestino + ')'+
                 html_p_Close
 
                 + html_p_Open +
@@ -119,11 +119,11 @@ if (sessionStorage.getItem("projectName") && sessionStorage.getItem("solutionID"
         } else {
             document.getElementById('ModalText').innerHTML =
                 html_p_Open +
-                'Departures: ' + d.iataOrigen +
+                'Departures: '+ d.aerOrigen + ' (' + d.iataOrigen + ')'+
                 html_p_Close +
 
                 html_p_Open +
-                'Destination: ' + d.iataDestino +
+                'Destination: '+ d.aerDestino + ' (' + d.iataDestino + ')'+
                 html_p_Close
 
                 + html_p_Open +
