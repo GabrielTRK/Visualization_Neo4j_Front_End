@@ -47,8 +47,9 @@ window.onclick = function (event) {
     }
 }
 var connectionClicked = function (d){
-    elemento = encontrarElemento(d.target.innerHTML.split(" - "), data.coordenadasConexiones)
-
+    
+    elemento = encontrarElemento(d.target.classList[0].split("-"), data.coordenadasConexiones)
+    
     modal.style.display = "block";
         if (elemento.abierto_cerrado) {
             document.getElementById('ModalText').innerHTML =
@@ -135,18 +136,22 @@ function getConnections() {
             for (i = 0; i < dataBack.coordenadasConexiones.length; i++) {
                 row1TH = document.createElement('th')
                 row1TH.setAttribute("scope", "col");
+                row1TH.classList.add(dataBack.coordenadasConexiones[i].iataOrigen + '-' + dataBack.coordenadasConexiones[i].iataDestino)
                 row1TH.classList.add('text-center')
-                row1TH.innerHTML = '<a href="#" style="text-decoration:none; color: #000;">' + dataBack.coordenadasConexiones[i].iataOrigen + ' - ' + dataBack.coordenadasConexiones[i].iataDestino + '</a>'
+                row1TH.innerHTML = '<a class="' + dataBack.coordenadasConexiones[i].iataOrigen + '-' + dataBack.coordenadasConexiones[i].iataDestino + '" href="#" style="text-decoration:none; color: #000;">' + dataBack.coordenadasConexiones[i].iataOrigen + ' - ' + dataBack.coordenadasConexiones[i].iataDestino + '</a>'
                 row1TH.onclick = connectionClicked
 
                 row2TD = document.createElement('td')
                 row2TD.setAttribute("scope", "col");
+                row2TD.classList.add(dataBack.coordenadasConexiones[i].iataOrigen + '-' + dataBack.coordenadasConexiones[i].iataDestino)
                 row2TD.classList.add('text-center')
                 if (dataBack.coordenadasConexiones[i].abierto_cerrado) {
-                    row2TD.innerHTML = '1'
+                    row2TD.innerHTML = '<a class="' + dataBack.coordenadasConexiones[i].iataOrigen + '-' + dataBack.coordenadasConexiones[i].iataDestino + '" href="#" style="text-decoration:none; color: #000;">' + '1' + '</a>'
                 } else {
-                    row2TD.innerHTML = '0'
+                    row2TD.innerHTML = '<a class="' + dataBack.coordenadasConexiones[i].iataOrigen + '-' + dataBack.coordenadasConexiones[i].iataDestino + '" href="#" style="text-decoration:none; color: red;">' + '0' + '</a>'
+                    
                 }
+                row2TD.onclick = connectionClicked
 
                 row1.appendChild(row1TH)
                 row2.appendChild(row2TD)
