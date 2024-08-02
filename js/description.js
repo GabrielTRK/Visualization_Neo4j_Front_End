@@ -170,7 +170,7 @@ function algoritmo() {
 
         p_nombre = 'nombre='
 
-        numIter = Math.floor(Math.random() * (1000 - 500 + 1) + 500)
+        numIter = 0
 
         url = 'https://192.168.1.41:8080/optimize' + '?' + p_fecha_I + fecha_I + p_fecha_F + fecha_F + p_iteraciones + String(numIter) + '&' + p_num_P + numP +
             p_iW + iW + p_c1 + c1 + p_c2 + c2 + p_m + String(0.0) + '&' + p_p + String(0.0) + '&' + p_res_epi + epiRes + p_nombre + projectName
@@ -355,7 +355,7 @@ function saveConf() {
 
         p_nombre = 'nombre='
 
-        numIter = Math.floor(Math.random() * (1000 - 500 + 1) + 500)
+        numIter = 0
 
         url = 'https://192.168.1.41:8080/saveP' + '?' + p_fecha_I + fecha_I + p_fecha_F + fecha_F + p_iteraciones + String(numIter) + '&' + p_num_P + numP +
             p_iW + iW + p_c1 + c1 + p_c2 + c2 + p_m + String(0.0) + '&' + p_p + String(0.0) + '&' + p_res_epi + epiRes + p_nombre + projectName
