@@ -19,6 +19,12 @@ fetch(url).then(res => {
     .then(dataBack => {
         main = document.getElementById("MainList")
         //Si databack.length == 0 poner mensaje de empty list
+        if(dataBack.length == 0){
+            noProjects = document.createElement("p")
+            noProjects.innerHTML = 'No projects'
+            noProjects.classList.add('text-center')
+            main.appendChild(noProjects)
+        }
         for (i = 0; i < dataBack.length; i++) {
             
             projectI = document.createElement("button")

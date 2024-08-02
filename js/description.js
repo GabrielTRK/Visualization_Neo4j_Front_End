@@ -61,7 +61,14 @@ endDateValid = false
 function algoritmo() {
     err = false
 
-    projectName = document.getElementById("projectName").value;
+    //projectName = document.getElementById("projectName").value;
+
+    projectNameTrimmed = ''
+
+    for(i = 0; i < document.getElementById("projectName").value.split(' ').length; i++){
+        projectNameTrimmed += document.getElementById("projectName").value.split(' ')[i]
+    }
+    projectName = projectNameTrimmed
 
     if (projectName == '') {
         err = true
@@ -163,7 +170,9 @@ function algoritmo() {
 
         p_nombre = 'nombre='
 
-        url = 'https://192.168.1.41:8080/optimize' + '?' + p_fecha_I + fecha_I + p_fecha_F + fecha_F + p_iteraciones + String(10) + '&' + p_num_P + numP +
+        numIter = Math.floor(Math.random() * (1000 - 500 + 1) + 500)
+
+        url = 'https://192.168.1.41:8080/optimize' + '?' + p_fecha_I + fecha_I + p_fecha_F + fecha_F + p_iteraciones + String(numIter) + '&' + p_num_P + numP +
             p_iW + iW + p_c1 + c1 + p_c2 + c2 + p_m + String(0.0) + '&' + p_p + String(0.0) + '&' + p_res_epi + epiRes + p_nombre + projectName
 
         const params = {
@@ -239,7 +248,16 @@ function saveConf() {
     //Comprobar datos y enviar error en caso de no validez
     err = false
 
-    projectName = document.getElementById("projectName").value;
+    //projectName = document.getElementById("projectName").value;
+    
+    projectNameTrimmed = ''
+
+    for(i = 0; i < document.getElementById("projectName").value.split(' ').length; i++){
+        projectNameTrimmed += document.getElementById("projectName").value.split(' ')[i]
+    }
+    projectName = projectNameTrimmed
+
+    console.log(projectName)
 
     if (projectName == '') {
         err = true
@@ -337,7 +355,9 @@ function saveConf() {
 
         p_nombre = 'nombre='
 
-        url = 'https://192.168.1.41:8080/saveP' + '?' + p_fecha_I + fecha_I + p_fecha_F + fecha_F + p_iteraciones + String(10) + '&' + p_num_P + numP +
+        numIter = Math.floor(Math.random() * (1000 - 500 + 1) + 500)
+
+        url = 'https://192.168.1.41:8080/saveP' + '?' + p_fecha_I + fecha_I + p_fecha_F + fecha_F + p_iteraciones + String(numIter) + '&' + p_num_P + numP +
             p_iW + iW + p_c1 + c1 + p_c2 + c2 + p_m + String(0.0) + '&' + p_p + String(0.0) + '&' + p_res_epi + epiRes + p_nombre + projectName
 
         const params = {

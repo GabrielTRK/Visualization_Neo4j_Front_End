@@ -18,6 +18,12 @@ if (sessionStorage.getItem("projectName")) {
         .then(dataBack => {
             main = document.getElementById("MainList")
             //Si databack.length == 0 poner mensaje de empty list
+            if(dataBack.length == 0){
+                noSolutions = document.createElement("p")
+                noSolutions.innerHTML = 'No solutions'
+                noSolutions.classList.add('text-center')
+                main.appendChild(noSolutions)
+            }
             for (i = 0; i < dataBack.length; i++) {
 
                 solutionI = document.createElement("button")
