@@ -644,12 +644,12 @@ function emptyForm() {
 
 function goHome() {
     emptyForm()
-    window.location.href = "/html/home.html"
+    window.location.href = "home.html"
 }
 
 function goLoad() {
     emptyForm()
-    window.location.href = "/html/list.html"
+    window.location.href = "list.html"
 }
 
 function logOut() {

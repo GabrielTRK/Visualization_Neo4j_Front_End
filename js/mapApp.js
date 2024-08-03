@@ -346,7 +346,7 @@ function actualizarBotones() {
 
 function goDescription() {
     sessionStorage.setItem("load", 'load')
-    window.location.href = "/html/description.html"
+    window.location.href = "description.html"
 }
 
 function logOut() {
