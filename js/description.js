@@ -1,6 +1,6 @@
-if (!sessionStorage.getItem("logged")) {
+/*if (!sessionStorage.getItem("logged")) {
     window.location.href = "login.html"
-}
+}*/
 
 
 $(document).ready(function () {
@@ -13,7 +13,7 @@ if (sessionStorage.getItem("load")) {
     projectName = sessionStorage.getItem("projectName")
 
     //Load project, desactivar inputs, y cambiar botones
-    url = 'https://192.168.1.41:8080/loadP'
+    url = 'https://138.4.92.155:8081/loadP'
 
     fetch(url).then(res => {
         return res.json()
@@ -172,7 +172,7 @@ function algoritmo() {
 
         numIter = 0
 
-        url = 'https://192.168.1.41:8080/optimize' + '?' + p_fecha_I + fecha_I + p_fecha_F + fecha_F + p_iteraciones + String(numIter) + '&' + p_num_P + numP +
+        url = 'https://138.4.92.155:8081/optimize' + '?' + p_fecha_I + fecha_I + p_fecha_F + fecha_F + p_iteraciones + String(numIter) + '&' + p_num_P + numP +
             p_iW + iW + p_c1 + c1 + p_c2 + c2 + p_m + String(0.0) + '&' + p_p + String(0.0) + '&' + p_res_epi + epiRes + p_nombre + projectName
 
         const params = {
@@ -212,7 +212,7 @@ function algoritmoGuardado() {
     modal.style.display = "block";
     document.getElementById('ModalText').innerHTML = "Running optimization..."
 
-    url = 'https://192.168.1.41:8080/' + projectName + '/optimize'
+    url = 'https://138.4.92.155:8081/' + projectName + '/optimize'
 
     const options = {
         method: 'POST',
@@ -357,7 +357,7 @@ function saveConf() {
 
         numIter = 0
 
-        url = 'https://192.168.1.41:8080/saveP' + '?' + p_fecha_I + fecha_I + p_fecha_F + fecha_F + p_iteraciones + String(numIter) + '&' + p_num_P + numP +
+        url = 'https://138.4.92.155:8081/saveP' + '?' + p_fecha_I + fecha_I + p_fecha_F + fecha_F + p_iteraciones + String(numIter) + '&' + p_num_P + numP +
             p_iW + iW + p_c1 + c1 + p_c2 + c2 + p_m + String(0.0) + '&' + p_p + String(0.0) + '&' + p_res_epi + epiRes + p_nombre + projectName
 
         const params = {
@@ -511,7 +511,7 @@ function checkDatesSendRequest() {
         p_fecha_F = 'fecha_final='
 
 
-        url = 'https://192.168.1.41:8080/tooltips' + '?' + p_fecha_I + fecha_I + p_fecha_F + fecha_F
+        url = 'https://138.4.92.155:8081/tooltips' + '?' + p_fecha_I + fecha_I + p_fecha_F + fecha_F
 
         fetch(url).then(res => {
             return res.json()
@@ -521,17 +521,17 @@ function checkDatesSendRequest() {
                 document.getElementById('1').setAttribute('data-bs-original-title', dataBack.z1)
                 document.getElementById('1').setAttribute('aria-label', dataBack.z1)
 
-                document.getElementById('2').setAttribute('data-bs-original-title', dataBack.z2)
-                document.getElementById('2').setAttribute('aria-label', dataBack.z2)
+                /*document.getElementById('2').setAttribute('data-bs-original-title', dataBack.z2)
+                document.getElementById('2').setAttribute('aria-label', dataBack.z2)*/
 
-                document.getElementById('3').setAttribute('data-bs-original-title', dataBack.z3)
-                document.getElementById('3').setAttribute('aria-label', dataBack.z3)
+                /*document.getElementById('3').setAttribute('data-bs-original-title', dataBack.z3)
+                document.getElementById('3').setAttribute('aria-label', dataBack.z3)*/
 
                 document.getElementById('4').setAttribute('data-bs-original-title', dataBack.z4)
                 document.getElementById('4').setAttribute('aria-label', dataBack.z4)
 
-                document.getElementById('5').setAttribute('data-bs-original-title', dataBack.z5)
-                document.getElementById('5').setAttribute('aria-label', dataBack.z5)
+                /*document.getElementById('5').setAttribute('data-bs-original-title', dataBack.z5)
+                document.getElementById('5').setAttribute('aria-label', dataBack.z5)*/
 
 
                 document.getElementById('6').setAttribute('data-bs-original-title', dataBack.z6)

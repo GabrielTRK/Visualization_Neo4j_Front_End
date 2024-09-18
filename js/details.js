@@ -1,6 +1,6 @@
-if (!sessionStorage.getItem("logged")) {
+/*if (!sessionStorage.getItem("logged")) {
     window.location.href = "login.html"
-}
+}*/
 
 if (sessionStorage.getItem("projectName") && sessionStorage.getItem("solutionID")) {
     var html_p_Open = '<p>'
@@ -23,7 +23,7 @@ if (sessionStorage.getItem("projectName") && sessionStorage.getItem("solutionID"
     minDateString = ''
     numDias = 0
 
-    mainURL = 'https://192.168.1.41:8080/' + projectName + separator + solutionID + separator
+    mainURL = 'https://138.4.92.155:8081/' + projectName + separator + solutionID + separator
 
     getConnections()
     getObj()
@@ -138,7 +138,8 @@ function getConnections() {
                 row1TH.setAttribute("scope", "col");
                 row1TH.classList.add(dataBack.coordenadasConexiones[i].iataOrigen + '-' + dataBack.coordenadasConexiones[i].iataDestino)
                 row1TH.classList.add('text-center')
-                row1TH.innerHTML = '<a class="' + dataBack.coordenadasConexiones[i].iataOrigen + '-' + dataBack.coordenadasConexiones[i].iataDestino + '" href="#" style="text-decoration:none; color: #000;">' + dataBack.coordenadasConexiones[i].iataOrigen + ' - ' + dataBack.coordenadasConexiones[i].iataDestino + '</a>'
+                //row1TH.innerHTML = '<a class="' + dataBack.coordenadasConexiones[i].iataOrigen + '-' + dataBack.coordenadasConexiones[i].iataDestino + '" href="#" style="text-decoration:none; color: #000;">' + dataBack.coordenadasConexiones[i].iataOrigen + ' - ' + dataBack.coordenadasConexiones[i].iataDestino + '</a>'
+                row1TH.innerHTML = dataBack.coordenadasConexiones[i].iataOrigen + ' - ' + dataBack.coordenadasConexiones[i].iataDestino
                 row1TH.onclick = connectionClicked
 
                 row2TD = document.createElement('td')
@@ -146,10 +147,13 @@ function getConnections() {
                 row2TD.classList.add(dataBack.coordenadasConexiones[i].iataOrigen + '-' + dataBack.coordenadasConexiones[i].iataDestino)
                 row2TD.classList.add('text-center')
                 if (dataBack.coordenadasConexiones[i].abierto_cerrado) {
-                    row2TD.innerHTML = '<a class="' + dataBack.coordenadasConexiones[i].iataOrigen + '-' + dataBack.coordenadasConexiones[i].iataDestino + '" href="#" style="text-decoration:none; color: #000;">' + '1' + '</a>'
+                    //row2TD.innerHTML = '<a class="' + dataBack.coordenadasConexiones[i].iataOrigen + '-' + dataBack.coordenadasConexiones[i].iataDestino + '" href="#" style="text-decoration:none; color: #000;">' + '1' + '</a>'
+                    row2TD.innerHTML = '1'
+                    row2TD.style.color = 'black'
                 } else {
-                    row2TD.innerHTML = '<a class="' + dataBack.coordenadasConexiones[i].iataOrigen + '-' + dataBack.coordenadasConexiones[i].iataDestino + '" href="#" style="text-decoration:none; color: red;">' + '0' + '</a>'
-                    
+                    //row2TD.innerHTML = '<a class="' + dataBack.coordenadasConexiones[i].iataOrigen + '-' + dataBack.coordenadasConexiones[i].iataDestino + '" href="#" style="text-decoration:none; color: red;">' + '0' + '</a>'
+                    row2TD.innerHTML = '0'
+                    row2TD.style.color = 'red'
                 }
                 row2TD.onclick = connectionClicked
 

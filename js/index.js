@@ -1,4 +1,4 @@
-fetch('https://192.168.1.41:8080/getData/').then(res => {
+fetch('https://138.4.92.155:8081/getData/').then(res => {
     return res.json()
 })
     .then(dataBack => {
