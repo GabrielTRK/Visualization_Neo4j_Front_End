@@ -11,7 +11,7 @@ sessionStorage.removeItem("load")
 switchsIDs = ['EU', 'NA', 'SA', 'AS', 'AF']
 switchsNames = ['Europe', 'North America', 'South America', 'Asia', 'Africa']
 
-url = 'https://138.4.92.155:8081/loadP'
+url = 'https://localhost:8081/loadP'
 
 datosGlobal = null
 

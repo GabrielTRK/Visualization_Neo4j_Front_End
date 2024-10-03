@@ -24,12 +24,12 @@ if (sessionStorage.getItem("projectName") && sessionStorage.getItem("solutionID"
     numDias = 0
 
     if (sessionStorage.getItem("ejecutando") == 1) {
-        mainURL = 'https://138.4.92.155:8081/snapshot/' + projectName + separator
+        mainURL = 'https://localhost:8081/snapshot/' + projectName + separator
     } else {
-        mainURL = 'https://138.4.92.155:8081/' + projectName + separator + solutionID + separator
+        mainURL = 'https://localhost:8081/' + projectName + separator + solutionID + separator
     }
 
-    //mainURL = 'https://138.4.92.155:8081/' + projectName + separator + solutionID + separator
+    //mainURL = 'https://localhost:8081/' + projectName + separator + solutionID + separator
 
     getConnections()
 
@@ -268,6 +268,7 @@ function getObj() {
 }
 
 function getObjSnapshot(dataBack) {
+    console.log(dataBack)
     row3 = document.getElementById('row3')
     row4 = document.getElementById('row4')
 
@@ -297,9 +298,9 @@ function getObjSnapshot(dataBack) {
         row4TD.setAttribute("scope", "col");
         row4TD.classList.add('text-center')
         if (id == 0 || id == 3) {
-            row4TD.innerHTML = dataBack.GBest.objetivosNorm[id] + '%'
+            row4TD.innerHTML = dataBack.gbest.objetivosNorm[id] + '%'
         } else {
-            row4TD.innerHTML = dataBack.GBest.objetivosNorm[id]
+            row4TD.innerHTML = dataBack.gbest.objetivosNorm[id]
         }
 
 
@@ -336,7 +337,7 @@ function getObjSnapshot(dataBack) {
         row6TD = document.createElement('td')
         row6TD.setAttribute("scope", "col");
         row6TD.classList.add('text-center')
-        row6TD.innerHTML = dataBack.GBest.objetivosNorm[id] + '%'
+        row6TD.innerHTML = dataBack.gbest.objetivosNorm[id] + '%'
 
         row5.appendChild(row5TH)
         row6.appendChild(row6TD)
@@ -399,6 +400,58 @@ function getRanges() {
         )
 }
 
+function getRangesSnapshot(dataBack) {
+    //Si databack.length == 0 poner mensaje de empty list
+    //console.log(dataBack)
+
+    row7 = document.getElementById('row7')
+    row8 = document.getElementById('row8')
+
+    row7TH = document.createElement('th')
+    row7TH.setAttribute("scope", "col");
+    row7TH.classList.add('text-center')
+    row7TH.innerHTML = 'Influence areas'
+
+    row7.appendChild(row7TH)
+
+    row7TH = document.createElement('th')
+    row7TH.setAttribute("scope", "col");
+    row7TH.classList.add('text-center')
+    row7TH.innerHTML = 'Airlines'
+
+    row7.appendChild(row7TH)
+
+    row7TH = document.createElement('th')
+    row7TH.setAttribute("scope", "col");
+    row7TH.classList.add('text-center')
+    row7TH.innerHTML = 'Airports'
+
+    row7.appendChild(row7TH)
+
+    row8TD = document.createElement('td')
+    row8TD.setAttribute("scope", "col");
+    row8TD.classList.add('text-center')
+    row8TD.innerHTML = '(' + dataBack.extraSnapshot.IngresoPerdidoPorAreaInf[0] + ', ' + dataBack.extraSnapshot.IngresoPerdidoPorAreaInf[1] + ')%'
+
+    row8.appendChild(row8TD)
+
+    row8TD = document.createElement('td')
+    row8TD.setAttribute("scope", "col");
+    row8TD.classList.add('text-center')
+    row8TD.innerHTML = '(' + dataBack.extraSnapshot.PasajerosPerdidosPorCompañía[0] + ', ' + dataBack.extraSnapshot.PasajerosPerdidosPorCompañía[1] + ')%'
+
+    row8.appendChild(row8TD)
+
+    row8TD = document.createElement('td')
+    row8TD.setAttribute("scope", "col");
+    row8TD.classList.add('text-center')
+    row8TD.innerHTML = '(' + dataBack.extraSnapshot.IngresoPerdidoPorAerDest[0] + ', ' + dataBack.extraSnapshot.IngresoPerdidoPorAerDest[1] + ')%'
+
+    row8.appendChild(row8TD)
+
+
+}
+
 function getFit() {
     fetch(mainURL + 'hist').then(res => {
         return res.json()
@@ -441,6 +494,43 @@ function getFit() {
 
         }
         )
+}
+
+function getFitSnapshot(dataBack) {
+    //Si databack.length == 0 poner mensaje de empty list
+    //console.log(dataBack)
+
+    row9 = document.getElementById('row9')
+    row10 = document.getElementById('row10')
+
+    th9 = document.createElement('th')
+    th9.setAttribute("scope", "col");
+    th9.classList.add('text-center')
+    th9.innerHTML = 'Number of iteration'
+
+    th10 = document.createElement('th')
+    th10.setAttribute("scope", "col");
+    th10.classList.add('text-center')
+    th10.innerHTML = 'Fitness value'
+
+    row9.appendChild(th9)
+    row10.appendChild(th10)
+
+    for (k = 0; k < dataBack.gbest.fitnessHist.length; k++) {
+
+        row9TH = document.createElement('th')
+        row9TH.setAttribute("scope", "col");
+        row9TH.classList.add('text-center')
+        row9TH.innerHTML = k
+
+        row10TD = document.createElement('td')
+        row10TD.setAttribute("scope", "col");
+        row10TD.classList.add('text-center')
+        row10TD.innerHTML = dataBack.gbest.fitnessHist[k]
+
+        row9.appendChild(row9TH)
+        row10.appendChild(row10TD)
+    }
 }
 
 function datesDifference(fecha) {

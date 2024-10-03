@@ -8,11 +8,11 @@ if (sessionStorage.getItem("projectName")) {
     });
     projectName = sessionStorage.getItem("projectName")
 
-    url = 'https://138.4.92.155:8081/' + projectName + '/loadS'
+    url = 'https://localhost:8081/' + projectName + '/loadS'
 
     document.getElementById('ListTitle').innerHTML = 'Solutions list from project ' + projectName
 
-    fetch('https://138.4.92.155:8081/loadP/' + projectName).then(res => {
+    fetch('https://localhost:8081/loadP/' + projectName).then(res => {
         return res.json()
     })
         .then(dataBack => {
@@ -287,7 +287,7 @@ function algoritmoGuardado() {
     document.getElementById('CheckDetails').style.display = 'none'
     document.getElementById('DeleteSol').style.display = 'none'
 
-    url = 'https://138.4.92.155:8081/' + projectName + '/optimize'
+    url = 'https://localhost:8081/' + projectName + '/optimize'
 
     const options = {
         method: 'POST',
@@ -342,7 +342,7 @@ function stopOpt() {
         }
     }
 
-    url = 'https://138.4.92.155:8081/pauseOpt'
+    url = 'https://localhost:8081/pauseOpt'
 
     fetch(url).then(res => {
         return res.json()
@@ -387,7 +387,7 @@ function deleteProject() {
 
 
 
-    url = 'https://138.4.92.155:8081/' + projectName + '/delete'
+    url = 'https://localhost:8081/' + projectName + '/delete'
 
     const options = {
         method: 'POST',
@@ -437,7 +437,7 @@ function continueOpt(){
     document.getElementById('DeleteSol').style.display = 'none'
     document.getElementById('ContinueOpt').style.display = 'none'
 
-    url = 'https://138.4.92.155:8081/' + projectName + '/' + sessionStorage.getItem('solutionID') + '/continue'
+    url = 'https://localhost:8081/' + projectName + '/' + sessionStorage.getItem('solutionID') + '/continue'
 
     const options = {
         method: 'POST',
@@ -491,7 +491,7 @@ function deleteSol(){
     }
 
 
-    url = 'https://138.4.92.155:8081/' + projectName + '/' + sessionStorage.getItem('solutionID') + '/delete'
+    url = 'https://localhost:8081/' + projectName + '/' + sessionStorage.getItem('solutionID') + '/delete'
 
     const options = {
         method: 'POST',
