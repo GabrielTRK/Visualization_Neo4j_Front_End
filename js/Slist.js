@@ -8,11 +8,11 @@ if (sessionStorage.getItem("projectName")) {
     });
     projectName = sessionStorage.getItem("projectName")
 
-    url = 'https://localhost:8081/' + projectName + '/loadS'
+    url = 'https://138.4.92.155:8081/' + projectName + '/loadS'
 
     document.getElementById('ListTitle').innerHTML = 'Solutions list from project ' + projectName
 
-    fetch('https://localhost:8081/loadP/' + projectName).then(res => {
+    fetch('https://138.4.92.155:8081/loadP/' + projectName).then(res => {
         return res.json()
     })
         .then(dataBack => {
@@ -272,12 +272,14 @@ function algoritmoGuardado() {
     span.onclick = function () {
         modal.style.display = "none";
         //modalR.style.display = "none";
+        location.reload()
     }
 
     window.onclick = function (event) {
         if (event.target == modal) {
             modal.style.display = "none";
             //modalR.style.display = "none";
+            location.reload()
         }
     }
 
@@ -286,8 +288,9 @@ function algoritmoGuardado() {
     document.getElementById('ModalText').innerHTML = "Running optimization..."
     document.getElementById('CheckDetails').style.display = 'none'
     document.getElementById('DeleteSol').style.display = 'none'
+    document.getElementById('ContinueOpt').style.display = 'none'
 
-    url = 'https://localhost:8081/' + projectName + '/optimize'
+    url = 'https://138.4.92.155:8081/' + projectName + '/optimize'
 
     const options = {
         method: 'POST',
@@ -333,16 +336,18 @@ function stopOpt() {
     span.onclick = function () {
         modal.style.display = "none";
         //modalR.style.display = "none";
+        location.reload()
     }
 
     window.onclick = function (event) {
         if (event.target == modal) {
             modal.style.display = "none";
             //modalR.style.display = "none";
+            location.reload()
         }
     }
 
-    url = 'https://localhost:8081/pauseOpt'
+    url = 'https://138.4.92.155:8081/pauseOpt'
 
     fetch(url).then(res => {
         return res.json()
@@ -376,18 +381,20 @@ function deleteProject() {
     span.onclick = function () {
         modal.style.display = "none";
         //modalR.style.display = "none";
+        window.location.href = "list.html"
     }
 
     window.onclick = function (event) {
         if (event.target == modal) {
             modal.style.display = "none";
             //modalR.style.display = "none";
+            window.location.href = "list.html"
         }
     }
 
 
 
-    url = 'https://localhost:8081/' + projectName + '/delete'
+    url = 'https://138.4.92.155:8081/' + projectName + '/delete'
 
     const options = {
         method: 'POST',
@@ -403,6 +410,10 @@ function deleteProject() {
             document.getElementById('CheckDetails').style.display = 'none'
             document.getElementById('ContinueOpt').style.display = 'none'
             document.getElementById('DeleteSol').style.display = 'none'
+
+            sessionStorage.removeItem("projectName")
+            sessionStorage.removeItem("solutionID")
+            sessionStorage.removeItem("ejecutando")
         });
 }
 
@@ -421,12 +432,14 @@ function continueOpt(){
     span.onclick = function () {
         modal.style.display = "none";
         //modalR.style.display = "none";
+        location.reload()
     }
 
     window.onclick = function (event) {
         if (event.target == modal) {
             modal.style.display = "none";
             //modalR.style.display = "none";
+            location.reload()
         }
     }
 
@@ -437,7 +450,7 @@ function continueOpt(){
     document.getElementById('DeleteSol').style.display = 'none'
     document.getElementById('ContinueOpt').style.display = 'none'
 
-    url = 'https://localhost:8081/' + projectName + '/' + sessionStorage.getItem('solutionID') + '/continue'
+    url = 'https://138.4.92.155:8081/' + projectName + '/' + sessionStorage.getItem('solutionID') + '/continue'
 
     const options = {
         method: 'POST',
@@ -481,17 +494,19 @@ function deleteSol(){
     span.onclick = function () {
         modal.style.display = "none";
         //modalR.style.display = "none";
+        location.reload()
     }
 
     window.onclick = function (event) {
         if (event.target == modal) {
             modal.style.display = "none";
             //modalR.style.display = "none";
+            location.reload()
         }
     }
 
 
-    url = 'https://localhost:8081/' + projectName + '/' + sessionStorage.getItem('solutionID') + '/delete'
+    url = 'https://138.4.92.155:8081/' + projectName + '/' + sessionStorage.getItem('solutionID') + '/delete'
 
     const options = {
         method: 'POST',

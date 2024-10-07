@@ -39,9 +39,9 @@ if (sessionStorage.getItem("projectName") && sessionStorage.getItem("solutionID"
     currentAnimation = false;
 
     if (sessionStorage.getItem("ejecutando") == 1) {
-        mainURL = 'https://localhost:8081/snapshot/' + projectName
+        mainURL = 'https://138.4.92.155:8081/snapshot/' + projectName
     }else{
-        mainURL = 'https://localhost:8081/' + projectName + '/' + solutionID
+        mainURL = 'https://138.4.92.155:8081/' + projectName + '/' + solutionID
     }
 
     
