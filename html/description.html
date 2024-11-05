@@ -27,34 +27,10 @@
             padding-bottom: 100px;
         }
 
-        .PageTitle {
-            padding: 1rem 1rem 0rem 1rem;
-        }
-
-        .TitleChild {
-            display: inline-block;
-        }
-
-        #Load {
-            float: right;
-        }
-
         #MainCard {
             width: 64.0%;
             margin: 0 auto;
             margin-top: 2%;
-        }
-
-        #StartDateDiv {
-            width: 30%;
-            margin-left: 15%;
-        }
-
-        #EndDateDiv {
-            float: right;
-            width: 30%;
-            margin-right: 15%;
-
         }
 
         #Save {
@@ -123,31 +99,10 @@
             clear: both;
         }
 
-        #NumPHelp {
-            margin-left: 5%;
-
-        }
-
-        #IneWHelp {
-            margin-left: 5%;
-        }
-
-        #c1Help {
-            margin-left: 5%;
-        }
-
-        #c2Help {
-            margin-left: 5%;
-        }
-
         .footer {
             position: fixed;
             bottom: 0;
             width: 100%;
-        }
-
-        .bi-arrow-right-square {
-            color: black;
         }
 
         .modal {
@@ -245,10 +200,10 @@
     </nav>
 
     <div class="card" id="MainCard">
-        <div class="PageTitle">
+        <div class="PageTitle" style="padding: 1rem 1rem 0rem 1rem;">
 
             <div class="input-group mb-3">
-                <h2 class="TitleChild" style="margin-right: 20%;">Project description</h2>
+                <h2 class="TitleChild" style="margin-right: 20%; display: inline-block;">Project description</h2>
                 <form action="" class="was-validated" style="width: 40%; z-index: 0;">
                     <div class="input-group has-validation">
                         <span class="input-group-text" id="inputGroupPrepend">Project name</span>
@@ -423,7 +378,7 @@
                             <div class="column middle">
                                 <div style="opacity: 0.5; display: flex; justify-content: center; margin-top: 5%;">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="currentColor"
-                                        class="bi bi-arrow-right-square" viewBox="0 0 16 16">
+                                        class="bi bi-arrow-right-square" style="color: black;" viewBox="0 0 16 16">
                                         <path fill-rule="evenodd"
                                             d="M15 2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1zM0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm4.5 5.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5z" />
                                     </svg>
@@ -525,7 +480,7 @@
                                     </div>
                                 </form>
                                 <div class="col">
-                                    <svg id="NumPHelp" xmlns="http://www.w3.org/2000/svg" width="30" height="30"
+                                    <svg id="NumPHelp" style="margin-left: 5%;" xmlns="http://www.w3.org/2000/svg" width="30" height="30"
                                         fill="currentColor" class="bi bi-question-circle-fill" viewBox="0 0 16 16"
                                         data-toggle="tooltip" title="Defines the number of particles to be used
                                     in the BPSOM" data-bs-placement="right">
@@ -545,7 +500,7 @@
                                     </div>
                                 </form>
                                 <div class="col">
-                                    <svg id="IneWHelp" xmlns="http://www.w3.org/2000/svg" width="30" height="30"
+                                    <svg id="IneWHelp" style="margin-left: 5%;" xmlns="http://www.w3.org/2000/svg" width="30" height="30"
                                         fill="currentColor" class="bi bi-question-circle-fill" viewBox="0 0 16 16"
                                         data-toggle="tooltip"
                                         title="Defines how fast the particles move through the search space"
@@ -567,7 +522,7 @@
                                     </div>
                                 </form>
                                 <div class="col">
-                                    <svg id="c1Help" xmlns="http://www.w3.org/2000/svg" width="30" height="30"
+                                    <svg id="c1Help" style="margin-left: 5%;" xmlns="http://www.w3.org/2000/svg" width="30" height="30"
                                         fill="currentColor" class="bi bi-question-circle-fill" viewBox="0 0 16 16"
                                         data-toggle="tooltip"
                                         title="Defines the weight of the personal bests over
@@ -591,7 +546,7 @@
                                     </div>
                                 </form>
                                 <div class="col">
-                                    <svg id="c2Help" xmlns="http://www.w3.org/2000/svg" width="30" height="30"
+                                    <svg id="c2Help" style="margin-left: 5%;" xmlns="http://www.w3.org/2000/svg" width="30" height="30"
                                         fill="currentColor" class="bi bi-question-circle-fill" viewBox="0 0 16 16"
                                         data-toggle="tooltip" title="Defines the weight of the global best over the
                                 personal bests" data-bs-placement="right">
