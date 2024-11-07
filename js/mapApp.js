@@ -26,7 +26,7 @@ if((sessionStorage.getItem("projectName") && sessionStorage.getItem("ejecutando"
     var margin = { top: 50, left: 50, right: 50, bottom: 50 };
     var margin2 = { top: 100, left: 100, right: 400, bottom: 100 };
     height = 400 //- margin.top - margin.bottom;
-    width = 800 //- margin.left - margin.right;
+    width = 930 //- margin.left - margin.right;
     var params = { numDias: 0, diaActual: 0 };
 
     var html_p_Open = '<p>'
