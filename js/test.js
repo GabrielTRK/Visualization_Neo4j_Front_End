@@ -63,7 +63,8 @@ function inputOnChange() {
                     if (!file.dir) {
                         let readerText = new FileReader();
                         readerText.onload = function () {
-                            console.log(this.result)
+                            let text = String(this.result)
+                            console.log(this.result.split('\n'))
                         }
                         zipEntry.async('blob').then(function(blob){
                         readerText.readAsText(blob)

@@ -75,9 +75,11 @@
         .DDContainer {
             width: 100px;
             height: 150px;
-            margin-left: 25%;
+            margin-left: 15%;
+            margin-right: auto;
         }
 
+        #div0a,
         #div1a,
         #div2a,
         #div3a,
@@ -90,6 +92,18 @@
             height: 50px;
             border: 1px solid rgb(90, 89, 89);
             border-radius: 6px;
+        }
+
+        #div0c,
+        #div1c,
+        #div2c,
+        #div3c,
+        #div4c,
+        #div5c,
+        #div6c,
+        #div7c {
+            width: 250px;
+            height: 50px;
         }
 
         #div1b,
@@ -109,16 +123,15 @@
         /* Create three unequal columns that floats next to each other */
         .column {
             float: left;
-            padding: 10px;
         }
 
         .left,
         .right {
-            width: 37.5%;
+            width: 33.33%;
         }
 
         .middle {
-            width: 25%;
+            width: 33.33%;
         }
 
         /* Clear floats after the columns */
@@ -181,6 +194,21 @@
             color: #000;
             text-decoration: none;
             cursor: pointer;
+        }
+
+        .form-switch.form-switch-md {
+            height: 2.5em;
+        }
+
+        .form-switch.form-switch-md .form-check-input {
+            /*margin-left: auto;
+            margin-right: auto;*/
+            height: 2em;
+            width: 4em;
+        }
+
+        .form-switch.form-switch-md .form-check-label {
+            padding-top: 0.5em;
         }
     </style>
 </head>
@@ -314,41 +342,211 @@
                 <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse"
                     aria-labelledby="panelsStayOpen-headingTwo">
                     <div class="accordion-body">
-                        <div style="display: flex; justify-content: center;">
-                            <p>Maximum percentage risk of pandemic importation at Spanish airports during optimization
-                            </p><br>
-                        </div>
-                        <div style="display: flex; justify-content: center;">
-                            <input id="restriction" type="range" value="50" min="0" max="100"
-                                oninput="this.nextElementSibling.value = this.value + '%'">
-                            <output id="restrictionOut">50%</output>
+                        <div class="row">
+                            <div style="display: flex; justify-content: center;">
+                                <p>Choose whether an objective should be considered a constraint or not.</p><br>
+                            </div>
+                            <div class="column left">
+                                <div class="DDContainer">
+                                    <div id="div0a">
+                                        <img src="../Utils/Objective1.png" width="149" height="49"
+                                            data-toggle="tooltip"
+                                            title="The losses in the catchment areas if all connections are cancelled would be over 40 million euros per day.">
+                                    </div>
+                                    <div id="div1a">
+                                        <img src="../Utils/Objective1.png" width="149" height="49"
+                                            data-toggle="tooltip"
+                                            title="The losses in the catchment areas if all connections are cancelled would be over 40 million euros per day.">
+                                    </div>
+                                    <div id="div2a">
+                                        <img src="../Utils/Objective2.png" width="149" height="49">
+                                    </div>
+                                    <div id="div3a">
+                                        <img src="../Utils/Objective3.png" width="149" height="49">
+                                    </div>
+                                    <div id="div4a">
+                                        <img src="../Utils/Objective4.png" width="149" height="49"
+                                            data-toggle="tooltip"
+                                            title="Each flight may produce from €400 to €3,500 due to airport taxes depending on the airport fee and the weight of the aircraft.">
+                                    </div>
+                                    <div id="div5a">
+                                        <img src="../Utils/Objective5.png" width="149" height="49">
+                                    </div>
+                                    <div id="div6a">
+                                        <img src="../Utils/Objective6.png" width="149" height="49"
+                                            data-toggle="tooltip"
+                                            title="Most commercial flights carry between 80 to 300 passengers.">
+                                    </div>
+                                    <div id="div7a">
+                                        <img src="../Utils/Objective7.png" width="149" height="49"
+                                            data-toggle="tooltip"
+                                            title="The measurment of Hub Connectivity proposed by ACI Europe may vary from below 30 up to 70,000 depending on the activity of the airport.">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="column middle">
+                                <div class="DDContainer">
+                                    <div id="div0c">
+                                        <div id="objText0" class="column left" style="color: rgb(0, 102, 0);">Objective</div>
+                                        <div class="form-check form-switch form-switch-md column middle">
+                                            <input class="form-check-input" type="checkbox" id="obj0" onclick="enableDisable0()">
+                                        </div>
+                                        <div id="consText0" class="column right" style="opacity: 0.0; color: rgb(228, 0, 0);">Constraint</div>
+                                    </div>
+                                    <div id="div1c">
+                                        <div id="objText1" class="column left" style="color: rgb(0, 102, 0);">Objective</div>
+                                        <div class="form-check form-switch form-switch-md column middle">
+                                            <input class="form-check-input" type="checkbox" id="obj1" onclick="enableDisable1()">
+                                        </div>
+                                        <div id="consText1" class="column right" style="opacity: 0.0; color: rgb(228, 0, 0);">Constraint</div>
+                                    </div>
+                                    <div id="div2c">
+                                        <div id="objText2" class="column left" style="color: rgb(0, 102, 0);">Objective</div>
+                                        <div class="form-check form-switch form-switch-md column middle">
+                                            <input class="form-check-input" type="checkbox" id="obj2" onclick="enableDisable2()">
+                                        </div>
+                                        <div id="consText2" class="column right" style="opacity: 0.0; color: rgb(228, 0, 0);">Constraint</div>
+                                    </div>
+                                    <div id="div3c">
+                                        <div id="objText3" class="column left" style="color: rgb(0, 102, 0);">Objective</div>
+                                        <div class="form-check form-switch form-switch-md column middle">
+                                            <input class="form-check-input" type="checkbox" id="obj3" onclick="enableDisable3()">
+                                        </div>
+                                        <div id="consText3" class="column right" style="opacity: 0.0; color: rgb(228, 0, 0);">Constraint</div>
+                                    </div>
+                                    <div id="div4c">
+                                        <div id="objText4" class="column left" style="color: rgb(0, 102, 0);">Objective</div>
+                                        <div class="form-check form-switch form-switch-md column middle">
+                                            <input class="form-check-input" type="checkbox" id="obj4" onclick="enableDisable4()">
+                                        </div>
+                                        <div id="consText4" class="column right" style="opacity: 0.0; color: rgb(228, 0, 0);">Constraint</div>
+                                    </div>
+                                    <div id="div5c">
+                                        <div id="objText5" class="column left" style="color: rgb(0, 102, 0);">Objective</div>
+                                        <div class="form-check form-switch form-switch-md column middle">
+                                            <input class="form-check-input" type="checkbox" id="obj5" onclick="enableDisable5()">
+                                        </div>
+                                        <div id="consText5" class="column right" style="opacity: 0.0; color: rgb(228, 0, 0);">Constraint</div>
+                                    </div>
+                                    <div id="div6c">
+                                        <div id="objText6" class="column left" style="color: rgb(0, 102, 0);">Objective</div>
+                                        <div class="form-check form-switch form-switch-md column middle">
+                                            <input class="form-check-input" type="checkbox" id="obj6" onclick="enableDisable6()">
+                                        </div>
+                                        <div id="consText6" class="column right" style="opacity: 0.0; color: rgb(228, 0, 0);">Constraint</div>
+                                    </div>
+                                    <div id="div7c">
+                                        <div id="objText7" class="column left" style="color: rgb(0, 102, 0);">Objective</div>
+                                        <div class="form-check form-switch form-switch-md column middle">
+                                            <input class="form-check-input" type="checkbox" id="obj7" onclick="enableDisable7()">
+                                        </div>
+                                        <div id="consText7" class="column right" style="opacity: 0.0; color: rgb(228, 0, 0);">Constraint</div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="column right">
+                                <div class="DDContainer">
+                                    <div id="div0c">
+                                        <div style="display: flex; justify-content: center;">
+                                            <input id="res0" type="range" value="50" min="0" max="100"
+                                            oninput="this.nextElementSibling.value = this.value + '%'" disabled="true">
+                                            <output id="restrictionOut0">50%</output>
+                                        </div>
+                                    </div>
+                                    <div id="div1c">
+                                        <div style="display: flex; justify-content: center;">
+                                            <input id="res1" type="range" value="50" min="0" max="100"
+                                            oninput="this.nextElementSibling.value = this.value + '%'" disabled="true">
+                                            <output id="restrictionOut1">50%</output>
+                                        </div>
+                                    </div>
+                                    <div id="div2c">
+                                        <div style="display: flex; justify-content: center;">
+                                            <input id="res2" type="range" value="50" min="0" max="100"
+                                            oninput="this.nextElementSibling.value = this.value + '%'" disabled="true">
+                                            <output id="restrictionOut2">50%</output>
+                                        </div>
+                                    </div>
+                                    <div id="div3c">
+                                        <div style="display: flex; justify-content: center;">
+                                            <input id="res3" type="range" value="50" min="0" max="100"
+                                            oninput="this.nextElementSibling.value = this.value + '%'" disabled="true">
+                                            <output id="restrictionOut3">50%</output>
+                                        </div>
+                                    </div>
+                                    <div id="div4c">
+                                        <div style="display: flex; justify-content: center;">
+                                            <input id="res4" type="range" value="50" min="0" max="100"
+                                            oninput="this.nextElementSibling.value = this.value + '%'" disabled="true">
+                                            <output id="restrictionOut4">50%</output>
+                                        </div>
+                                    </div>
+                                    <div id="div5c">
+                                        <div style="display: flex; justify-content: center;">
+                                            <input id="res5" type="range" value="50" min="0" max="100"
+                                            oninput="this.nextElementSibling.value = this.value + '%'" disabled="true">
+                                            <output id="restrictionOut5">50%</output>
+                                        </div>
+                                    </div>
+                                    <div id="div6c">
+                                       <div style="display: flex; justify-content: center;">
+                                            <input id="res6" type="range" value="50" min="0" max="100"
+                                            oninput="this.nextElementSibling.value = this.value + '%'" disabled="true">
+                                            <output id="restrictionOut6">50%</output>
+                                        </div>
+                                    </div>
+                                    <div id="div7c">
+                                        <div style="display: flex; justify-content: center;">
+                                            <input id="res7" type="range" value="50" min="0" max="100"
+                                            oninput="this.nextElementSibling.value = this.value + '%'" disabled="true">
+                                            <output id="restrictionOut7">50%</output>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--<div style="display: flex; justify-content: center;">
+                                <p>Maximum percentage risk of pandemic importation at Spanish airports during
+                                    optimization
+                                </p><br>
+                            </div>
+                            <div style="display: flex; justify-content: center;">
+                                <input id="restriction" type="range" value="50" min="0" max="100"
+                                    oninput="this.nextElementSibling.value = this.value + '%'">
+                                <output id="restrictionOut">50%</output>
+                            </div>-->
+
                         </div><br>
 
-                        <div style="display: flex; justify-content: center;">
-                            <p>Connections to be maintained to capitals in each region</p><br>
+
+                        <div class="row">
+                            <div style="display: flex; justify-content: center;">
+                                <p>Connections to be maintained to capitals in each region</p><br>
+                            </div>
+                            <div style="display: flex; justify-content: space-around;">
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input politic" type="checkbox" id="EU">
+                                    <label class="form-check-label" for="EU">Europe</label>
+                                </div>
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input politic" type="checkbox" id="NA">
+                                    <label class="form-check-label" for="NA">North America</label>
+                                </div>
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input politic" type="checkbox" id="SA">
+                                    <label class="form-check-label" for="SA">South America</label>
+                                </div>
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input politic" type="checkbox" id="AS">
+                                    <label class="form-check-label" for="AS">Asia</label>
+                                </div>
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input politic" type="checkbox" id="AF">
+                                    <label class="form-check-label" for="AF">Africa</label>
+                                </div>
+                            </div>
                         </div>
-                        <div style="display: flex; justify-content: space-around;">
-                            <div class="form-check form-switch">
-                                <input class="form-check-input" type="checkbox" id="EU">
-                                <label class="form-check-label" for="EU">Europe</label>
-                            </div>
-                            <div class="form-check form-switch">
-                                <input class="form-check-input" type="checkbox" id="NA">
-                                <label class="form-check-label" for="NA">North America</label>
-                            </div>
-                            <div class="form-check form-switch">
-                                <input class="form-check-input" type="checkbox" id="SA">
-                                <label class="form-check-label" for="SA">South America</label>
-                            </div>
-                            <div class="form-check form-switch">
-                                <input class="form-check-input" type="checkbox" id="AS">
-                                <label class="form-check-label" for="AS">Asia</label>
-                            </div>
-                            <div class="form-check form-switch">
-                                <input class="form-check-input" type="checkbox" id="AF">
-                                <label class="form-check-label" for="AF">Africa</label>
-                            </div>
-                        </div>
+
 
 
                     </div>
