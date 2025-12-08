@@ -1,0 +1,5 @@
+This is the front-end code for the RRPS_PAT system, which contains the interface to solve the air traffic management problem to reduce the risk of pandemic spread.
+
+In order to use the interface you must first run the back-end server, which can be found in https://github.com/GabrielTRK/Visualization_Neo4j_Back_End
+
+This paper was supported by grants PID2021-122209OB-C31 and RED2022-134540-T funded by the Spanish Ministry of Science, Innovation and Universities MICIU/AEI/10.13039/501100011033 and by the Agencia Estatal de Investigación (AEI), Ministerio de Ciencia, Innovación y Universidades (Spain), under Project PID2024-155179NB-C22.
