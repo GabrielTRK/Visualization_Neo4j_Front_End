@@ -175,8 +175,8 @@ function addEpi(divEpi, dataBack) {
     divProgress.classList.add(dataBack.nombre)
     divProgress.classList.add('progress-bar')
     divProgress.setAttribute('role', 'progressbar')
-    divProgress.style.width = String(dataBack.res.epi) + '%'
-    divProgress.innerHTML = String(dataBack.res.epi) + '%'
+    divProgress.style.width = String(dataBack.res.restricciones[0]) + '%'
+    divProgress.innerHTML = String(dataBack.res.restricciones[0]) + '%'
     divEpi.appendChild(divProgress)
 }
 

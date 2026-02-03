@@ -102,9 +102,9 @@ function algoritmo() {
         err = true
     }
 
-    epiRes = String(document.getElementById("restriction").value) + '&'
+    epiRes = String(document.getElementById("restriction").value)
 
-    switchs = document.getElementsByClassName("politic")
+    switchs = document.getElementsByClassName("form-check-input")
 
     polRes = []
 
@@ -170,14 +170,17 @@ function algoritmo() {
 
         p_nombre = 'nombre='
 
-        numIter = 0
+        numIter = 50
 
         url = 'http://localhost:8081/optimize' + '?' + p_fecha_I + fecha_I + p_fecha_F + fecha_F + p_iteraciones + String(numIter) + '&' + p_num_P + numP +
-            p_iW + iW + p_c1 + c1 + p_c2 + c2 + p_m + String(0.0) + '&' + p_p + String(0.0) + '&' + p_res_epi + epiRes + p_nombre + projectName
+            p_iW + iW + p_c1 + c1 + p_c2 + c2 + p_m + String(0.0) + '&' + p_p + String(0.0) + '&' + p_nombre + projectName
 
         const params = {
             "pol": polRes,
-            "order": idOrder
+            "order": idOrder,
+            "restricciones": {
+                "0": epiRes
+            }
         };
         const options = {
             method: 'POST',
@@ -290,7 +293,7 @@ function saveConf() {
         err = true
     }
 
-    epiRes = String(document.getElementById("restriction").value) + '&'
+    epiRes = String(document.getElementById("restriction").value)
 
     switchs = document.getElementsByClassName("form-check-input")
 
@@ -355,14 +358,17 @@ function saveConf() {
 
         p_nombre = 'nombre='
 
-        numIter = 0
+        numIter = 50
 
         url = 'http://localhost:8081/saveP' + '?' + p_fecha_I + fecha_I + p_fecha_F + fecha_F + p_iteraciones + String(numIter) + '&' + p_num_P + numP +
-            p_iW + iW + p_c1 + c1 + p_c2 + c2 + p_m + String(0.0) + '&' + p_p + String(0.0) + '&' + p_res_epi + epiRes + p_nombre + projectName
+            p_iW + iW + p_c1 + c1 + p_c2 + c2 + p_m + String(0.0) + '&' + p_p + String(0.0) + '&' + p_nombre + projectName
 
         const params = {
             "pol": polRes,
-            "order": idOrder
+            "order": idOrder,
+            "restricciones": {
+                "0": epiRes
+            }
         };
         const options = {
             method: 'POST',
@@ -409,21 +415,21 @@ function drop(ev) {
         ev.preventDefault();
         if (ev.target.tagName == 'DIV') {
             var data = ev.dataTransfer.getData("text");
-            if (data >= 0) {
+            if (data > 0) {
                 ev.target.style.border = "1px solid rgb(90, 89, 89)"
                 ev.target.appendChild(document.getElementById(data));
             }
         }
         //Comprobar con un for los que no tienen asociado un criterio y ponerlos en rojo
         const parents = document.getElementsByClassName("DDContainer");
-        for (i = 0; i < parents[5].children.length; i++) {
-            if (parents[5].children[i].children.length == 0) {
-                parents[5].children[i].style.border = "1px solid #de4251"
+        for (i = 0; i < parents[2].children.length; i++) {
+            if (parents[2].children[i].children.length == 0) {
+                parents[2].children[i].style.border = "1px solid #de4251"
             } else {
                 cont++
             }
         }
-        if (cont == parents[5].children.length) {
+        if (cont == parents[2].children.length) {
             document.getElementById('PrefValid').style.color = "#198754"
             document.getElementById('PrefValid').innerHTML = "Valid"
         } else {
@@ -508,130 +514,6 @@ function checkDatesSendRequest() {
                 document.getElementById('7').setAttribute('aria-label', dataBack.z7)
             }
             )
-    }
-}
-
-function enableDisable0(){
-    if(document.getElementById('obj0').checked){
-        document.getElementById('res0').disabled = false
-        document.getElementById('consText0').style.opacity = 1.0
-        document.getElementById('objText0').style.opacity = 0.0
-    }else if(!document.getElementById('obj0').checked){
-        document.getElementById('res0').disabled = true
-        document.getElementById('consText0').style.opacity = 0.0
-        document.getElementById('objText0').style.opacity = 1.0
-    }
-}
-
-function enableDisable1(){
-    if(document.getElementById('obj1').checked){
-        document.getElementById('res1').disabled = false
-        document.getElementById('consText1').style.opacity = 1.0
-        document.getElementById('objText1').style.opacity = 0.0
-
-        document.getElementById('1').style.display = 'none'
-    }else if(!document.getElementById('obj1').checked){
-        document.getElementById('res1').disabled = true
-        document.getElementById('consText1').style.opacity = 0.0
-        document.getElementById('objText1').style.opacity = 1.0
-
-        document.getElementById('1').style.display = 'block'
-    }
-}
-
-function enableDisable2(){
-    if(document.getElementById('obj2').checked){
-        document.getElementById('res2').disabled = false
-        document.getElementById('consText2').style.opacity = 1.0
-        document.getElementById('objText2').style.opacity = 0.0
-
-        document.getElementById('2').style.display = 'none'
-    }else if(!document.getElementById('obj2').checked){
-        document.getElementById('res2').disabled = true
-        document.getElementById('consText2').style.opacity = 0.0
-        document.getElementById('objText2').style.opacity = 2.0
-
-        document.getElementById('2').style.display = 'block'
-    }
-}
-
-function enableDisable3(){
-    if(document.getElementById('obj3').checked){
-        document.getElementById('res3').disabled = false
-        document.getElementById('consText3').style.opacity = 1.0
-        document.getElementById('objText3').style.opacity = 0.0
-
-        document.getElementById('3').style.display = 'none'
-    }else if(!document.getElementById('obj3').checked){
-        document.getElementById('res3').disabled = true
-        document.getElementById('consText3').style.opacity = 0.0
-        document.getElementById('objText3').style.opacity = 1.0
-
-        document.getElementById('3').style.display = 'block'
-    }
-}
-
-function enableDisable4(){
-    if(document.getElementById('obj4').checked){
-        document.getElementById('res4').disabled = false
-        document.getElementById('consText4').style.opacity = 1.0
-        document.getElementById('objText4').style.opacity = 0.0
-
-        document.getElementById('4').style.display = 'none'
-    }else if(!document.getElementById('obj4').checked){
-        document.getElementById('res4').disabled = true
-        document.getElementById('consText4').style.opacity = 0.0
-        document.getElementById('objText4').style.opacity = 1.0
-
-        document.getElementById('4').style.display = 'block'
-    }
-}
-
-function enableDisable5(){
-    if(document.getElementById('obj5').checked){
-        document.getElementById('res5').disabled = false
-        document.getElementById('consText5').style.opacity = 1.0
-        document.getElementById('objText5').style.opacity = 0.0
-
-        document.getElementById('5').style.display = 'none'
-    }else if(!document.getElementById('obj5').checked){
-        document.getElementById('res5').disabled = true
-        document.getElementById('consText5').style.opacity = 0.0
-        document.getElementById('objText5').style.opacity = 1.0
-
-        document.getElementById('5').style.display = 'block'
-    }
-}
-
-function enableDisable6(){
-    if(document.getElementById('obj6').checked){
-        document.getElementById('res6').disabled = false
-        document.getElementById('consText6').style.opacity = 1.0
-        document.getElementById('objText6').style.opacity = 0.0
-
-        document.getElementById('6').style.display = 'none'
-    }else if(!document.getElementById('obj6').checked){
-        document.getElementById('res6').disabled = true
-        document.getElementById('consText6').style.opacity = 0.0
-        document.getElementById('objText6').style.opacity = 1.0
-
-        document.getElementById('6').style.display = 'block'
-    }
-}
-
-function enableDisable7(){
-    if(document.getElementById('obj7').checked){
-        document.getElementById('res7').disabled = false
-        document.getElementById('consText7').style.opacity = 1.0
-        document.getElementById('objText7').style.opacity = 0.0
-
-        document.getElementById('7').style.display = 'none'
-    }else if(!document.getElementById('obj7').checked){
-        document.getElementById('res7').disabled = true
-        document.getElementById('consText7').style.opacity = 0.0
-        document.getElementById('objText7').style.opacity = 1.0
-
-        document.getElementById('7').style.display = 'block'
     }
 }
 
